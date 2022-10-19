@@ -104,13 +104,14 @@
   <div class="section" id="module-motulator.control.im_obs_vhz">
 <span id="motulator-control-im-obs-vhz"></span><h1><a class="reference internal" href="#module-motulator.control.im_obs_vhz" title="motulator.control.im_obs_vhz"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.control.im_obs_vhz</span></code></a><a class="headerlink" href="#module-motulator.control.im_obs_vhz" title="Permalink to this heading"></a></h1>
 <p>Observer-based V/Hz control for induction motor drives.</p>
-<p>This implements the observer-based V/Hz control method described in <a class="reference internal" href="#rdad62c5377b6-1" id="id1">[1]</a>. The state-feedback
-control law is in the alternative form which uses an intermediate stator current reference.</p>
+<p>This implements the observer-based V/Hz control method described in <a class="reference internal" href="#rdad62c5377b6-1" id="id1">[1]</a>. The
+state-feedback control law is in the alternative form which uses an
+intermediate stator current reference.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rdad62c5377b6-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Tiitinen, Hinkkanen, Harnefors, “Stable and passive observer-based V/Hz
-control for Induction Motors” in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.</p>
+control for induction motors,” in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 </dd>
 </dl>
 <div class="section" id="module-contents">
@@ -124,7 +125,7 @@ control for Induction Motors” in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars" title="motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorObsVHzCtrlPars</span></code></a></p></td>
-<td><p>Obs. V/Hz control parameters.</p></td>
+<td><p>Control parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#motulator.control.im_obs_vhz.InductionMotorVHzObsCtrl" title="motulator.control.im_obs_vhz.InductionMotorVHzObsCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVHzObsCtrl</span></code></a></p></td>
 <td><p>Observer-based V/Hz control for induction motors.</p></td>
@@ -137,7 +138,7 @@ control for Induction Motors” in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.control.im_obs_vhz.</span></span><span class="sig-name descname"><span class="pre">InductionMotorObsVHzCtrlPars</span></span><a class="reference internal" href="../../../../_modules/motulator/control/im_obs_vhz.html#InductionMotorObsVHzCtrlPars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars" title="Permalink to this definition"></a></dt>
-<dd><p>Obs. V/Hz control parameters.</p>
+<dd><p>Control parameters.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars.w_m_ref">
 <span class="sig-name descname"><span class="pre">w_m_ref</span></span><em class="property"><span class="w"> </span><span class="pre">:collections.abc.Callable[[float],</span> <span class="pre">float]</span></em><a class="reference internal" href="../../../../_modules/motulator/control/im_obs_vhz.html#InductionMotorObsVHzCtrlPars.w_m_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars.w_m_ref" title="Permalink to this definition"></a></dt>
@@ -261,7 +262,7 @@ feedback signals.</p>
 <dt class="sig sig-object py" id="motulator.control.im_obs_vhz.SensorlessFluxObserver">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.control.im_obs_vhz.</span></span><span class="sig-name descname"><span class="pre">SensorlessFluxObserver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/im_obs_vhz.html#SensorlessFluxObserver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.im_obs_vhz.SensorlessFluxObserver" title="Permalink to this definition"></a></dt>
 <dd><p>Sensorless reduced-order flux observer.</p>
-<p>This observer is a variant of <a class="reference internal" href="#r235b53b0d214-1" id="id2">[1]</a>. The observer gain decouples the
+<p>This observer is a variant of <a class="reference internal" href="../sm_obs_vhz/index.html#r235b53b0d214-1" id="id2">[1]</a>. The observer gain decouples the
 electrical and mechanical dynamics and allows placing the poles of the
 corresponding linearized estimation error dynamics. This implementation
 operates in controller coordinates.</p>
@@ -270,7 +271,6 @@ operates in controller coordinates.</p>
 <dd class="field-odd"><p><strong>pars</strong> (<em>InductionMotorVHzObsCtrlPars</em>) – Control parameters.</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="r235b53b0d214-1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
@@ -283,7 +283,7 @@ drives,” IEEE Trans. Power Electron., 2010,
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.control.im_obs_vhz.SensorlessFluxObserver.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/im_obs_vhz.html#SensorlessFluxObserver.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.im_obs_vhz.SensorlessFluxObserver.update" title="Permalink to this definition"></a></dt>
-<dd><p>Updates the states of the observer.</p>
+<dd><p>Update the states of the observer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

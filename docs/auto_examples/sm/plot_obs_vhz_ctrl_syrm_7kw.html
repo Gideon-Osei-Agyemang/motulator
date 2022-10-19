@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Observer-based V/Hz controlled 2.2-kW PMSM drive &mdash; motulator 0.1.0 documentation</title>
+  <title>Observer-based V/Hz controlled 6.7-kW SyRM drive &mdash; motulator 0.1.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -56,7 +56,7 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_flux_vector_pmsm_2kw.html">Flux-vector controlled 2.2-kW PMSM drive</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_obs_vhz_ctrl_pmsm_2kw.html">Observer-based V/Hz controlled 2.2-kW PMSM drive</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_vector_ctrl_pmsm_2kw.html">Vector-controlled 2.2-kW PMSM drive</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Observer-based V/Hz controlled 2.2-kW PMSM drive</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Observer-based V/Hz controlled 6.7-kW SyRM drive</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_flux_vector_syrm_7kw.html">Flux-vector-controlled 6.7-kW SyRM drive</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_vector_ctrl_syrm_7kw.html">Vector-controlled 6.7-kW SyRM drive</a></li>
 </ul>
@@ -90,7 +90,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Examples</a> &raquo;</li>
-      <li>Observer-based V/Hz controlled 2.2-kW PMSM drive</li>
+      <li>Observer-based V/Hz controlled 6.7-kW SyRM drive</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/auto_examples/sm/plot_obs_vhz_ctrl_syrm_7kw.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -105,10 +105,11 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-sm-plot-obs-vhz-ctrl-syrm-7kw-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="observer-based-v-hz-controlled-2-2-kw-pmsm-drive">
-<span id="sphx-glr-auto-examples-sm-plot-obs-vhz-ctrl-syrm-7kw-py"></span><h1>Observer-based V/Hz controlled 2.2-kW PMSM drive<a class="headerlink" href="#observer-based-v-hz-controlled-2-2-kw-pmsm-drive" title="Permalink to this heading"></a></h1>
-<p>This example simulates observer-based V/Hz control of a 6.7-kW SyRM drive.
-drive.</p>
+<div class="sphx-glr-example-title section" id="observer-based-v-hz-controlled-6-7-kw-syrm-drive">
+<span id="sphx-glr-auto-examples-sm-plot-obs-vhz-ctrl-syrm-7kw-py"></span><h1>Observer-based V/Hz controlled 6.7-kW SyRM drive<a class="headerlink" href="#observer-based-v-hz-controlled-6-7-kw-syrm-drive" title="Permalink to this heading"></a></h1>
+<p>This example simulates observer-based V/Hz control of a saturated 6.7-kW
+synchronous reluctance motor drive. The saturation is not taken into account
+in the control method (only in the system model).</p>
 <p>Import the package.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">motulator</span> <span class="k">as</span> <span class="nn">mt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -120,7 +121,10 @@ drive.</p>
 </pre></div>
 </div>
 <p>Configure the system model.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">motor</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">SynchronousMotor</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">R_s</span><span class="o">=</span><span class="mf">.54</span><span class="p">,</span> <span class="n">L_d</span><span class="o">=</span><span class="mf">41.5e-3</span><span class="p">,</span> <span class="n">L_q</span><span class="o">=</span><span class="mf">6.2e-3</span><span class="p">,</span> <span class="n">psi_f</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Saturated SyRM model</span>
+<span class="n">motor</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">SynchronousMotorSaturated</span><span class="p">()</span>
+<span class="c1"># Magnetically linear SyRM model</span>
+<span class="c1"># motor = mt.SynchronousMotor(p=2, R_s=.54, L_d=37e-3, L_q=6.2e-3, psi_f=0)</span>
 <span class="n">mech</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">Mechanics</span><span class="p">(</span><span class="n">J</span><span class="o">=</span><span class="mf">.015</span><span class="p">)</span>
 <span class="n">conv</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">Inverter</span><span class="p">()</span>
 <span class="n">mdl</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">SynchronousMotorDrive</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">mech</span><span class="p">,</span> <span class="n">conv</span><span class="p">)</span>
@@ -130,10 +134,10 @@ drive.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pars</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">SynchronousMotorVHzObsCtrlPars</span><span class="p">(</span>
     <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">R_s</span><span class="o">=</span><span class="mf">.54</span><span class="p">,</span>
-    <span class="n">L_d</span><span class="o">=</span><span class="mf">41.5e-3</span><span class="p">,</span>
+    <span class="n">L_d</span><span class="o">=</span><span class="mf">37e-3</span><span class="p">,</span>
     <span class="n">L_q</span><span class="o">=</span><span class="mf">6.2e-3</span><span class="p">,</span>
     <span class="n">psi_f</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">psi_s_nom</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">base</span><span class="o">.</span><span class="n">U_nom</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">base</span><span class="o">.</span><span class="n">f_nom</span><span class="p">)</span>
+    <span class="n">psi_s_nom</span><span class="o">=</span><span class="n">base</span><span class="o">.</span><span class="n">psi</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ctrl</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">SynchronousMotorVHzObsCtrl</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
 </pre></div>
@@ -161,7 +165,7 @@ the results in SI units.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_obs_vhz_ctrl_syrm_7kw_001.png" srcset="../../_images/sphx_glr_plot_obs_vhz_ctrl_syrm_7kw_001.png" alt="plot obs vhz ctrl syrm 7kw" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  15.019 seconds)</p>
+<img src="../../_images/sphx_glr_plot_obs_vhz_ctrl_syrm_7kw_001.png" srcset="../../_images/sphx_glr_plot_obs_vhz_ctrl_syrm_7kw_001.png" alt="plot obs vhz ctrl syrm 7kw" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  17.811 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sm-plot-obs-vhz-ctrl-syrm-7kw-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/6b9961e0b170ca37c221fb7681bbb05a/plot_obs_vhz_ctrl_syrm_7kw.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_obs_vhz_ctrl_syrm_7kw.py</span></code></a></p>

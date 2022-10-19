@@ -18,17 +18,18 @@
 .. _sphx_glr_auto_examples_sm_plot_obs_vhz_ctrl_syrm_7kw.py:
 
 
-Observer-based V/Hz controlled 2.2-kW PMSM drive
-========================================
+Observer-based V/Hz controlled 6.7-kW SyRM drive
+================================================
 
-This example simulates observer-based V/Hz control of a 6.7-kW SyRM drive.
-drive.
+This example simulates observer-based V/Hz control of a saturated 6.7-kW
+synchronous reluctance motor drive. The saturation is not taken into account
+in the control method (only in the system model).
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-12
+.. GENERATED FROM PYTHON SOURCE LINES 12-13
 
 Import the package.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-16
+.. GENERATED FROM PYTHON SOURCE LINES 13-17
 
 .. code-block:: default
 
@@ -43,11 +44,11 @@ Import the package.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-18
+.. GENERATED FROM PYTHON SOURCE LINES 18-19
 
 Compute base values based on the nominal values (just for figures).
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-22
+.. GENERATED FROM PYTHON SOURCE LINES 19-23
 
 .. code-block:: default
 
@@ -62,16 +63,19 @@ Compute base values based on the nominal values (just for figures).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-24
+.. GENERATED FROM PYTHON SOURCE LINES 24-25
 
 Configure the system model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-30
+.. GENERATED FROM PYTHON SOURCE LINES 25-34
 
 .. code-block:: default
 
 
-    motor = mt.SynchronousMotor(p=2, R_s=.54, L_d=41.5e-3, L_q=6.2e-3, psi_f=0)
+    # Saturated SyRM model
+    motor = mt.SynchronousMotorSaturated()
+    # Magnetically linear SyRM model
+    # motor = mt.SynchronousMotor(p=2, R_s=.54, L_d=37e-3, L_q=6.2e-3, psi_f=0)
     mech = mt.Mechanics(J=.015)
     conv = mt.Inverter()
     mdl = mt.SynchronousMotorDrive(motor, mech, conv)
@@ -83,11 +87,11 @@ Configure the system model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-32
+.. GENERATED FROM PYTHON SOURCE LINES 35-36
 
 Configure the control system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-43
+.. GENERATED FROM PYTHON SOURCE LINES 36-47
 
 .. code-block:: default
 
@@ -95,10 +99,10 @@ Configure the control system.
     pars = mt.SynchronousMotorVHzObsCtrlPars(
         p=2,
         R_s=.54,
-        L_d=41.5e-3,
+        L_d=37e-3,
         L_q=6.2e-3,
         psi_f=0,
-        psi_s_nom=np.sqrt(2/3)*base.U_nom/(2*np.pi*base.f_nom)
+        psi_s_nom=base.psi,
     )
     ctrl = mt.SynchronousMotorVHzObsCtrl(pars)
 
@@ -109,11 +113,11 @@ Configure the control system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-45
+.. GENERATED FROM PYTHON SOURCE LINES 48-49
 
 Set the speed reference and the external load torque.
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-54
+.. GENERATED FROM PYTHON SOURCE LINES 49-59
 
 .. code-block:: default
 
@@ -133,13 +137,14 @@ Set the speed reference and the external load torque.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+
+.. GENERATED FROM PYTHON SOURCE LINES 60-63
 
 Create the simulation object and simulate it. You can also enable the PWM
 model (which makes simulation slower). One-sampling-period computational
 delay is modeled.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-62
+.. GENERATED FROM PYTHON SOURCE LINES 63-67
 
 .. code-block:: default
 
@@ -154,18 +159,17 @@ delay is modeled.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-65
+.. GENERATED FROM PYTHON SOURCE LINES 68-70
 
 Plot results in per-unit values. By omitting the argument `base` you can plot
 the results in SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 70-72
 
 .. code-block:: default
 
 
     mt.plot(sim, base=base)
-
 
 
 
@@ -181,7 +185,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  15.019 seconds)
+   **Total running time of the script:** ( 0 minutes  17.811 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_plot_obs_vhz_ctrl_syrm_7kw.py:

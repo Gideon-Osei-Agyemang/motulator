@@ -103,12 +103,13 @@
              
   <div class="section" id="module-motulator.control.sm_obs_vhz">
 <span id="motulator-control-sm-obs-vhz"></span><h1><a class="reference internal" href="#module-motulator.control.sm_obs_vhz" title="motulator.control.sm_obs_vhz"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.control.sm_obs_vhz</span></code></a><a class="headerlink" href="#module-motulator.control.sm_obs_vhz" title="Permalink to this heading"></a></h1>
-<p>Observer-based V/Hz control for synchronous motor drives corresponding to [1.]_.</p>
+<p>Observer-based V/Hz control for synchronous motor drives.</p>
+<p>This method is based on <a class="reference internal" href="#reaf38ba05e63-1" id="id1">[1]</a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="reaf38ba05e63-1"><span class="brackets">1</span></dt>
-<dd><p>Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, “Stable and passive
-observer-based V/Hz control for synchronous Motors” in Proc.
+<dt class="label" id="reaf38ba05e63-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, “Stable
+and passive observer-based V/Hz control for synchronous Motors,” in Proc.
 IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 </dd>
 </dl>
@@ -123,7 +124,7 @@ IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars" title="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVHzObsCtrlPars</span></code></a></p></td>
-<td><p>Obs. V/Hz control parameters of synchronous motors.</p></td>
+<td><p>Control parameters of synchronous motors.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl" title="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVHzObsCtrl</span></code></a></p></td>
 <td><p>Observer-based V/Hz control for induction motors.</p></td>
@@ -136,7 +137,7 @@ IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.control.sm_obs_vhz.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorVHzObsCtrlPars</span></span><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrlPars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars" title="Permalink to this definition"></a></dt>
-<dd><p>Obs. V/Hz control parameters of synchronous motors.</p>
+<dd><p>Control parameters of synchronous motors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars.w_m_ref">
 <span class="sig-name descname"><span class="pre">w_m_ref</span></span><em class="property"><span class="w"> </span><span class="pre">:Callable[[float],</span> <span class="pre">float]</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrlPars.w_m_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars.w_m_ref" title="Permalink to this definition"></a></dt>
@@ -239,7 +240,7 @@ feedback signals.</p>
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SensorlessFluxObserver">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.control.sm_obs_vhz.</span></span><span class="sig-name descname"><span class="pre">SensorlessFluxObserver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SensorlessFluxObserver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SensorlessFluxObserver" title="Permalink to this definition"></a></dt>
 <dd><p>Sensorless stator flux observer.</p>
-<p>This observer is a variant of <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. The observer gain decouples the
+<p>This observer is a variant of <a class="reference internal" href="#r235b53b0d214-1" id="id2">[1]</a>. The observer gain decouples the
 electrical and mechanical dynamics and allows placing the poles of the
 corresponding linearized estimation error dynamics.</p>
 <dl class="field-list simple">
@@ -248,28 +249,26 @@ corresponding linearized estimation error dynamics.</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dl class="citation">
+<dt class="label" id="r235b53b0d214-1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
 <dd><p>Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, “Observers for
 sensorless synchronous motor drives: Framework for design and analysis,”
 IEEE Trans. Ind. Appl., 2018, <a class="reference external" href="https://doi.org/10.1109/TIA.2018.2858753">https://doi.org/10.1109/TIA.2018.2858753</a></p>
 </dd>
 </dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pars</strong> (<em>data object</em>) – Controller parameters.</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SensorlessFluxObserver.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SensorlessFluxObserver.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SensorlessFluxObserver.update" title="Permalink to this definition"></a></dt>
-<dd><p>Update the states for the next sampling period.
-:param u_s: Stator voltage.
-:type u_s: complex
-:param i_s: Stator current.
-:type i_s: complex
-:param w_s: Stator angular frequency.
-:type w_s: float</p>
+<dd><p>Update the states for the next sampling period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u_s</strong> (<em>complex</em>) – Stator voltage.</p></li>
+<li><p><strong>i_s</strong> (<em>complex</em>) – Stator current.</p></li>
+<li><p><strong>w_s</strong> (<em>float</em>) – Stator angular frequency.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

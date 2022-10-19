@@ -7,13 +7,14 @@
 
    Observer-based V/Hz control for induction motor drives.
 
-   This implements the observer-based V/Hz control method described in [Rdad62c5377b6-1]_. The state-feedback
-   control law is in the alternative form which uses an intermediate stator current reference.
+   This implements the observer-based V/Hz control method described in [Rdad62c5377b6-1]_. The
+   state-feedback control law is in the alternative form which uses an
+   intermediate stator current reference.
 
    .. rubric:: References
 
    .. [Rdad62c5377b6-1] Tiitinen, Hinkkanen, Harnefors, "Stable and passive observer-based V/Hz
-       control for Induction Motors" in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.
+       control for induction motors," in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.
 
    ..
        !! processed by numpydoc !!
@@ -37,7 +38,7 @@ Classes
 .. py:class:: InductionMotorObsVHzCtrlPars
 
    
-   Obs. V/Hz control parameters.
+   Control parameters.
 
 
 
@@ -232,8 +233,6 @@ Classes
    :param pars: Control parameters.
    :type pars: InductionMotorVHzObsCtrlPars
 
-   .. rubric:: Notes
-
    .. rubric:: References
 
    .. [R235b53b0d214-1] Hinkkanen, Harnefors, Luomi, "Reduced-order flux observers with
@@ -260,7 +259,7 @@ Classes
    .. py:method:: update(u_s, i_s, w_s)
 
       
-      Updates the states of the observer.
+      Update the states of the observer.
 
       :param u_s: Stator voltage.
       :type u_s: complex

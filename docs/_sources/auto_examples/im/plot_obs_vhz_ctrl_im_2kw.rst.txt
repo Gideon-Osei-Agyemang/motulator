@@ -19,7 +19,7 @@
 
 
 Observer-based V/Hz control of 2.2-kW induction motor drive
-==============================================
+===========================================================
 
 This example simulates observer-based V/Hz control of a 2.2-kW induction motor
 drive.
@@ -112,7 +112,7 @@ Configure the control system.
 
 Set the speed reference and the external load torque.
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-53
+.. GENERATED FROM PYTHON SOURCE LINES 44-54
 
 .. code-block:: default
 
@@ -132,13 +132,14 @@ Set the speed reference and the external load torque.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-57
+
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 Create the simulation object and simulate it. You can also enable the PWM
 model (which makes simulation slower). One-sampling-period computational
 delay is modeled.
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-61
+.. GENERATED FROM PYTHON SOURCE LINES 58-62
 
 .. code-block:: default
 
@@ -153,12 +154,12 @@ delay is modeled.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-64
+.. GENERATED FROM PYTHON SOURCE LINES 63-65
 
 Plot results in per-unit values. By omitting the argument `base` you can plot
 the results in SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-66
+.. GENERATED FROM PYTHON SOURCE LINES 65-67
 
 .. code-block:: default
 
@@ -179,7 +180,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.040 seconds)
+   **Total running time of the script:** ( 0 minutes  7.713 seconds)
 
 
 .. _sphx_glr_download_auto_examples_im_plot_obs_vhz_ctrl_im_2kw.py:

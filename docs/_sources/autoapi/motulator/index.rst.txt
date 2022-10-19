@@ -2455,7 +2455,7 @@ Functions
 .. py:class:: InductionMotorObsVHzCtrlPars
 
    
-   Obs. V/Hz control parameters.
+   Control parameters.
 
 
 
@@ -2617,7 +2617,7 @@ Functions
 .. py:class:: SynchronousMotorVHzObsCtrlPars
 
    
-   Obs. V/Hz control parameters of synchronous motors.
+   Control parameters of synchronous motors.
 
 
 
