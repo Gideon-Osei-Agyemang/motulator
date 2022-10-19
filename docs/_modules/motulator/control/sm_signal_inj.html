@@ -21,6 +21,7 @@
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/clipboard.min.js"></script>
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -239,7 +240,7 @@
         <span class="c1"># Initial states</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">i_s_old</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_s_older</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
         <span class="c1"># Error gain</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">L_d</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">L_q</span><span class="o">/</span><span class="p">((</span><span class="n">pars</span><span class="o">.</span><span class="n">L_q</span> <span class="o">-</span> <span class="n">pars</span><span class="o">.</span><span class="n">L_d</span><span class="p">)</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">T_s</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">L_d</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">L_q</span><span class="o">/</span><span class="p">((</span><span class="n">pars</span><span class="o">.</span><span class="n">L_q</span> <span class="o">-</span> <span class="n">pars</span><span class="o">.</span><span class="n">L_d</span><span class="p">)</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">T_s</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SignalInjection.output"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_signal_inj/index.html#motulator.control.sm_signal_inj.SignalInjection.output">[docs]</a>    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i_sq</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -292,7 +293,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Filter currents</span>
-        <span class="n">i_s_filt</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">i_s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_s_old</span><span class="p">)</span>
+        <span class="n">i_s_filt</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">i_s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_s_old</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">i_s_filt</span></div></div>
 
 

@@ -45,6 +45,23 @@ Induction Motor Drives
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This example simulates observer-based V/Hz control of a 2.2-kW induction motor drive.">
+
+.. only:: html
+
+  .. image:: /auto_examples/im/images/thumb/sphx_glr_plot_obs_vhz_ctrl_im_2kw_thumb.png
+    :alt: Observer-based V/Hz control of 2.2-kW induction motor drive
+
+  :ref:`sphx_glr_auto_examples_im_plot_obs_vhz_ctrl_im_2kw.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz control of 2.2-kW induction motor drive</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This example simulates sensorless vector control of a 2.2-kW induction motor drive.">
 
 .. only:: html
@@ -69,6 +86,7 @@ Induction Motor Drives
    :hidden:
 
    /auto_examples/im/plot_vhz_ctrl_im_2kw
+   /auto_examples/im/plot_obs_vhz_ctrl_im_2kw
    /auto_examples/im/plot_vector_ctrl_im_2kw
 
 Synchronous Motor Drives
@@ -100,6 +118,23 @@ Synchronous Motor Drives
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This example simulates observer-based V/Hz control of a 2.2-kW PMSM drive.">
+
+.. only:: html
+
+  .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_obs_vhz_ctrl_pmsm_2kw_thumb.png
+    :alt: Observer-based V/Hz controlled 2.2-kW PMSM drive
+
+  :ref:`sphx_glr_auto_examples_sm_plot_obs_vhz_ctrl_pmsm_2kw.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz controlled 2.2-kW PMSM drive</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This example simulates sensorless vector control of a 2.2-kW PMSM drive.">
 
 .. only:: html
@@ -112,6 +147,23 @@ Synchronous Motor Drives
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Vector-controlled 2.2-kW PMSM drive</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example simulates observer-based V/Hz control of a 6.7-kW SyRM drive. drive.">
+
+.. only:: html
+
+  .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_obs_vhz_ctrl_syrm_7kw_thumb.png
+    :alt: Observer-based V/Hz controlled 2.2-kW PMSM drive
+
+  :ref:`sphx_glr_auto_examples_sm_plot_obs_vhz_ctrl_syrm_7kw.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz controlled 2.2-kW PMSM drive</div>
     </div>
 
 
@@ -158,7 +210,9 @@ Synchronous Motor Drives
    :hidden:
 
    /auto_examples/sm/plot_flux_vector_pmsm_2kw
+   /auto_examples/sm/plot_obs_vhz_ctrl_pmsm_2kw
    /auto_examples/sm/plot_vector_ctrl_pmsm_2kw
+   /auto_examples/sm/plot_obs_vhz_ctrl_syrm_7kw
    /auto_examples/sm/plot_flux_vector_syrm_7kw
    /auto_examples/sm/plot_vector_ctrl_syrm_7kw
 

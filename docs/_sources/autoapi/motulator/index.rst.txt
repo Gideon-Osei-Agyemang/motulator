@@ -78,6 +78,10 @@ Classes
    motulator.SynchronousMotorFluxVectorCtrlPars
    motulator.SynchronousMotorSignalInjectionCtrl
    motulator.SynchronousMotorSignalInjectionCtrlPars
+   motulator.InductionMotorVHzObsCtrl
+   motulator.InductionMotorObsVHzCtrlPars
+   motulator.SynchronousMotorVHzObsCtrl
+   motulator.SynchronousMotorVHzObsCtrlPars
    motulator.BaseValues
    motulator.Sequence
    motulator.Step
@@ -2367,6 +2371,338 @@ Functions
        !! processed by numpydoc !!
    .. py:attribute:: U_inj
       :annotation: :float = 200
+
+      
+
+
+.. py:class:: InductionMotorVHzObsCtrl(pars)
+
+   Bases: :py:obj:`motulator.control.common.Ctrl`
+
+   
+   Observer-based V/Hz control for induction motors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: __call__(mdl)
+
+      
+      Run the main control loop.
+
+      :param mdl: Continuous-time model of an induction motor drive for getting the
+                  feedback signals.
+      :type mdl: InductionMotorDrive
+
+      :returns: * **T_s** (*float*) -- Sampling period.
+                * **d_abc_ref** (*ndarray, shape (3,)*) -- Duty ratio references.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: state_feedback(i_s, psi_R, w_s)
+
+      
+      Compute the stator voltage reference.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: InductionMotorObsVHzCtrlPars
+
+   
+   Obs. V/Hz control parameters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:attribute:: w_m_ref
+      :annotation: :collections.abc.Callable[[float], float]
+
+      
+
+   .. py:attribute:: T_s
+      :annotation: :float = 0.00025
+
+      
+
+   .. py:attribute:: psi_s_nom
+      :annotation: :float = 1.04
+
+      
+
+   .. py:attribute:: rate_limit
+      :annotation: :float
+
+      
+
+   .. py:attribute:: i_s_max
+      :annotation: :float
+
+      
+
+   .. py:attribute:: alpha_f
+      :annotation: :float
+
+      
+
+   .. py:attribute:: alpha_psi
+      :annotation: :float
+
+      
+
+   .. py:attribute:: k_tau
+      :annotation: :float = 3.0
+
+      
+
+   .. py:attribute:: slip_compensation
+      :annotation: :bool = True
+
+      
+
+   .. py:attribute:: alpha_r
+      :annotation: :float
+
+      
+
+   .. py:attribute:: alpha_o
+      :annotation: :float
+
+      
+
+   .. py:attribute:: zeta_inf
+      :annotation: :float = 0.7
+
+      
+
+   .. py:attribute:: R_s
+      :annotation: :float = 3.7
+
+      
+
+   .. py:attribute:: R_R
+      :annotation: :float = 2.1
+
+      
+
+   .. py:attribute:: L_sgm
+      :annotation: :float = 0.021
+
+      
+
+   .. py:attribute:: L_M
+      :annotation: :float = 0.224
+
+      
+
+   .. py:attribute:: p
+      :annotation: :int = 2
+
+      
+
+
+.. py:class:: SynchronousMotorVHzObsCtrl(pars)
+
+   Bases: :py:obj:`motulator.control.common.Ctrl`
+
+   
+   Observer-based V/Hz control for induction motors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: __call__(mdl)
+
+      
+      Run the main control loop.
+
+      :param mdl: Continuous-time model of a synchronous motor drive for getting the
+                  feedback signals.
+      :type mdl: SynchronousMotorDrive
+
+      :returns: * **T_s** (*float*) -- Sampling period.
+                * **d_abc_ref** (*ndarray, shape (3,)*) -- Duty ratio references.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: SynchronousMotorVHzObsCtrlPars
+
+   
+   Obs. V/Hz control parameters of synchronous motors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:attribute:: w_m_ref
+      :annotation: :Callable[[float], float]
+
+      
+
+   .. py:attribute:: T_s
+      :annotation: :float = 0.00025
+
+      
+
+   .. py:attribute:: psi_s_nom
+      :annotation: :float
+
+      
+
+   .. py:attribute:: rate_limit
+      :annotation: :float
+
+      
+
+   .. py:attribute:: alpha_psi
+      :annotation: :float
+
+      
+
+   .. py:attribute:: alpha_f
+      :annotation: :float
+
+      
+
+   .. py:attribute:: k_tau
+      :annotation: :float = 3.0
+
+      
+
+   .. py:attribute:: alpha_o
+      :annotation: :float
+
+      
+
+   .. py:attribute:: zeta_inf
+      :annotation: :float = 0.7
+
+      
+
+   .. py:attribute:: R_s
+      :annotation: :float = 3.6
+
+      
+
+   .. py:attribute:: L_d
+      :annotation: :float = 0.036
+
+      
+
+   .. py:attribute:: L_q
+      :annotation: :float = 0.051
+
+      
+
+   .. py:attribute:: psi_f
+      :annotation: :float = 0.545
+
+      
+
+   .. py:attribute:: p
+      :annotation: :int = 3
 
       
 

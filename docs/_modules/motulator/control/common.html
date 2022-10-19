@@ -21,6 +21,7 @@
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
         <script src="../../../_static/clipboard.min.js"></script>
         <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -137,14 +138,14 @@
         <span class="c1"># Phase voltages without the zero-sequence voltage</span>
         <span class="n">u_abc</span> <span class="o">=</span> <span class="n">complex2abc</span><span class="p">(</span><span class="n">u_s_ref</span><span class="p">)</span>
         <span class="c1"># Symmetrization by adding the zero-sequence voltage</span>
-        <span class="n">u_0</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">u_abc</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">u_abc</span><span class="p">))</span>
+        <span class="n">u_0</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">u_abc</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">u_abc</span><span class="p">))</span>
         <span class="n">u_abc</span> <span class="o">-=</span> <span class="n">u_0</span>
         <span class="c1"># Preventing overmodulation by means of a minimum phase error method</span>
         <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.</span><span class="o">/</span><span class="n">u_dc</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">u_abc</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">u_abc</span> <span class="o">=</span> <span class="n">u_abc</span><span class="o">/</span><span class="n">m</span>
         <span class="c1"># Duty ratios</span>
-        <span class="n">d_abc_ref</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span> <span class="o">+</span> <span class="n">u_abc</span><span class="o">/</span><span class="n">u_dc</span>
+        <span class="n">d_abc_ref</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">+</span> <span class="n">u_abc</span><span class="o">/</span><span class="n">u_dc</span>
         <span class="k">return</span> <span class="n">d_abc_ref</span></div>
 
 <div class="viewcode-block" id="PWM.__call__"><a class="viewcode-back" href="../../../autoapi/motulator/control/common/index.html#motulator.control.common.PWM.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_ref</span><span class="p">,</span> <span class="n">u_dc</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
@@ -196,7 +197,7 @@
 <span class="sd">            Limited voltage reference in synchronous coordinates.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">realized_voltage</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_u_ref_lim_old</span> <span class="o">+</span> <span class="n">u_ref_lim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">realized_voltage</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_u_ref_lim_old</span> <span class="o">+</span> <span class="n">u_ref_lim</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_u_ref_lim_old</span> <span class="o">=</span> <span class="n">u_ref_lim</span></div></div>
 
 
