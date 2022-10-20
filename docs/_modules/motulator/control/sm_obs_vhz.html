@@ -239,7 +239,9 @@
 
 <span class="sd">    This observer is a variant of [1]_. The observer gain decouples the</span>
 <span class="sd">    electrical and mechanical dynamics and allows placing the poles of the</span>
-<span class="sd">    corresponding linearized estimation error dynamics.</span>
+<span class="sd">    corresponding linearized estimation error dynamics. For simplicity, the</span>
+<span class="sd">    current model is here implemented in rotor coordinates, however this is</span>
+<span class="sd">    mathematically equivalent to controller coordinates implementation in [2]_.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -248,9 +250,12 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, &quot;Observers for</span>
-<span class="sd">       sensorless synchronous motor drives: Framework for design and analysis,&quot;</span>
-<span class="sd">       IEEE Trans. Ind. Appl., 2018, https://doi.org/10.1109/TIA.2018.2858753</span>
+<span class="sd">    ..  [1] Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, &quot;Observers for</span>
+<span class="sd">        sensorless synchronous motor drives: Framework for design and analysis,&quot;</span>
+<span class="sd">        IEEE Trans. Ind. Appl., 2018, https://doi.org/10.1109/TIA.2018.2858753</span>
+<span class="sd">    ..  [2] Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, &quot;Stable</span>
+<span class="sd">        and passive observer-based V/Hz control for synchronous Motors,&quot; in Proc.</span>
+<span class="sd">        IEEE ECCE, Detroit, MI, Oct. 2022.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -280,31 +285,24 @@
 <span class="sd">            Stator angular frequency.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Inductance matrix elements</span>
-        <span class="n">L_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_d</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_q</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-        <span class="n">L_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_d</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_q</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-        <span class="n">L_xy</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L_q</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_d</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span>
+        <span class="c1"># Transformations to rotor coordinates</span>
+        <span class="n">i_sr</span> <span class="o">=</span> <span class="n">i_s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span>
+        <span class="n">psi_sr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">psi_s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span>
 
-        <span class="c1"># PM-flux linkage</span>
-        <span class="n">psi_F</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">psi_f</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span>
+        <span class="c1"># Auxiliary flux and estimation error in rotor coordinates</span>
+        <span class="n">psi_ar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">psi_f</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L_d</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_q</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">i_sr</span><span class="p">)</span>
+        <span class="n">e_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_d</span><span class="o">*</span><span class="n">i_sr</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">L_q</span><span class="o">*</span><span class="n">i_sr</span><span class="o">.</span><span class="n">imag</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">psi_f</span> <span class="o">-</span> <span class="n">psi_sr</span>
 
-        <span class="c1"># Auxiliary flux (12)</span>
-        <span class="n">psi_a</span> <span class="o">=</span> <span class="n">psi_F</span> <span class="o">+</span> <span class="p">(</span><span class="n">L_x</span> <span class="o">-</span> <span class="n">L_y</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">i_s</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span><span class="o">*</span><span class="n">L_xy</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">i_s</span><span class="p">)</span>
+        <span class="c1"># Auxiliary flux in controller coordinates</span>
+        <span class="n">psi_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span><span class="o">*</span><span class="n">psi_ar</span>
 
-        <span class="c1"># Estimation error (6)</span>
-        <span class="n">e</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">L_x</span><span class="o">*</span><span class="n">i_s</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">L_y</span><span class="o">*</span><span class="n">i_s</span><span class="o">.</span><span class="n">imag</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">L_xy</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">i_s</span><span class="p">)</span> <span class="o">+</span> <span class="n">psi_F</span> <span class="o">-</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">psi_s</span><span class="p">)</span>
+        <span class="n">g_o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_p</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">zeta_inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w_s</span><span class="p">)</span>
 
-        <span class="c1"># Pole locations are chosen according to (36), with c = w_m**2</span>
-        <span class="c1"># and w_inf = inf, and the gain corresponding to (30) is used</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_p</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">zeta_inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w_s</span><span class="p">)</span>
-        <span class="n">psi_a_sqr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi_a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-        <span class="k">if</span> <span class="n">psi_a_sqr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="c1"># Correction voltage</span>
-            <span class="n">v</span> <span class="o">=</span> <span class="n">k</span><span class="o">*</span><span class="n">psi_a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">psi_a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">e</span><span class="p">))</span><span class="o">/</span><span class="n">psi_a_sqr</span>
-            <span class="c1"># Error signal (10)</span>
-            <span class="n">w_delta</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha_o</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">psi_a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">e</span><span class="p">))</span><span class="o">/</span><span class="n">psi_a_sqr</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi_ar</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Correction voltage in controller coordinates</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">g_o</span><span class="o">*</span><span class="n">psi_a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">e_r</span><span class="o">/</span><span class="n">psi_ar</span><span class="p">)</span>
+            <span class="c1"># Error signal</span>
+            <span class="n">w_delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha_o</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">e_r</span><span class="o">/</span><span class="n">psi_ar</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">v</span><span class="p">,</span> <span class="n">w_delta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 

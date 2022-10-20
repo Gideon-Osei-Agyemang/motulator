@@ -188,16 +188,21 @@ Classes
 
    This observer is a variant of [R235b53b0d214-1]_. The observer gain decouples the
    electrical and mechanical dynamics and allows placing the poles of the
-   corresponding linearized estimation error dynamics.
+   corresponding linearized estimation error dynamics. For simplicity, the
+   current model is here implemented in rotor coordinates, however this is
+   mathematically equivalent to controller coordinates implementation in [R235b53b0d214-2]_.
 
    :param pars: Control parameters.
    :type pars: SynchronousMotorObsVHzCtrlPars
 
    .. rubric:: References
 
-   .. [R235b53b0d214-1] Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, "Observers for
-      sensorless synchronous motor drives: Framework for design and analysis,"
-      IEEE Trans. Ind. Appl., 2018, https://doi.org/10.1109/TIA.2018.2858753
+   ..  [1] Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, "Observers for
+       sensorless synchronous motor drives: Framework for design and analysis,"
+       IEEE Trans. Ind. Appl., 2018, https://doi.org/10.1109/TIA.2018.2858753
+   ..  [2] Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, "Stable
+       and passive observer-based V/Hz control for synchronous Motors," in Proc.
+       IEEE ECCE, Detroit, MI, Oct. 2022.
 
 
 
