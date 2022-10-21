@@ -37,7 +37,7 @@ Classes
 .. py:class:: SynchronousMotorVHzObsCtrlPars
 
    
-   Control parameters of synchronous motors.
+   Control parameters.
 
 
 
@@ -132,8 +132,10 @@ Classes
    Bases: :py:obj:`motulator.control.common.Ctrl`
 
    
-   Observer-based V/Hz control for induction motors.
+   Observer-based V/Hz control for synchronous motors.
 
+   :param pars: Control parameters.
+   :type pars: SynchronousMotorVHzObsCtrlPars
 
 
 
@@ -198,11 +200,12 @@ Classes
    .. rubric:: References
 
    .. [R235b53b0d214-1] Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, "Observers for
-       sensorless synchronous motor drives: Framework for design and analysis,"
-       IEEE Trans. Ind. Appl., 2018, https://doi.org/10.1109/TIA.2018.2858753
-   .. [R235b53b0d214-2] Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, "Stable
-       and passive observer-based V/Hz control for synchronous Motors," in Proc.
-       IEEE ECCE, Detroit, MI, Oct. 2022.
+       sensorless synchronous motor drives: Framework for design and
+       analysis," IEEE Trans. Ind. Appl., 2018,
+       https://doi.org/10.1109/TIA.2018.2858753
+   .. [R235b53b0d214-2] Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors,
+       "Stable and passive observer-based V/Hz control for synchronous
+       Motors," in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.
 
 
 

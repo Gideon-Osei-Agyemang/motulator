@@ -85,7 +85,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for motulator.control.im_obs_vhz</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># pylint: disable=invalid-name</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Observer-based V/Hz control for induction motor drives.</span>
 
 <span class="sd">This implements the observer-based V/Hz control method described in [1]_. The</span>
@@ -114,6 +115,7 @@
 <div class="viewcode-block" id="InductionMotorObsVHzCtrlPars"><a class="viewcode-back" href="../../../autoapi/motulator/index.html#motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars">[docs]</a><span class="k">class</span> <span class="nc">InductionMotorObsVHzCtrlPars</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Control parameters.&quot;&quot;&quot;</span>
 
+    <span class="c1"># pylint: disable=too-many-instance-attributes</span>
     <span class="c1"># Speed reference (in electrical rad/s)</span>
 <div class="viewcode-block" id="InductionMotorObsVHzCtrlPars.w_m_ref"><a class="viewcode-back" href="../../../autoapi/motulator/control/im_obs_vhz/index.html#motulator.control.im_obs_vhz.InductionMotorObsVHzCtrlPars.w_m_ref">[docs]</a>    <span class="n">w_m_ref</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
         <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mf">.2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">50</span><span class="p">))</span></div>
@@ -145,8 +147,17 @@
 
 <span class="c1"># %%</span>
 <div class="viewcode-block" id="InductionMotorVHzObsCtrl"><a class="viewcode-back" href="../../../autoapi/motulator/index.html#motulator.control.im_obs_vhz.InductionMotorVHzObsCtrl">[docs]</a><span class="k">class</span> <span class="nc">InductionMotorVHzObsCtrl</span><span class="p">(</span><span class="n">Ctrl</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Observer-based V/Hz control for induction motors.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Observer-based V/Hz control for induction motors.</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars : InductionMotorObsVHzCtrlPars</span>
+<span class="sd">        Control parameters.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># pylint: disable=too-many-instance-attributes</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pars</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="c1"># Instantiate classes</span>

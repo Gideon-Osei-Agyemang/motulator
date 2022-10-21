@@ -124,10 +124,10 @@ IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars" title="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVHzObsCtrlPars</span></code></a></p></td>
-<td><p>Control parameters of synchronous motors.</p></td>
+<td><p>Control parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl" title="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVHzObsCtrl</span></code></a></p></td>
-<td><p>Observer-based V/Hz control for induction motors.</p></td>
+<td><p>Observer-based V/Hz control for synchronous motors.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.control.sm_obs_vhz.SensorlessFluxObserver" title="motulator.control.sm_obs_vhz.SensorlessFluxObserver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorlessFluxObserver</span></code></a></p></td>
 <td><p>Sensorless stator flux observer.</p></td>
@@ -137,7 +137,7 @@ IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.control.sm_obs_vhz.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorVHzObsCtrlPars</span></span><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrlPars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars" title="Permalink to this definition"></a></dt>
-<dd><p>Control parameters of synchronous motors.</p>
+<dd><p>Control parameters.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars.w_m_ref">
 <span class="sig-name descname"><span class="pre">w_m_ref</span></span><em class="property"><span class="w"> </span><span class="pre">:Callable[[float],</span> <span class="pre">float]</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrlPars.w_m_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars.w_m_ref" title="Permalink to this definition"></a></dt>
@@ -214,7 +214,12 @@ IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.control.sm_obs_vhz.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorVHzObsCtrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../common/index.html#motulator.control.common.Ctrl" title="motulator.control.common.Ctrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">motulator.control.common.Ctrl</span></code></a></p>
-<p>Observer-based V/Hz control for induction motors.</p>
+<p>Observer-based V/Hz control for synchronous motors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pars</strong> (<a class="reference internal" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars" title="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars"><em>SynchronousMotorVHzObsCtrlPars</em></a>) – Control parameters.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl.__call__">
 <span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mdl</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrl.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl.__call__" title="Permalink to this definition"></a></dt>
@@ -254,13 +259,14 @@ mathematically equivalent to controller coordinates implementation in <a class="
 <dl class="citation">
 <dt class="label" id="r235b53b0d214-1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
 <dd><p>Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, “Observers for
-sensorless synchronous motor drives: Framework for design and analysis,”
-IEEE Trans. Ind. Appl., 2018, <a class="reference external" href="https://doi.org/10.1109/TIA.2018.2858753">https://doi.org/10.1109/TIA.2018.2858753</a></p>
+sensorless synchronous motor drives: Framework for design and
+analysis,” IEEE Trans. Ind. Appl., 2018,
+<a class="reference external" href="https://doi.org/10.1109/TIA.2018.2858753">https://doi.org/10.1109/TIA.2018.2858753</a></p>
 </dd>
 <dt class="label" id="r235b53b0d214-2"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p>Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, “Stable
-and passive observer-based V/Hz control for synchronous Motors,” in Proc.
-IEEE ECCE, Detroit, MI, Oct. 2022.</p>
+<dd><p>Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors,
+“Stable and passive observer-based V/Hz control for synchronous
+Motors,” in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.</p>
 </dd>
 </dl>
 <dl class="py method">

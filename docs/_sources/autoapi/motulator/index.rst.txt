@@ -2382,6 +2382,8 @@ Functions
    
    Observer-based V/Hz control for induction motors.
 
+   :param pars: Control parameters.
+   :type pars: InductionMotorObsVHzCtrlPars
 
 
 
@@ -2565,8 +2567,10 @@ Functions
    Bases: :py:obj:`motulator.control.common.Ctrl`
 
    
-   Observer-based V/Hz control for induction motors.
+   Observer-based V/Hz control for synchronous motors.
 
+   :param pars: Control parameters.
+   :type pars: SynchronousMotorVHzObsCtrlPars
 
 
 
@@ -2617,7 +2621,7 @@ Functions
 .. py:class:: SynchronousMotorVHzObsCtrlPars
 
    
-   Control parameters of synchronous motors.
+   Control parameters.
 
 
 

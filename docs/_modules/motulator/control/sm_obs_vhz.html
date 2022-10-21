@@ -85,7 +85,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for motulator.control.sm_obs_vhz</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="c1"># pylint: disable=invalid-name</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Observer-based V/Hz control for synchronous motor drives.</span>
 
 <span class="sd">This method is based on [1]_.</span>
@@ -95,6 +96,7 @@
 <span class="sd">.. [1] Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, &quot;Stable</span>
 <span class="sd">    and passive observer-based V/Hz control for synchronous Motors,&quot; in Proc.</span>
 <span class="sd">    IEEE ECCE, Detroit, MI, Oct. 2022.</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
@@ -108,8 +110,9 @@
 <span class="c1"># %%</span>
 <span class="nd">@dataclass</span>
 <div class="viewcode-block" id="SynchronousMotorVHzObsCtrlPars"><a class="viewcode-back" href="../../../autoapi/motulator/index.html#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars">[docs]</a><span class="k">class</span> <span class="nc">SynchronousMotorVHzObsCtrlPars</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Control parameters of synchronous motors.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Control parameters.&quot;&quot;&quot;</span>
 
+    <span class="c1"># pylint: disable=too-many-instance-attributes</span>
     <span class="c1"># Speed reference (in electrical rad/s)</span>
 <div class="viewcode-block" id="SynchronousMotorVHzObsCtrlPars.w_m_ref"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_obs_vhz/index.html#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars.w_m_ref">[docs]</a>    <span class="n">w_m_ref</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
         <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mf">.2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">75</span><span class="p">))</span></div>
@@ -137,8 +140,17 @@
 
 <span class="c1"># %%</span>
 <div class="viewcode-block" id="SynchronousMotorVHzObsCtrl"><a class="viewcode-back" href="../../../autoapi/motulator/index.html#motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl">[docs]</a><span class="k">class</span> <span class="nc">SynchronousMotorVHzObsCtrl</span><span class="p">(</span><span class="n">Ctrl</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Observer-based V/Hz control for induction motors.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Observer-based V/Hz control for synchronous motors.</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars : SynchronousMotorVHzObsCtrlPars</span>
+<span class="sd">        Control parameters.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># pylint: disable=too-many-instance-attributes</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pars</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="c1"># Instantiate classes</span>
@@ -251,11 +263,12 @@
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] Hinkkanen, Saarakkala, Awan, Mölsä, Tuovinen, &quot;Observers for</span>
-<span class="sd">        sensorless synchronous motor drives: Framework for design and analysis,&quot;</span>
-<span class="sd">        IEEE Trans. Ind. Appl., 2018, https://doi.org/10.1109/TIA.2018.2858753</span>
-<span class="sd">    .. [2] Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors, &quot;Stable</span>
-<span class="sd">        and passive observer-based V/Hz control for synchronous Motors,&quot; in Proc.</span>
-<span class="sd">        IEEE ECCE, Detroit, MI, Oct. 2022.</span>
+<span class="sd">        sensorless synchronous motor drives: Framework for design and</span>
+<span class="sd">        analysis,&quot; IEEE Trans. Ind. Appl., 2018,</span>
+<span class="sd">        https://doi.org/10.1109/TIA.2018.2858753</span>
+<span class="sd">    .. [2] Tiitinen, Hinkkanen, Kukkola, Routimo, Pellegrino, Harnefors,</span>
+<span class="sd">        &quot;Stable and passive observer-based V/Hz control for synchronous</span>
+<span class="sd">        Motors,&quot; in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 

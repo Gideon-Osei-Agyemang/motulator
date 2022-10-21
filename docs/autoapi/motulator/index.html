@@ -232,10 +232,10 @@
 <td><p>Control parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.SynchronousMotorVHzObsCtrl" title="motulator.SynchronousMotorVHzObsCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVHzObsCtrl</span></code></a></p></td>
-<td><p>Observer-based V/Hz control for induction motors.</p></td>
+<td><p>Observer-based V/Hz control for synchronous motors.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#motulator.SynchronousMotorVHzObsCtrlPars" title="motulator.SynchronousMotorVHzObsCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVHzObsCtrlPars</span></code></a></p></td>
-<td><p>Control parameters of synchronous motors.</p></td>
+<td><p>Control parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.BaseValues" title="motulator.BaseValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseValues</span></code></a></p></td>
 <td><p>Base values.</p></td>
@@ -1630,6 +1630,11 @@ feedback signals.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">InductionMotorVHzObsCtrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/control/im_obs_vhz.html#InductionMotorVHzObsCtrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.InductionMotorVHzObsCtrl" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="control/common/index.html#motulator.control.common.Ctrl" title="motulator.control.common.Ctrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">motulator.control.common.Ctrl</span></code></a></p>
 <p>Observer-based V/Hz control for induction motors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pars</strong> (<a class="reference internal" href="#motulator.InductionMotorObsVHzCtrlPars" title="motulator.InductionMotorObsVHzCtrlPars"><em>InductionMotorObsVHzCtrlPars</em></a>) – Control parameters.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.InductionMotorVHzObsCtrl.__call__">
 <span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mdl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.InductionMotorVHzObsCtrl.__call__" title="Permalink to this definition"></a></dt>
@@ -1752,7 +1757,12 @@ feedback signals.</p>
 <dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrl">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorVHzObsCtrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrl" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="control/common/index.html#motulator.control.common.Ctrl" title="motulator.control.common.Ctrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">motulator.control.common.Ctrl</span></code></a></p>
-<p>Observer-based V/Hz control for induction motors.</p>
+<p>Observer-based V/Hz control for synchronous motors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pars</strong> (<a class="reference internal" href="#motulator.SynchronousMotorVHzObsCtrlPars" title="motulator.SynchronousMotorVHzObsCtrlPars"><em>SynchronousMotorVHzObsCtrlPars</em></a>) – Control parameters.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrl.__call__">
 <span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mdl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrl.__call__" title="Permalink to this definition"></a></dt>
@@ -1777,7 +1787,7 @@ feedback signals.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorVHzObsCtrlPars</span></span><a class="reference internal" href="../../_modules/motulator/control/sm_obs_vhz.html#SynchronousMotorVHzObsCtrlPars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars" title="Permalink to this definition"></a></dt>
-<dd><p>Control parameters of synchronous motors.</p>
+<dd><p>Control parameters.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.w_m_ref">
 <span class="sig-name descname"><span class="pre">w_m_ref</span></span><em class="property"><span class="w"> </span><span class="pre">:Callable[[float],</span> <span class="pre">float]</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.w_m_ref" title="Permalink to this definition"></a></dt>
