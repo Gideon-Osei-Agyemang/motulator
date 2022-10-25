@@ -95,7 +95,13 @@
 <p>where <span class="math notranslate nohighlight">\(\omega_\mathrm{M}\)</span> is the mechanical angular speed of the rotor, <span class="math notranslate nohighlight">\(\tau_\mathrm{M}\)</span> is the electromagnetic torque, and <span class="math notranslate nohighlight">\(J\)</span> is the total moment of inertia. The total load torque is</p>
 <div class="math notranslate nohighlight">
 \[\tau_\mathrm{L} = \tau_{\mathrm{L},\omega} + \tau_{\mathrm{L},t}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega}\)</span> is the speed-dependent load torque and <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},t}\)</span> is the external load torque as a function of time. The most typical speed-dependent load torque terms are viscous friction <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega} = b\omega_\mathrm{M}\)</span>, e.g. laminar fluid flow in bearings, and quadratic load torque <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega} = k\omega_\mathrm{M}^2\mathrm{sign}(\omega_\mathrm{M})\)</span>, e.g. pumps, fans, and air resistance in vehicles.</p>
+<p>where <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega}\)</span> is the speed-dependent load torque and <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},t}\)</span> is the external load torque as a function of time. One typical speed-dependent load torque component is viscous friction</p>
+<div class="math notranslate nohighlight">
+\[\tau_{\mathrm{L},\omega} = b\omega_\mathrm{M}\]</div>
+<p>caused, e.g., due to laminar fluid flow in bearings. Another typical component is quadratic load torque</p>
+<div class="math notranslate nohighlight">
+\[\tau_{\mathrm{L},\omega} = k\omega_\mathrm{M}^2\mathrm{sign}(\omega_\mathrm{M})\]</div>
+<p>which appears, e.g., in pumps and fans as well as in vehicles moving at higher speeds due to air resistance.</p>
 <div class="figure align-center" id="id1">
 <a class="reference external image-reference" href="."><img alt="Block diagram of mechanics" src="_images/mech_block.svg" width="100%" /></a>
 <p class="caption"><span class="caption-text">Block diagram of mechanics.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
