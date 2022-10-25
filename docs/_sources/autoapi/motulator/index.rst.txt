@@ -190,7 +190,7 @@ Functions
           !! processed by numpydoc !!
 
 
-.. py:class:: Mechanics(J=0.015, B=0, tau_L_ext=lambda t: 0)
+.. py:class:: Mechanics(J=0.015, tau_L_w=lambda w_M: 0, tau_L_ext=lambda t: 0)
 
    
    Mechanics subsystem.
@@ -202,6 +202,9 @@ Functions
    :param B: Viscous damping coefficient.
    :type B: float
    :param tau_L_ext: External load torque as a function of time, `tau_L_ext(t)`.
+   :type tau_L_ext: function
+   :param tau_L_ext: Load torque as function of speed, `tau_L_w(w_M)`.
+                     For example, tau_L_w = B*w_M, where B is the viscous friction coefficient.
    :type tau_L_ext: function
 
 
