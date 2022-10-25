@@ -100,18 +100,17 @@
 <span class="sd">    ----------</span>
 <span class="sd">    J : float</span>
 <span class="sd">        Total moment of inertia.</span>
-<span class="sd">    B : float</span>
-<span class="sd">        Viscous damping coefficient.</span>
-<span class="sd">    tau_L_ext : function</span>
-<span class="sd">        External load torque as a function of time, `tau_L_ext(t)`.</span>
-<span class="sd">    tau_L_ext : function</span>
-<span class="sd">        Load torque as function of speed, `tau_L_w(w_M)`.</span>
-<span class="sd">        For example, tau_L_w = B*w_M, where B is the viscous friction coefficient.</span>
+<span class="sd">    tau_L_w : function</span>
+<span class="sd">        Load torque as function of speed, `tau_L_w(w_M)`. For example,</span>
+<span class="sd">        tau_L_w = B*w_M, where B is the viscous friction coefficient.</span>
+<span class="sd">    tau_L_t : function</span>
+<span class="sd">        Load torque as a function of time, `tau_L_t(t)`.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="mf">.015</span><span class="p">,</span> <span class="n">tau_L_w</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w_M</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tau_L_ext</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="mf">.015</span><span class="p">,</span> <span class="n">tau_L_w</span><span class="o">=</span><span class="k">lambda</span> <span class="n">w_M</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tau_L_t</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">J</span> <span class="o">=</span> <span class="n">J</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tau_L_ext</span> <span class="o">=</span> <span class="n">tau_L_ext</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tau_L_t</span> <span class="o">=</span> <span class="n">tau_L_t</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tau_L_w</span> <span class="o">=</span> <span class="n">tau_L_w</span>
         <span class="c1"># Initial values</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">w_M0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta_M0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
@@ -135,7 +134,7 @@
 <span class="sd">            Time derivative of the state vector.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">dw_M</span> <span class="o">=</span> <span class="p">(</span><span class="n">tau_M</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau_L_w</span><span class="p">(</span><span class="n">w_M</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau_L_ext</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">J</span>
+        <span class="n">dw_M</span> <span class="o">=</span> <span class="p">(</span><span class="n">tau_M</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau_L_w</span><span class="p">(</span><span class="n">w_M</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau_L_t</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">J</span>
         <span class="n">dtheta_M</span> <span class="o">=</span> <span class="n">w_M</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">dw_M</span><span class="p">,</span> <span class="n">dtheta_M</span><span class="p">]</span></div>
 

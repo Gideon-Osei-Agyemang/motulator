@@ -141,7 +141,7 @@ created as functions.
 
     # Simple acceleration and load torque step
     ctrl.w_m_ref = lambda t: (t > .2)*(.5*base.w)
-    mdl.mech.tau_L_ext = lambda t: (t > .75)*base.tau_nom
+    mdl.mech.tau_L_t = lambda t: (t > .75)*base.tau_nom
 
     # No load, field-weakening (uncomment to try)
     # mdl.mech.tau_L_ext = lambda t: 0
@@ -201,7 +201,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.535 seconds)
+   **Total running time of the script:** ( 0 minutes  3.156 seconds)
 
 
 .. _sphx_glr_download_auto_examples_im_plot_vector_ctrl_im_2kw.py:

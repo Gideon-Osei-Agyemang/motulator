@@ -141,7 +141,7 @@ Set the speed reference and the external load torque.
     # External load torque
     times = np.array([0, .125, .125, .875, .875, 1])*4
     values = np.array([0, 0, 1, 1, 0, 0])*base.tau_nom
-    mdl.mech.tau_L_ext = mt.Sequence(times, values)
+    mdl.mech.tau_L_t = mt.Sequence(times, values)
 
 
 
@@ -194,7 +194,7 @@ Plot results in per-unit values.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  12.927 seconds)
+   **Total running time of the script:** ( 0 minutes  11.448 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_plot_flux_vector_syrm_7kw.py:
