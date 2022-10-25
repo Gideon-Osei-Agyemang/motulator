@@ -94,8 +94,8 @@
 \[J\frac{\mathrm{d}\omega_\mathrm{M}}{\mathrm{d} t} = \tau_\mathrm{M} - \tau_\mathrm{L}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega_\mathrm{M}\)</span> is the mechanical angular speed of the rotor, <span class="math notranslate nohighlight">\(\tau_\mathrm{M}\)</span> is the electromagnetic torque, and <span class="math notranslate nohighlight">\(J\)</span> is the total moment of inertia. The total load torque is</p>
 <div class="math notranslate nohighlight">
-\[\tau_\mathrm{L} = \tau_\ell + B \omega_\mathrm{M}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\tau_\ell\)</span> is the external load torque as a function of time and <span class="math notranslate nohighlight">\(B\)</span> is the viscous friction coefficient.</p>
+\[\tau_\mathrm{L} = \tau_{\mathrm{L},\omega} + \tau_{\mathrm{L},t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega}\)</span> is the speed-dependent load torque and <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},t}\)</span> is the external load torque as a function of time. The most typical speed-dependent load torque terms are viscous friction <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega} = b\omega_\mathrm{M}\)</span> (e.g. laminar fluid flow in bearings) and quadratic load torque <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega} = k\omega_\mathrm{M}^2\mathrm{sign}(\omega_\mathrm{M})\)</span> (e.g. pumps, fans, air resistance in vehicles).</p>
 <div class="figure align-center" id="id1">
 <a class="reference external image-reference" href="."><img alt="Block diagram of mechanics" src="_images/mech_block.svg" width="100%" /></a>
 <p class="caption"><span class="caption-text">Block diagram of mechanics.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
