@@ -18,8 +18,8 @@
 .. _sphx_glr_auto_examples_im_plot_vhz_ctrl_im_2kw.py:
 
 
-V/Hz-controlled 2.2-kW induction motor drive
-============================================
+V/Hz control: 2.2-kW induction motor
+====================================
 
 A diode bridge, stiff three-phase grid, and a DC link is modeled. The default
 parameters correspond to open-loop V/Hz control.
@@ -158,7 +158,7 @@ the model for the carrier comparison.
  .. code-block:: none
 
 
-    Execution time: 13.19 s
+    Execution time: 13.86 s
 
 
 
@@ -216,7 +216,7 @@ Plot results in per-unit values.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  14.968 seconds)
+   **Total running time of the script:** ( 0 minutes  15.667 seconds)
 
 
 .. _sphx_glr_download_auto_examples_im_plot_vhz_ctrl_im_2kw.py:

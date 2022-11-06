@@ -16,8 +16,8 @@ A collection of Python scripts that demonstrate how to use *motulator*.
 
     </div>
 
-Induction Motor Drives
-----------------------
+Induction Motors
+----------------
 
 
 
@@ -33,13 +33,13 @@ Induction Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/im/images/thumb/sphx_glr_plot_vhz_ctrl_im_2kw_thumb.png
-    :alt: V/Hz-controlled 2.2-kW induction motor drive
+    :alt: V/Hz control: 2.2-kW induction motor
 
   :ref:`sphx_glr_auto_examples_im_plot_vhz_ctrl_im_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">V/Hz-controlled 2.2-kW induction motor drive</div>
+      <div class="sphx-glr-thumbnail-title">V/Hz control: 2.2-kW induction motor</div>
     </div>
 
 
@@ -50,13 +50,13 @@ Induction Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/im/images/thumb/sphx_glr_plot_obs_vhz_ctrl_im_2kw_thumb.png
-    :alt: Observer-based V/Hz control of 2.2-kW induction motor drive
+    :alt: Observer-based V/Hz control: 2.2-kW induction motor
 
   :ref:`sphx_glr_auto_examples_im_plot_obs_vhz_ctrl_im_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz control of 2.2-kW induction motor drive</div>
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz control: 2.2-kW induction motor</div>
     </div>
 
 
@@ -67,13 +67,13 @@ Induction Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/im/images/thumb/sphx_glr_plot_vector_ctrl_im_2kw_thumb.png
-    :alt: Vector-controlled 2.2-kW induction motor drive
+    :alt: Vector control: 2.2-kW induction motor
 
   :ref:`sphx_glr_auto_examples_im_plot_vector_ctrl_im_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Vector-controlled 2.2-kW induction motor drive</div>
+      <div class="sphx-glr-thumbnail-title">Vector control: 2.2-kW induction motor</div>
     </div>
 
 
@@ -89,8 +89,8 @@ Induction Motor Drives
    /auto_examples/im/plot_obs_vhz_ctrl_im_2kw
    /auto_examples/im/plot_vector_ctrl_im_2kw
 
-Synchronous Motor Drives
-------------------------
+Synchronous Motors
+------------------
 
 
 
@@ -106,13 +106,13 @@ Synchronous Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_flux_vector_pmsm_2kw_thumb.png
-    :alt: Flux-vector controlled 2.2-kW PMSM drive
+    :alt: Flux-vector control: 2.2-kW PMSM
 
   :ref:`sphx_glr_auto_examples_sm_plot_flux_vector_pmsm_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Flux-vector controlled 2.2-kW PMSM drive</div>
+      <div class="sphx-glr-thumbnail-title">Flux-vector control: 2.2-kW PMSM</div>
     </div>
 
 
@@ -123,13 +123,13 @@ Synchronous Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_obs_vhz_ctrl_pmsm_2kw_thumb.png
-    :alt: Observer-based V/Hz controlled 2.2-kW PMSM drive
+    :alt: Observer-based V/Hz control: 2.2-kW PMSM
 
   :ref:`sphx_glr_auto_examples_sm_plot_obs_vhz_ctrl_pmsm_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz controlled 2.2-kW PMSM drive</div>
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz control: 2.2-kW PMSM</div>
     </div>
 
 
@@ -140,13 +140,13 @@ Synchronous Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_vector_ctrl_pmsm_2kw_thumb.png
-    :alt: Vector-controlled 2.2-kW PMSM drive
+    :alt: Vector control: 2.2-kW PMSM
 
   :ref:`sphx_glr_auto_examples_sm_plot_vector_ctrl_pmsm_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Vector-controlled 2.2-kW PMSM drive</div>
+      <div class="sphx-glr-thumbnail-title">Vector control: 2.2-kW PMSM</div>
     </div>
 
 
@@ -157,13 +157,13 @@ Synchronous Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_obs_vhz_ctrl_syrm_7kw_thumb.png
-    :alt: Observer-based V/Hz controlled 6.7-kW SyRM drive
+    :alt: Observer-based V/Hz control: 6.7-kW SyRM
 
   :ref:`sphx_glr_auto_examples_sm_plot_obs_vhz_ctrl_syrm_7kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz controlled 6.7-kW SyRM drive</div>
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz control: 6.7-kW SyRM</div>
     </div>
 
 
@@ -174,13 +174,13 @@ Synchronous Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_flux_vector_syrm_7kw_thumb.png
-    :alt: Flux-vector-controlled 6.7-kW SyRM drive
+    :alt: Flux-vector control: 6.7-kW SyRM
 
   :ref:`sphx_glr_auto_examples_sm_plot_flux_vector_syrm_7kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Flux-vector-controlled 6.7-kW SyRM drive</div>
+      <div class="sphx-glr-thumbnail-title">Flux-vector control: 6.7-kW SyRM</div>
     </div>
 
 
@@ -191,13 +191,13 @@ Synchronous Motor Drives
 .. only:: html
 
   .. image:: /auto_examples/sm/images/thumb/sphx_glr_plot_vector_ctrl_syrm_7kw_thumb.png
-    :alt: Vector-controlled 6.7-kW SyRM drive
+    :alt: Vector control: 6.7-kW SyRM
 
   :ref:`sphx_glr_auto_examples_sm_plot_vector_ctrl_syrm_7kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Vector-controlled 6.7-kW SyRM drive</div>
+      <div class="sphx-glr-thumbnail-title">Vector control: 6.7-kW SyRM</div>
     </div>
 
 
@@ -216,6 +216,43 @@ Synchronous Motor Drives
    /auto_examples/sm/plot_flux_vector_syrm_7kw
    /auto_examples/sm/plot_vector_ctrl_syrm_7kw
 
+Flux Maps
+---------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example simulates observer-based V/Hz control of a saturated 7.5-kW permanent-magnet synch...">
+
+.. only:: html
+
+  .. image:: /auto_examples/sm_with_flux_maps/images/thumb/sphx_glr_plot_obs_vhz_ctrl_pmsyrm_thor_thumb.png
+    :alt: Observer-based V/Hz control: 7.5-kW PM-SyRM
+
+  :ref:`sphx_glr_auto_examples_sm_with_flux_maps_plot_obs_vhz_ctrl_pmsyrm_thor.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz control: 7.5-kW PM-SyRM</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/sm_with_flux_maps/plot_obs_vhz_ctrl_pmsyrm_thor
+
 Signal Injection
 ----------------
 
@@ -233,13 +270,13 @@ Signal Injection
 .. only:: html
 
   .. image:: /auto_examples/sm_with_signal_inj/images/thumb/sphx_glr_plot_signal_inj_pmsm_2kw_thumb.png
-    :alt: Vector-controlled 2.2-kW PMSM drive with signal injection
+    :alt: Vector control with signal injection: 2.2-kW PMSM
 
   :ref:`sphx_glr_auto_examples_sm_with_signal_inj_plot_signal_inj_pmsm_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Vector-controlled 2.2-kW PMSM drive with signal injection</div>
+      <div class="sphx-glr-thumbnail-title">Vector control with signal injection: 2.2-kW PMSM</div>
     </div>
 
 
@@ -250,13 +287,13 @@ Signal Injection
 .. only:: html
 
   .. image:: /auto_examples/sm_with_signal_inj/images/thumb/sphx_glr_plot_signal_inj_syrm_7kw_thumb.png
-    :alt: Vector-controlled 6.7-kW SyRM drive with signal injection
+    :alt: Vector control with signal injection: 6.7-kW SyRM
 
   :ref:`sphx_glr_auto_examples_sm_with_signal_inj_plot_signal_inj_syrm_7kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Vector-controlled 6.7-kW SyRM drive with signal injection</div>
+      <div class="sphx-glr-thumbnail-title">Vector control with signal injection: 6.7-kW SyRM</div>
     </div>
 
 

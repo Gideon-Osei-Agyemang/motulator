@@ -18,8 +18,8 @@
 .. _sphx_glr_auto_examples_sm_plot_flux_vector_syrm_7kw.py:
 
 
-Flux-vector-controlled 6.7-kW SyRM drive
-========================================
+Flux-vector control: 6.7-kW SyRM
+================================
 
 This example simulates sensorless stator-flux-vector control of a saturated
 6.7-kW synchronous reluctance motor drive. The saturation is not taken into
@@ -194,7 +194,7 @@ Plot results in per-unit values.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.303 seconds)
+   **Total running time of the script:** ( 0 minutes  11.624 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_plot_flux_vector_syrm_7kw.py:

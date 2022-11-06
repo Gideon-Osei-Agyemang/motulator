@@ -18,8 +18,8 @@
 .. _sphx_glr_auto_examples_sm_plot_flux_vector_pmsm_2kw.py:
 
 
-Flux-vector controlled 2.2-kW PMSM drive
-========================================
+Flux-vector control: 2.2-kW PMSM
+================================
 
 This example simulates sensorless stator-flux-vector control of a 2.2-kW PMSM
 drive.
@@ -165,7 +165,7 @@ Plot results in per-unit values.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.235 seconds)
+   **Total running time of the script:** ( 0 minutes  4.635 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_plot_flux_vector_pmsm_2kw.py:

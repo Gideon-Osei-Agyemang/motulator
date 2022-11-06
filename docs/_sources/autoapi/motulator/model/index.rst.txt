@@ -39,5 +39,6 @@ Submodules
    mech/index.rst
    sm/index.rst
    sm_drive/index.rst
+   sm_flux_maps/index.rst
 
 

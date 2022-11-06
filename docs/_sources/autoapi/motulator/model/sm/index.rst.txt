@@ -25,6 +25,7 @@ Classes
 
    motulator.model.sm.SynchronousMotor
    motulator.model.sm.SynchronousMotorSaturated
+   motulator.model.sm.SynchronousMotorSaturatedLUT
 
 
 
@@ -262,6 +263,56 @@ Classes
    .. [R83c7849ec2d6-4] Armando, Guglielmi, Pellegrino, Pastorelli, Vagati, "Accurate
       modeling and performance analysis of IPM-PMASR motors," IEEE Trans. Ind.
       Appl., 2009, https://doi.org/10.1109/TIA.2008.2009493
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: current(psi_s)
+
+      
+      Override the base class method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: SynchronousMotorSaturatedLUT(p=2, R_s=0.23, psi_s_data=None, i_s_data=None, mech=None)
+
+   Bases: :py:obj:`SynchronousMotor`
+
+   
+   Look-up-table-based model of a saturated synchronous motor.
+
+   This extends the SynchronousMotor class with a saturation model, where the
+   stator current depends on the stator flux linkage.
 
 
 

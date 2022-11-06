@@ -18,8 +18,8 @@
 .. _sphx_glr_auto_examples_im_plot_vector_ctrl_im_2kw.py:
 
 
-Vector-controlled 2.2-kW induction motor drive
-==============================================
+Vector control: 2.2-kW induction motor
+======================================
 
 This example simulates sensorless vector control of a 2.2-kW induction motor
 drive.
@@ -201,7 +201,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.891 seconds)
+   **Total running time of the script:** ( 0 minutes  3.181 seconds)
 
 
 .. _sphx_glr_download_auto_examples_im_plot_vector_ctrl_im_2kw.py:

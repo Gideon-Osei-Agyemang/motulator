@@ -96,9 +96,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">API Reference</a> &raquo;</li>
-      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator</span></code></li>
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Reference</a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator</span></code></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/autoapi/motulator/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -134,6 +134,7 @@
 <li class="toctree-l2"><a class="reference internal" href="model/mech/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.model.mech</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="model/sm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.model.sm</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="model/sm_drive/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.model.sm_drive</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/sm_flux_maps/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.model.sm_flux_maps</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -186,32 +187,38 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.SynchronousMotorSaturated" title="motulator.SynchronousMotorSaturated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorSaturated</span></code></a></p></td>
 <td><p>Model of a saturated synchronous motor.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.InductionMotorDrive" title="motulator.InductionMotorDrive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorDrive</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.SynchronousMotorSaturatedLUT" title="motulator.SynchronousMotorSaturatedLUT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorSaturatedLUT</span></code></a></p></td>
+<td><p>Look-up-table-based model of a saturated synchronous motor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.InductionMotorDrive" title="motulator.InductionMotorDrive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorDrive</span></code></a></p></td>
 <td><p>Continuous-time model for an induction motor drive.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.InductionMotorDriveDiode" title="motulator.InductionMotorDriveDiode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorDriveDiode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.InductionMotorDriveDiode" title="motulator.InductionMotorDriveDiode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorDriveDiode</span></code></a></p></td>
 <td><p>Induction motor drive equipped with a diode bridge.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.SynchronousMotorDrive" title="motulator.SynchronousMotorDrive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorDrive</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.SynchronousMotorDrive" title="motulator.SynchronousMotorDrive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorDrive</span></code></a></p></td>
 <td><p>Continuous-time model for a synchronous motor drive.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.InductionMotorVHzCtrl" title="motulator.InductionMotorVHzCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVHzCtrl</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.InductionMotorVHzCtrl" title="motulator.InductionMotorVHzCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVHzCtrl</span></code></a></p></td>
 <td><p>V/Hz control with the stator current feedback.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.InductionMotorVHzCtrlPars" title="motulator.InductionMotorVHzCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVHzCtrlPars</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.InductionMotorVHzCtrlPars" title="motulator.InductionMotorVHzCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVHzCtrlPars</span></code></a></p></td>
 <td><p>V/Hz control parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.InductionMotorVectorCtrl" title="motulator.InductionMotorVectorCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVectorCtrl</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.InductionMotorVectorCtrl" title="motulator.InductionMotorVectorCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVectorCtrl</span></code></a></p></td>
 <td><p>Vector control for an induction motor drive.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.InductionMotorVectorCtrlPars" title="motulator.InductionMotorVectorCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVectorCtrlPars</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.InductionMotorVectorCtrlPars" title="motulator.InductionMotorVectorCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InductionMotorVectorCtrlPars</span></code></a></p></td>
 <td><p>Vector control parameters for induction motor drives.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.SynchronousMotorVectorCtrl" title="motulator.SynchronousMotorVectorCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVectorCtrl</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.SynchronousMotorVectorCtrl" title="motulator.SynchronousMotorVectorCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVectorCtrl</span></code></a></p></td>
 <td><p>Vector control for a synchronous motor drive.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.SynchronousMotorVectorCtrlPars" title="motulator.SynchronousMotorVectorCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVectorCtrlPars</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.SynchronousMotorVectorCtrlPars" title="motulator.SynchronousMotorVectorCtrlPars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorVectorCtrlPars</span></code></a></p></td>
 <td><p>Vector control parameters for synchronous motors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.TorqueCharacteristics" title="motulator.TorqueCharacteristics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TorqueCharacteristics</span></code></a></p></td>
+<td><p>Compute MTPA and MTPV loci based on the motor parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.SynchronousMotorFluxVectorCtrl" title="motulator.SynchronousMotorFluxVectorCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotorFluxVectorCtrl</span></code></a></p></td>
 <td><p>Flux-vector control for synchronous motor drives.</p></td>
@@ -257,16 +264,31 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.abc2complex" title="motulator.abc2complex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc2complex</span></code></a>(u)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.import_syre_data" title="motulator.import_syre_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_syre_data</span></code></a>([fname])</p></td>
+<td><p>Import a flux map from the MATLAB data file in the SyR-e format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.plot_flux_map" title="motulator.plot_flux_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_flux_map</span></code></a>(data)</p></td>
+<td><p>Plot the flux linkage as function of the current.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.plot_flux_vs_current" title="motulator.plot_flux_vs_current"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_flux_vs_current</span></code></a>(data)</p></td>
+<td><p>Plot the flux vs. current characteristics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.invert_flux_map" title="motulator.invert_flux_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert_flux_map</span></code></a>(data[, N_d, N_q])</p></td>
+<td><p>Compute the inverse flux map by means of linear interpolation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.downsample_flux_map" title="motulator.downsample_flux_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">downsample_flux_map</span></code></a>(data[, N_d, N_q])</p></td>
+<td><p>Downsample the flux map by means of linear interpolation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.abc2complex" title="motulator.abc2complex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc2complex</span></code></a>(u)</p></td>
 <td><p>Transform three-phase quantities to a complex space vector.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.complex2abc" title="motulator.complex2abc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complex2abc</span></code></a>(u)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.complex2abc" title="motulator.complex2abc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complex2abc</span></code></a>(u)</p></td>
 <td><p>Transform a complex space vector to three-phase quantities.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.plot" title="motulator.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(sim[, t_span, base])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.plot" title="motulator.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(sim[, t_span, base])</p></td>
 <td><p>Plot example figures.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.plot_extra" title="motulator.plot_extra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_extra</span></code></a>(sim[, t_span, base])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.plot_extra" title="motulator.plot_extra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_extra</span></code></a>(sim[, t_span, base])</p></td>
 <td><p>Plot extra waveforms for a motor drive with a diode bridge.</p></td>
 </tr>
 </tbody>
@@ -859,6 +881,21 @@ Appl., 2009, <a class="reference external" href="https://doi.org/10.1109/TIA.200
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="motulator.SynchronousMotorSaturatedLUT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorSaturatedLUT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.23</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_s_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_s_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mech</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm.html#SynchronousMotorSaturatedLUT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.SynchronousMotorSaturatedLUT" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#motulator.SynchronousMotor" title="motulator.SynchronousMotor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotor</span></code></a></p>
+<p>Look-up-table-based model of a saturated synchronous motor.</p>
+<p>This extends the SynchronousMotor class with a saturation model, where the
+stator current depends on the stator flux linkage.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.SynchronousMotorSaturatedLUT.current">
+<span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.SynchronousMotorSaturatedLUT.current" title="Permalink to this definition"></a></dt>
+<dd><p>Override the base class method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="motulator.InductionMotorDrive">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">InductionMotorDrive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">motor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mech</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/im_drive.html#InductionMotorDrive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.InductionMotorDrive" title="Permalink to this definition"></a></dt>
 <dd><p>Continuous-time model for an induction motor drive.</p>
@@ -1065,6 +1102,105 @@ a similar template.</p>
 <dd><p>Transform the lists to the ndarray format and post-process them.</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="motulator.import_syre_data">
+<span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">import_syre_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'THOR.mat'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm_flux_maps.html#import_syre_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.import_syre_data" title="Permalink to this definition"></a></dt>
+<dd><p>Import a flux map from the MATLAB data file in the SyR-e format.</p>
+<p>For more information on the SyR-e project and the MATLAB file format,
+please visit:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/SyR-e/syre_public">https://github.com/SyR-e/syre_public</a></p>
+</div></blockquote>
+<p>The default data is for a 7.5-kW PM-SyRM, know as THOR. The imported data
+is converted to the PMSM coordinate convention, in which the PM flux is
+along the d axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fname</strong> (<em>str</em><em>, </em><em>optional</em>) – MATLAB file name. The default is ‘THOR.mat’.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>data</strong> – Flux map data in rotor (dq) coordinates.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch">Bunch</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The THOR data has been licensed under the Apache License, Version 2.0. We
+thank the developers of SyR-e for giving a permission to include this data
+file as a part of the motulator repository.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="motulator.plot_flux_map">
+<span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">plot_flux_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm_flux_maps.html#plot_flux_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.plot_flux_map" title="Permalink to this definition"></a></dt>
+<dd><p>Plot the flux linkage as function of the current.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch"><em>Bunch</em></a>) – Flux map data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="motulator.plot_flux_vs_current">
+<span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">plot_flux_vs_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm_flux_maps.html#plot_flux_vs_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.plot_flux_vs_current" title="Permalink to this definition"></a></dt>
+<dd><p>Plot the flux vs. current characteristics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch"><em>Bunch</em></a>) – Flux map data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="motulator.invert_flux_map">
+<span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">invert_flux_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm_flux_maps.html#invert_flux_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.invert_flux_map" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the inverse flux map by means of linear interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch"><em>Bunch</em></a>) – Flux map data.</p></li>
+<li><p><strong>N_d</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the d axis. The default is 32.</p></li>
+<li><p><strong>N_q</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the q axis. The default is 32.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Bunch object with the following fields defined</em></p></li>
+<li><p><strong>psi_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator flux linkage data.</p></li>
+<li><p><strong>i_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator current data.</p></li>
+<li><p><strong>tau_M</strong> (<em>ndarray, shape (N_d, N_q)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="motulator.downsample_flux_map">
+<span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">downsample_flux_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm_flux_maps.html#downsample_flux_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.downsample_flux_map" title="Permalink to this definition"></a></dt>
+<dd><p>Downsample the flux map by means of linear interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch"><em>Bunch</em></a>) – Flux map data.</p></li>
+<li><p><strong>N_d</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the d axis. The default is 32.</p></li>
+<li><p><strong>N_q</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the q axis. The default is 32.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Bunch object with the following fields defined</em></p></li>
+<li><p><strong>i_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator current data.</p></li>
+<li><p><strong>psi_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator flux linkage data.</p></li>
+<li><p><strong>tau_M</strong> (<em>ndarray, shape (N_d, N_q)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -1438,6 +1574,326 @@ feedback signals.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">TorqueCharacteristics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics" title="Permalink to this definition"></a></dt>
+<dd><p>Compute MTPA and MTPV loci based on the motor parameters.</p>
+<p>The magnetic saturation is omitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pars</strong> (<em>data object</em>) – Motor parameters.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.torque">
+<span class="sig-name descname"><span class="pre">torque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.torque" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the torque as a function of the stator flux linkage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>psi_s</strong> (<em>complex</em>) – Stator flux.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tau_M</strong> – Electromagnetic torque.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.current">
+<span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.current" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the stator current as a function of the stator flux linkage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>psi_s</strong> (<em>complex</em>) – Stator flux linkage.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>i_s</strong> – Stator current.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>complex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.flux">
+<span class="sig-name descname"><span class="pre">flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.flux" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the stator flux linkage as a function of the current.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i_s</strong> (<em>complex</em>) – Stator current.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psi_s</strong> – Stator flux linkage.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>complex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.mtpa">
+<span class="sig-name descname"><span class="pre">mtpa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_i_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.mtpa" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the MTPA stator current angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>abs_i_s</strong> (<em>float</em>) – Stator current magnitude.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>beta</strong> – MTPA angle of the stator current vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.mtpv">
+<span class="sig-name descname"><span class="pre">mtpv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_psi_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.mtpv" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the MTPV stator flux angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>abs_psi_s</strong> (<em>float</em>) – Stator flux magnitude.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>delta</strong> – MTPV angle of the stator flux vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.mtpv_current">
+<span class="sig-name descname"><span class="pre">mtpv_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_i_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.mtpv_current" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the MTPV based on the current magnitude.</p>
+<p>This computes the MTPV based on the current magnitude, i.e., the
+intersection of the MTPV current locus and the current limit circle.
+This method is not necessary for computing the control look-up tables.
+It is used here to “cut” the MTPV characteristics at the desired
+current. Alternatively just a large enough maximum flux magnitude could
+be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>abs_i_s</strong> (<em>float</em>) – Stator current magnitude.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>i_s</strong> – MTPV stator current.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>complex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.mtpa_locus">
+<span class="sig-name descname"><span class="pre">mtpa_locus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.mtpa_locus" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the MTPA locus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_s_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum stator current magnitude at which the locus is computed.
+The default is 1.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points. The default is 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Bunch object with the following fields defined</em></p></li>
+<li><p><strong>psi_s</strong> (<em>complex</em>) – Stator flux.</p></li>
+<li><p><strong>i_s</strong> (<em>complex</em>) – Stator current.</p></li>
+<li><p><strong>tau_M</strong> (<em>float</em>) – Electromagnetic torque.</p></li>
+<li><p><strong>abs_psi_s_vs_tau_M</strong> (<em>interp1d object</em>) – Stator flux magnitude as a function of the torque.</p></li>
+<li><p><strong>i_sd_vs_tau_M</strong> (<em>interp1d object</em>) – d-axis current as a function of the torque.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.mtpv_locus">
+<span class="sig-name descname"><span class="pre">mtpv_locus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_s_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.mtpv_locus" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the MTPV locus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi_s_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum stator flux magnitude at which the locus is computed. The
+default is 1.</p></li>
+<li><p><strong>i_s_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum stator current magnitude at which the locus is computed.
+The default is None.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points. The default is 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Bunch object with the following fields defined</em></p></li>
+<li><p><strong>psi_s</strong> (<em>complex</em>) – Stator flux.</p></li>
+<li><p><strong>i_s</strong> (<em>complex</em>) – Stator current.</p></li>
+<li><p><strong>tau_M</strong> (<em>float</em>) – Electromagnetic torque.</p></li>
+<li><p><strong>tau_M_vs_abs_psi_s</strong> (<em>interp1d object</em>) – Torque as a function of the flux magnitude.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.current_limit">
+<span class="sig-name descname"><span class="pre">current_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">np.pi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.current_limit" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the current limit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_s_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Current limit. The default is 1.</p></li>
+<li><p><strong>gamma1</strong> (<em>float</em><em>, </em><em>optional</em>) – Starting angle in radians. The default is 0.</p></li>
+<li><p><strong>gamma2</strong> (<em>float</em><em>, </em><em>optional</em>) – End angle in radians. The defauls in np.pi.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points. The default is 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Bunch object with the following fields defined</em></p></li>
+<li><p><strong>psi_s</strong> (<em>complex</em>) – Stator flux.</p></li>
+<li><p><strong>i_s</strong> (<em>complex</em>) – Stator current.</p></li>
+<li><p><strong>tau_M</strong> (<em>float</em>) – Electromagnetic torque.</p></li>
+<li><p><strong>tau_M_vs_abs_psi_s</strong> (<em>interp1d object</em>) – Torque as a function of the flux magnitude.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.mtpv_and_current_limits">
+<span class="sig-name descname"><span class="pre">mtpv_and_current_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.mtpv_and_current_limits" title="Permalink to this definition"></a></dt>
+<dd><p>Merge the MTPV and current limits into a single interpolant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_s_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Current limit. The default is 1.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points. The default is 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Bunch object with the following fields defined</em></p></li>
+<li><p><strong>tau_M_vs_abs_psi_s</strong> (<em>interp1d object</em>) – Torque as a function of the flux magnitude.</p></li>
+<li><p><strong>i_sd_vs_tau_M</strong> (<em>interp1d object</em>) – d-axis current as a function of the torque.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.delta_at_zero_torque">
+<span class="sig-name descname"><span class="pre">delta_at_zero_torque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_psi_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.delta_at_zero_torque" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the load angle value at the zero torque.</p>
+<p>This computes the “nontrivial” load angle value corresponding to the
+zero electromagnetic torque.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>abs_psi_s</strong> (<em>float</em>) – Stator flux magnitude.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>delta</strong> – Load angle at the zero torque.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.plot_flux_loci">
+<span class="sig-name descname"><span class="pre">plot_flux_loci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.plot_flux_loci" title="Permalink to this definition"></a></dt>
+<dd><p>Plot the stator flux linkage loci.</p>
+<p>Per-unit quantities are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_s_max</strong> (<em>float</em>) – Maximum current at which the loci are evaluated.</p></li>
+<li><p><strong>base</strong> (<em>object</em>) – Base values.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points to be evaluated. The default is 20.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.plot_current_loci">
+<span class="sig-name descname"><span class="pre">plot_current_loci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.plot_current_loci" title="Permalink to this definition"></a></dt>
+<dd><p>Plot the current loci.</p>
+<p>Per-unit quantities are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_s_max</strong> (<em>float</em>) – Maximum current at which the loci are evaluated.</p></li>
+<li><p><strong>base</strong> (<em>object</em>) – Base values.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points to be evaluated. The default is 20.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.plot_torque_current">
+<span class="sig-name descname"><span class="pre">plot_torque_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.plot_torque_current" title="Permalink to this definition"></a></dt>
+<dd><p>Plot torque vs. current characteristics.</p>
+<p>Per-unit quantities are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_s_max</strong> (<em>float</em>) – Maximum current at which the loci are evaluated.</p></li>
+<li><p><strong>base</strong> (<em>object</em>) – Base values.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points to be evaluated. The default is 20.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.plot_torque_flux">
+<span class="sig-name descname"><span class="pre">plot_torque_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.plot_torque_flux" title="Permalink to this definition"></a></dt>
+<dd><p>Plot torque vs. flux magnitude characteristics.</p>
+<p>Per-unit quantities are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_s_max</strong> (<em>float</em>) – Maximum current at which the loci are evaluated.</p></li>
+<li><p><strong>base</strong> (<em>object</em>) – Base values.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points to be evaluated. The default is 20.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="motulator.TorqueCharacteristics.plot_angle_torque">
+<span class="sig-name descname"><span class="pre">plot_angle_torque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_psi_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.TorqueCharacteristics.plot_angle_torque" title="Permalink to this definition"></a></dt>
+<dd><p>Plot the electromagnetic torque as a function of the load angle.</p>
+<p>Per-unit quantities are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>abs_psi_s</strong> (<em>float</em>) – Stator flux magnitude.</p></li>
+<li><p><strong>base</strong> (<em>object</em>) – Base values.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points to be evaluated. The default is 100.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="motulator.SynchronousMotorFluxVectorCtrl">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorFluxVectorCtrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.SynchronousMotorFluxVectorCtrl" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="control/common/index.html#motulator.control.common.Ctrl" title="motulator.control.common.Ctrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">motulator.control.common.Ctrl</span></code></a></p>
@@ -1800,13 +2256,23 @@ feedback signals.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.psi_s_nom">
-<span class="sig-name descname"><span class="pre">psi_s_nom</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.psi_s_nom" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.psi_s_max">
+<span class="sig-name descname"><span class="pre">psi_s_max</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.psi_s_max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.psi_s_min">
+<span class="sig-name descname"><span class="pre">psi_s_min</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.psi_s_min" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.rate_limit">
 <span class="sig-name descname"><span class="pre">rate_limit</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.rate_limit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.i_s_max">
+<span class="sig-name descname"><span class="pre">i_s_max</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.i_s_max" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">

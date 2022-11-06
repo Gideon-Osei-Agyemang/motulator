@@ -66,12 +66,22 @@ Classes
 
       
 
-   .. py:attribute:: psi_s_nom
+   .. py:attribute:: psi_s_max
+      :annotation: :float
+
+      
+
+   .. py:attribute:: psi_s_min
       :annotation: :float
 
       
 
    .. py:attribute:: rate_limit
+      :annotation: :float
+
+      
+
+   .. py:attribute:: i_s_max
       :annotation: :float
 
       

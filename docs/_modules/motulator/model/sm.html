@@ -73,9 +73,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>motulator.model.sm</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">motulator.model.sm</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -96,7 +96,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
-
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">LinearNDInterpolator</span>
 <span class="kn">from</span> <span class="nn">motulator.helpers</span> <span class="kn">import</span> <span class="n">complex2abc</span>
 
 
@@ -332,7 +332,9 @@
             <span class="c1"># Solve the stator flux caused by the magnets @ i_s = 0</span>
             <span class="n">psi_d0</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
                 <span class="k">lambda</span> <span class="n">psi_d</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
-                    <span class="p">(</span><span class="n">a_d0</span> <span class="o">+</span> <span class="n">a_dd</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi_d</span><span class="p">)</span><span class="o">**</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="n">psi_d</span> <span class="o">-</span> <span class="n">i_f</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">a_d0</span> <span class="o">+</span> <span class="n">a_dd</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi_d</span><span class="p">)</span><span class="o">**</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="n">psi_d</span> <span class="o">-</span> <span class="n">i_f</span><span class="p">),</span>
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">psi_s0</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">psi_d0</span><span class="p">)</span>
 
         <span class="c1"># For the coordinate transformation</span>
@@ -350,9 +352,47 @@
 
         <span class="n">i_d</span> <span class="o">=</span> <span class="p">(</span><span class="n">G_dd</span> <span class="o">+</span> <span class="n">G_dq</span><span class="p">)</span><span class="o">*</span><span class="n">psi_s</span><span class="o">.</span><span class="n">real</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_f</span>
         <span class="n">i_q</span> <span class="o">=</span> <span class="p">(</span><span class="n">G_qq</span> <span class="o">+</span> <span class="n">G_qd</span><span class="p">)</span><span class="o">*</span><span class="n">psi_s</span><span class="o">.</span><span class="n">imag</span>
-
         <span class="n">i_s</span> <span class="o">=</span> <span class="n">i_d</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">i_q</span>
 
+        <span class="k">return</span> <span class="n">i_s</span></div></div>
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="SynchronousMotorSaturatedLUT"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm/index.html#motulator.SynchronousMotorSaturatedLUT">[docs]</a><span class="k">class</span> <span class="nc">SynchronousMotorSaturatedLUT</span><span class="p">(</span><span class="n">SynchronousMotor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Look-up-table-based model of a saturated synchronous motor.</span>
+
+<span class="sd">    This extends the SynchronousMotor class with a saturation model, where the</span>
+<span class="sd">    stator current depends on the stator flux linkage.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># pylint: disable=too-many-arguments, disable=super-init-not-called</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">R_s</span><span class="o">=</span><span class="mf">.23</span><span class="p">,</span> <span class="n">psi_s_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">i_s_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mech</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R_s</span> <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">R_s</span>
+
+        <span class="c1"># Create the interpolator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interpolate_i_s</span> <span class="o">=</span> <span class="n">LinearNDInterpolator</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">psi_s_data</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">psi_s_data</span><span class="o">.</span><span class="n">imag</span><span class="p">)),</span> <span class="n">i_s_data</span><span class="p">)</span>
+
+        <span class="c1"># For the initial value, solve the permanent-magnet flux</span>
+        <span class="n">psi_d0</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">psi_d</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interpolate_i_s</span><span class="p">(</span><span class="n">psi_d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">psi_s0</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">psi_d0</span><span class="p">)</span>
+
+        <span class="c1"># For the coordinate transformation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mech</span> <span class="o">=</span> <span class="n">mech</span>
+
+<div class="viewcode-block" id="SynchronousMotorSaturatedLUT.current"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm/index.html#motulator.SynchronousMotorSaturatedLUT.current">[docs]</a>    <span class="k">def</span> <span class="nf">current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psi_s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Override the base class method.&quot;&quot;&quot;</span>
+        <span class="c1"># Read the current as function of the flux linkage</span>
+        <span class="n">i_s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolate_i_s</span><span class="p">(</span><span class="n">psi_s</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi_s</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+        <span class="c1"># Take the sign of the q-axis flux into account</span>
+        <span class="n">i_s</span> <span class="o">=</span> <span class="n">i_s</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">psi_s</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span><span class="o">*</span><span class="n">i_s</span><span class="o">.</span><span class="n">imag</span>
         <span class="k">return</span> <span class="n">i_s</span></div></div>
 </pre></div>
 
