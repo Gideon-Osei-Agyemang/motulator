@@ -289,6 +289,29 @@ Functions
       ..
           !! processed by numpydoc !!
 
+   .. py:method:: simulation_loop(t_stop, max_step)
+
+      
+      This function implements the main simulation loop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
    .. py:method:: save_mat(name='sim')
 
       
