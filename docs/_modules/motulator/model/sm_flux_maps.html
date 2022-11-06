@@ -113,9 +113,8 @@
 
 <span class="sd">        https://github.com/SyR-e/syre_public</span>
 
-<span class="sd">    The default data is for a 7.5-kW PM-SyRM, know as THOR. The imported data</span>
-<span class="sd">    is converted to the PMSM coordinate convention, in which the PM flux is</span>
-<span class="sd">    along the d axis.</span>
+<span class="sd">    The imported data is converted to the PMSM coordinate convention, in which</span>
+<span class="sd">    the PM flux is along the d axis.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -129,9 +128,8 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    The THOR data has been licensed under the Apache License, Version 2.0. We</span>
-<span class="sd">    thank the developers of SyR-e for giving a permission to include this data</span>
-<span class="sd">    file as a part of the motulator repository.</span>
+<span class="sd">    Some example data files (including THOR.mat) are available in the SyR-e</span>
+<span class="sd">    repository, licensed under the Apache License, Version 2.0.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Read the data from mat-file</span>
@@ -343,14 +341,6 @@
         <span class="n">tau_M</span><span class="o">=</span><span class="n">tau_M</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">inv_data</span></div>
-
-
-<span class="c1"># %%</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-<div class="viewcode-block" id="motor_data"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_flux_maps/index.html#motulator.motor_data">[docs]</a>    <span class="n">motor_data</span> <span class="o">=</span> <span class="n">import_syre_data</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;THOR.mat&#39;</span><span class="p">)</span></div>
-    <span class="c1"># motor_data = downsample_flux_map(data)</span>
-    <span class="n">plot_flux_vs_current</span><span class="p">(</span><span class="n">motor_data</span><span class="p">)</span>
-    <span class="n">plot_flux_map</span><span class="p">(</span><span class="n">motor_data</span><span class="p">)</span>
 </pre></div>
 
            </div>

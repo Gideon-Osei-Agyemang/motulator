@@ -267,7 +267,7 @@ transformation in the measure_currents method.</p></li>
 source <cite>i_f</cite> on the d-axis <a class="reference internal" href="#r83c7849ec2d6-3" id="id3">[3]</a>. Correspondingly, this approach assumes
 that the MMFs of the d-axis current and of the PMs are in series. This
 model cannot capture the desaturation phenomenon of thin iron ribs <a class="reference internal" href="#r83c7849ec2d6-4" id="id4">[4]</a>.
-For such motors, look-up tables can be used (see scipy.interpolate).</p>
+For such motors, look-up tables can be used.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="r83c7849ec2d6-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -306,7 +306,21 @@ Appl., 2009, <a class="reference external" href="https://doi.org/10.1109/TIA.200
 <dd><p>Bases: <a class="reference internal" href="#motulator.model.sm.SynchronousMotor" title="motulator.model.sm.SynchronousMotor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotor</span></code></a></p>
 <p>Look-up-table-based model of a saturated synchronous motor.</p>
 <p>This extends the SynchronousMotor class with a saturation model, where the
-stator current depends on the stator flux linkage.</p>
+stator current depends on the stator flux linkage. The coordinates assume
+the PMSM convention, i.e., that the PM flux is along the d-axis.
+Unstructured flux map data can be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>int</em>) – Number of pole pairs.</p></li>
+<li><p><strong>R_s</strong> (<em>float</em>) – Stator resistance.</p></li>
+<li><p><strong>psi_s_data</strong> (<em>ndarray</em><em> of </em><em>complex</em>) – Stator flux data points for creating the interpolant.</p></li>
+<li><p><strong>i_s_data</strong> (<em>ndarray</em><em> of </em><em>complex</em>) – Stator current data values for creating the interpolant.</p></li>
+<li><p><strong>mech</strong> (<a class="reference internal" href="../../index.html#motulator.Mechanics" title="motulator.Mechanics"><em>Mechanics</em></a>) – Model of the mechanical subsystem, needed only for the coordinate
+transformation in the measure_currents method.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.model.sm.SynchronousMotorSaturatedLUT.current">
 <span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/model/sm.html#SynchronousMotorSaturatedLUT.current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.model.sm.SynchronousMotorSaturatedLUT.current" title="Permalink to this definition"></a></dt>

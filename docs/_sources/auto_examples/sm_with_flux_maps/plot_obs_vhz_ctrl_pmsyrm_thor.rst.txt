@@ -22,23 +22,24 @@ Observer-based V/Hz control: 7.5-kW PM-SyRM
 ===========================================
 
 This example simulates observer-based V/Hz control of a saturated 7.5-kW
-permanent-magnet synchronous reluctance motor. This example machine is known as
-THOR, and its flux maps are from the SyR-e project:
+permanent-magnet synchronous reluctance motor. The flux maps of this example
+motor, known as THOR, are from the SyR-e project:
 
     https://github.com/SyR-e/syre_public
 
-The THOR data has been licensed under the Apache License, Version 2.0. The flux
-maps from other sources can be used in the similar manner. To study the flux
-maps in more detail, see also the module `sm_flux_maps`. It is worth noticing
-that the saturation is not taken into account in the control method, only in
-the system model. Naturally, the control performance can be improved by taking
-the saturation into account in the control algorithm.
+The SyR-e project has been licensed under the Apache License, Version 2.0. We
+acknowledge the developers of the SyR-e project. The flux maps from other
+sources can be used in a similar manner. To study the flux maps in more detail,
+see also the module `sm_flux_maps`. It is worth noticing that the saturation is
+not taken into account in the control method, only in the system model.
+Naturally, the control performance can be improved by taking the saturation
+into account in the control algorithm.
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-22
+.. GENERATED FROM PYTHON SOURCE LINES 22-23
 
 Import the package.
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-26
+.. GENERATED FROM PYTHON SOURCE LINES 23-27
 
 .. code-block:: default
 
@@ -53,11 +54,11 @@ Import the package.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-28
+.. GENERATED FROM PYTHON SOURCE LINES 28-29
 
 Compute base values based on the nominal values (just for figures).
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-32
+.. GENERATED FROM PYTHON SOURCE LINES 29-33
 
 .. code-block:: default
 
@@ -72,11 +73,11 @@ Compute base values based on the nominal values (just for figures).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-34
+.. GENERATED FROM PYTHON SOURCE LINES 34-35
 
 # Load and plot the flux maps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-39
+.. GENERATED FROM PYTHON SOURCE LINES 35-40
 
 .. code-block:: default
 
@@ -109,11 +110,11 @@ Compute base values based on the nominal values (just for figures).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-41
+.. GENERATED FROM PYTHON SOURCE LINES 41-42
 
 Configure the system model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-51
+.. GENERATED FROM PYTHON SOURCE LINES 42-52
 
 .. code-block:: default
 
@@ -134,11 +135,11 @@ Configure the system model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-53
+.. GENERATED FROM PYTHON SOURCE LINES 53-54
 
 Configure the control system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-70
+.. GENERATED FROM PYTHON SOURCE LINES 54-71
 
 .. code-block:: default
 
@@ -166,11 +167,11 @@ Configure the control system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-72
+.. GENERATED FROM PYTHON SOURCE LINES 72-73
 
 Set the speed reference and the external load torque.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-85
+.. GENERATED FROM PYTHON SOURCE LINES 73-86
 
 .. code-block:: default
 
@@ -194,13 +195,13 @@ Set the speed reference and the external load torque.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 87-90
 
 Create the simulation object and simulate it. You can also enable the PWM
 model (which makes simulation slower). One-sampling-period computational
 delay is modeled.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-93
+.. GENERATED FROM PYTHON SOURCE LINES 90-94
 
 .. code-block:: default
 
@@ -215,12 +216,12 @@ delay is modeled.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-96
+.. GENERATED FROM PYTHON SOURCE LINES 95-97
 
 Plot results in per-unit values. By omitting the argument `base` you can plot
 the results in SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-98
+.. GENERATED FROM PYTHON SOURCE LINES 97-99
 
 .. code-block:: default
 
@@ -241,7 +242,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  31.772 seconds)
+   **Total running time of the script:** ( 0 minutes  28.222 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_with_flux_maps_plot_obs_vhz_ctrl_pmsyrm_thor.py:

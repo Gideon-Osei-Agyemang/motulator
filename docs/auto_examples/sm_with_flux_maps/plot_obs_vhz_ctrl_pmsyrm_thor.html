@@ -104,17 +104,18 @@ to download the full example code</p>
 <div class="sphx-glr-example-title section" id="observer-based-v-hz-control-7-5-kw-pm-syrm">
 <span id="sphx-glr-auto-examples-sm-with-flux-maps-plot-obs-vhz-ctrl-pmsyrm-thor-py"></span><h1>Observer-based V/Hz control: 7.5-kW PM-SyRM<a class="headerlink" href="#observer-based-v-hz-control-7-5-kw-pm-syrm" title="Permalink to this heading"></a></h1>
 <p>This example simulates observer-based V/Hz control of a saturated 7.5-kW
-permanent-magnet synchronous reluctance motor. This example machine is known as
-THOR, and its flux maps are from the SyR-e project:</p>
+permanent-magnet synchronous reluctance motor. The flux maps of this example
+motor, known as THOR, are from the SyR-e project:</p>
 <blockquote>
 <div><p><a class="reference external" href="https://github.com/SyR-e/syre_public">https://github.com/SyR-e/syre_public</a></p>
 </div></blockquote>
-<p>The THOR data has been licensed under the Apache License, Version 2.0. The flux
-maps from other sources can be used in the similar manner. To study the flux
-maps in more detail, see also the module <cite>sm_flux_maps</cite>. It is worth noticing
-that the saturation is not taken into account in the control method, only in
-the system model. Naturally, the control performance can be improved by taking
-the saturation into account in the control algorithm.</p>
+<p>The SyR-e project has been licensed under the Apache License, Version 2.0. We
+acknowledge the developers of the SyR-e project. The flux maps from other
+sources can be used in a similar manner. To study the flux maps in more detail,
+see also the module <cite>sm_flux_maps</cite>. It is worth noticing that the saturation is
+not taken into account in the control method, only in the system model.
+Naturally, the control performance can be improved by taking the saturation
+into account in the control algorithm.</p>
 <p>Import the package.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">motulator</span> <span class="k">as</span> <span class="nn">mt</span>
@@ -190,7 +191,7 @@ the results in SI units.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_obs_vhz_ctrl_pmsyrm_thor_003.png" srcset="../../_images/sphx_glr_plot_obs_vhz_ctrl_pmsyrm_thor_003.png" alt="plot obs vhz ctrl pmsyrm thor" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  31.772 seconds)</p>
+<img src="../../_images/sphx_glr_plot_obs_vhz_ctrl_pmsyrm_thor_003.png" srcset="../../_images/sphx_glr_plot_obs_vhz_ctrl_pmsyrm_thor_003.png" alt="plot obs vhz ctrl pmsyrm thor" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  28.222 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sm-with-flux-maps-plot-obs-vhz-ctrl-pmsyrm-thor-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/40b803667bd4ba05aca0f1d56a36919c/plot_obs_vhz_ctrl_pmsyrm_thor.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_obs_vhz_ctrl_pmsyrm_thor.py</span></code></a></p>

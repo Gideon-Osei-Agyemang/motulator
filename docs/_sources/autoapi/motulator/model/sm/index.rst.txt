@@ -243,7 +243,7 @@ Classes
    source `i_f` on the d-axis [R83c7849ec2d6-3]_. Correspondingly, this approach assumes
    that the MMFs of the d-axis current and of the PMs are in series. This
    model cannot capture the desaturation phenomenon of thin iron ribs [R83c7849ec2d6-4]_.
-   For such motors, look-up tables can be used (see scipy.interpolate).
+   For such motors, look-up tables can be used.
 
    .. rubric:: References
 
@@ -312,7 +312,21 @@ Classes
    Look-up-table-based model of a saturated synchronous motor.
 
    This extends the SynchronousMotor class with a saturation model, where the
-   stator current depends on the stator flux linkage.
+   stator current depends on the stator flux linkage. The coordinates assume
+   the PMSM convention, i.e., that the PM flux is along the d-axis.
+   Unstructured flux map data can be used.
+
+   :param p: Number of pole pairs.
+   :type p: int
+   :param R_s: Stator resistance.
+   :type R_s: float
+   :param psi_s_data: Stator flux data points for creating the interpolant.
+   :type psi_s_data: ndarray of complex
+   :param i_s_data: Stator current data values for creating the interpolant.
+   :type i_s_data: ndarray of complex
+   :param mech: Model of the mechanical subsystem, needed only for the coordinate
+                transformation in the measure_currents method.
+   :type mech: Mechanics
 
 
 

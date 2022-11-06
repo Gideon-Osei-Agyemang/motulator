@@ -317,7 +317,6 @@
 <span class="sd">        simplicity, only max_step is included as an option of this method.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">simulation_loop</span><span class="p">(</span><span class="n">t_stop</span><span class="p">,</span> <span class="n">max_step</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">FloatingPointError</span><span class="p">:</span>
@@ -328,10 +327,7 @@
 
     <span class="nd">@np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="Simulation.simulation_loop"><a class="viewcode-back" href="../../autoapi/motulator/simulation/index.html#motulator.Simulation.simulation_loop">[docs]</a>    <span class="k">def</span> <span class="nf">simulation_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">,</span> <span class="n">max_step</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        This function implements the main simulation loop.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Simulation loop</span>
+        <span class="sd">&quot;&quot;&quot;Run the main simulation loop.&quot;&quot;&quot;</span>
         <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">mdl</span><span class="o">.</span><span class="n">t0</span> <span class="o">&lt;=</span> <span class="n">t_stop</span><span class="p">:</span>
 
             <span class="c1"># Run the digital controller</span>

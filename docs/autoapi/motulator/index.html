@@ -328,7 +328,7 @@ simplicity, only max_step is included as an option of this method.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.Simulation.simulation_loop">
 <span class="sig-name descname"><span class="pre">simulation_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.Simulation.simulation_loop" title="Permalink to this definition"></a></dt>
-<dd><p>This function implements the main simulation loop.</p>
+<dd><p>Run the main simulation loop.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -853,7 +853,7 @@ transformation in the measure_currents method.</p></li>
 source <cite>i_f</cite> on the d-axis <a class="reference internal" href="model/sm/index.html#r83c7849ec2d6-3" id="id6">[3]</a>. Correspondingly, this approach assumes
 that the MMFs of the d-axis current and of the PMs are in series. This
 model cannot capture the desaturation phenomenon of thin iron ribs <a class="reference internal" href="model/sm/index.html#r83c7849ec2d6-4" id="id7">[4]</a>.
-For such motors, look-up tables can be used (see scipy.interpolate).</p>
+For such motors, look-up tables can be used.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="r83c7849ec2d6-1"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
@@ -892,7 +892,21 @@ Appl., 2009, <a class="reference external" href="https://doi.org/10.1109/TIA.200
 <dd><p>Bases: <a class="reference internal" href="#motulator.SynchronousMotor" title="motulator.SynchronousMotor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotor</span></code></a></p>
 <p>Look-up-table-based model of a saturated synchronous motor.</p>
 <p>This extends the SynchronousMotor class with a saturation model, where the
-stator current depends on the stator flux linkage.</p>
+stator current depends on the stator flux linkage. The coordinates assume
+the PMSM convention, i.e., that the PM flux is along the d-axis.
+Unstructured flux map data can be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>int</em>) – Number of pole pairs.</p></li>
+<li><p><strong>R_s</strong> (<em>float</em>) – Stator resistance.</p></li>
+<li><p><strong>psi_s_data</strong> (<em>ndarray</em><em> of </em><em>complex</em>) – Stator flux data points for creating the interpolant.</p></li>
+<li><p><strong>i_s_data</strong> (<em>ndarray</em><em> of </em><em>complex</em>) – Stator current data values for creating the interpolant.</p></li>
+<li><p><strong>mech</strong> (<a class="reference internal" href="#motulator.Mechanics" title="motulator.Mechanics"><em>Mechanics</em></a>) – Model of the mechanical subsystem, needed only for the coordinate
+transformation in the measure_currents method.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="motulator.SynchronousMotorSaturatedLUT.current">
 <span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motulator.SynchronousMotorSaturatedLUT.current" title="Permalink to this definition"></a></dt>
@@ -1119,9 +1133,8 @@ please visit:</p>
 <blockquote>
 <div><p><a class="reference external" href="https://github.com/SyR-e/syre_public">https://github.com/SyR-e/syre_public</a></p>
 </div></blockquote>
-<p>The default data is for a 7.5-kW PM-SyRM, know as THOR. The imported data
-is converted to the PMSM coordinate convention, in which the PM flux is
-along the d axis.</p>
+<p>The imported data is converted to the PMSM coordinate convention, in which
+the PM flux is along the d axis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>fname</strong> (<em>str</em><em>, </em><em>optional</em>) – MATLAB file name. The default is ‘THOR.mat’.</p>
@@ -1134,9 +1147,8 @@ along the d axis.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The THOR data has been licensed under the Apache License, Version 2.0. We
-thank the developers of SyR-e for giving a permission to include this data
-file as a part of the motulator repository.</p>
+<p>Some example data files (including THOR.mat) are available in the SyR-e
+repository, licensed under the Apache License, Version 2.0.</p>
 </dd></dl>
 
 <dl class="py function">

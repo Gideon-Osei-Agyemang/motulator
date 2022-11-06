@@ -29,14 +29,6 @@ Functions
 
 
 
-Attributes
-~~~~~~~~~~
-
-.. autoapisummary::
-
-   motulator.model.sm_flux_maps.motor_data
-
-
 .. py:function:: import_syre_data(fname='THOR.mat')
 
    
@@ -47,9 +39,8 @@ Attributes
 
        https://github.com/SyR-e/syre_public
 
-   The default data is for a 7.5-kW PM-SyRM, know as THOR. The imported data
-   is converted to the PMSM coordinate convention, in which the PM flux is
-   along the d axis.
+   The imported data is converted to the PMSM coordinate convention, in which
+   the PM flux is along the d axis.
 
    :param fname: MATLAB file name. The default is 'THOR.mat'.
    :type fname: str, optional
@@ -59,9 +50,8 @@ Attributes
 
    .. rubric:: Notes
 
-   The THOR data has been licensed under the Apache License, Version 2.0. We
-   thank the developers of SyR-e for giving a permission to include this data
-   file as a part of the motulator repository.
+   Some example data files (including THOR.mat) are available in the SyR-e
+   repository, licensed under the Apache License, Version 2.0.
 
 
 
@@ -222,9 +212,4 @@ Attributes
 
    ..
        !! processed by numpydoc !!
-
-.. py:data:: motor_data
-   
-
-   
 
