@@ -37,7 +37,7 @@ into account in the control algorithm.
 
 .. GENERATED FROM PYTHON SOURCE LINES 22-23
 
-Import the package.
+Import the packages.
 
 .. GENERATED FROM PYTHON SOURCE LINES 23-27
 
@@ -75,7 +75,7 @@ Compute base values based on the nominal values (just for figures).
 
 .. GENERATED FROM PYTHON SOURCE LINES 34-35
 
-# Load and plot the flux maps.
+Load and plot the flux maps.
 
 .. GENERATED FROM PYTHON SOURCE LINES 35-40
 
@@ -242,7 +242,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  28.222 seconds)
+   **Total running time of the script:** ( 0 minutes  49.076 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_with_flux_maps_plot_obs_vhz_ctrl_pmsyrm_thor.py:
