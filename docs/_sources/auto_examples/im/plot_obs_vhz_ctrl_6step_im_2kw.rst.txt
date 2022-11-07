@@ -18,8 +18,8 @@
 .. _sphx_glr_auto_examples_im_plot_obs_vhz_ctrl_6step_im_2kw.py:
 
 
-Observer-based V/Hz control of 2.2-kW induction motor drive
-===========================================================
+Observer-based V/Hz control up to the 6-step mode: 2.2-kW induction motor
+=========================================================================
 
 This example simulates observer-based V/Hz control of a 2.2-kW induction motor
 drive. The six-step overmodulation is enabled, which increases the fundamental
@@ -202,7 +202,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.254 seconds)
+   **Total running time of the script:** ( 0 minutes  6.796 seconds)
 
 
 .. _sphx_glr_download_auto_examples_im_plot_obs_vhz_ctrl_6step_im_2kw.py:
