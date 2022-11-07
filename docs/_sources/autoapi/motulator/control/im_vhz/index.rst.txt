@@ -75,6 +75,11 @@ Classes
 
       
 
+   .. py:attribute:: six_step
+      :annotation: :bool = False
+
+      
+
    .. py:attribute:: psi_s_nom
       :annotation: :float = 1.04
 

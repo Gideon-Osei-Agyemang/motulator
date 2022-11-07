@@ -97,6 +97,11 @@ Classes
 
       
 
+   .. py:attribute:: six_step
+      :annotation: :bool = False
+
+      
+
    .. py:attribute:: slip_compensation
       :annotation: :bool = True
 

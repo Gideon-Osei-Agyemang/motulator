@@ -62,6 +62,40 @@ Induction Motors
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This example simulates V/Hz of a 2.2-kW induction motor drive. The six-step overmodulation is e...">
+
+.. only:: html
+
+  .. image:: /auto_examples/im/images/thumb/sphx_glr_plot_vhz_ctrl_6step_im_2kw_thumb.png
+    :alt: V/Hz control up to the six-step mode: 2.2-kW induction motor
+
+  :ref:`sphx_glr_auto_examples_im_plot_vhz_ctrl_6step_im_2kw.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">V/Hz control up to the six-step mode: 2.2-kW induction motor</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example simulates observer-based V/Hz control of a 2.2-kW induction motor drive. The six-s...">
+
+.. only:: html
+
+  .. image:: /auto_examples/im/images/thumb/sphx_glr_plot_obs_vhz_ctrl_6step_im_2kw_thumb.png
+    :alt: Observer-based V/Hz control of 2.2-kW induction motor drive
+
+  :ref:`sphx_glr_auto_examples_im_plot_obs_vhz_ctrl_6step_im_2kw.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Observer-based V/Hz control of 2.2-kW induction motor drive</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This example simulates sensorless vector control of a 2.2-kW induction motor drive.">
 
 .. only:: html
@@ -87,6 +121,8 @@ Induction Motors
 
    /auto_examples/im/plot_vhz_ctrl_im_2kw
    /auto_examples/im/plot_obs_vhz_ctrl_im_2kw
+   /auto_examples/im/plot_vhz_ctrl_6step_im_2kw
+   /auto_examples/im/plot_obs_vhz_ctrl_6step_im_2kw
    /auto_examples/im/plot_vector_ctrl_im_2kw
 
 Synchronous Motors

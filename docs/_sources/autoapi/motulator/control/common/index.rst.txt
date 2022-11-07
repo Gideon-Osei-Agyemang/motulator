@@ -55,6 +55,44 @@ Classes
 
    ..
        !! processed by numpydoc !!
+   .. py:method:: six_step_overmodulation(u_s_ref, u_dc)
+      :staticmethod:
+
+      
+      Overmodulation up to six-step operation.
+
+      This method modifies the angle of the voltage reference vector in the
+      overmodulation region such that the six-step operation is reached [R1e1de184dba8-1]_.
+
+      :param u_s_ref: Voltage reference in stator coordinates.
+      :type u_s_ref: complex
+
+      :returns: **u_s_ref_mod** -- Voltage reference in stator coordinates.
+      :rtype: complex
+
+      .. rubric:: References
+
+      .. [R1e1de184dba8-1] Bolognani, Zigliotto, "Novel digital continuous control of SVM
+         inverters in the overmodulation range," IEEE Trans. Ind. Appl.,
+         1997, https://doi.org/10.1109/28.568019
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
    .. py:method:: duty_ratios(u_s_ref, u_dc)
       :staticmethod:
 

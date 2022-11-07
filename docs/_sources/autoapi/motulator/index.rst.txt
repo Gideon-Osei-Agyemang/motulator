@@ -1943,6 +1943,11 @@ Functions
 
       
 
+   .. py:attribute:: six_step
+      :annotation: :bool = False
+
+      
+
    .. py:attribute:: psi_s_nom
       :annotation: :float = 1.04
 
@@ -3295,6 +3300,11 @@ Functions
 
    .. py:attribute:: k_tau
       :annotation: :float = 3.0
+
+      
+
+   .. py:attribute:: six_step
+      :annotation: :bool = False
 
       
 

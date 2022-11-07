@@ -141,6 +141,33 @@ voltage.</p>
 </dd>
 </dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="motulator.control.common.PWM.six_step_overmodulation">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">six_step_overmodulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_s_ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_dc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/common.html#PWM.six_step_overmodulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.common.PWM.six_step_overmodulation" title="Permalink to this definition"></a></dt>
+<dd><p>Overmodulation up to six-step operation.</p>
+<p>This method modifies the angle of the voltage reference vector in the
+overmodulation region such that the six-step operation is reached <a class="reference internal" href="#r1e1de184dba8-1" id="id1">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>u_s_ref</strong> (<em>complex</em>) – Voltage reference in stator coordinates.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>u_s_ref_mod</strong> – Voltage reference in stator coordinates.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>complex</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r1e1de184dba8-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Bolognani, Zigliotto, “Novel digital continuous control of SVM
+inverters in the overmodulation range,” IEEE Trans. Ind. Appl.,
+1997, <a class="reference external" href="https://doi.org/10.1109/28.568019">https://doi.org/10.1109/28.568019</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="motulator.control.common.PWM.duty_ratios">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">duty_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_s_ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_dc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/common.html#PWM.duty_ratios"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.common.PWM.duty_ratios" title="Permalink to this definition"></a></dt>
 <dd><p>Compute the duty ratios for three-phase PWM.</p>
