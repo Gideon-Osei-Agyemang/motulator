@@ -67,13 +67,13 @@ Induction Motors
 .. only:: html
 
   .. image:: /auto_examples/im/images/thumb/sphx_glr_plot_vhz_ctrl_6step_im_2kw_thumb.png
-    :alt: V/Hz control up to the six-step mode: 2.2-kW induction motor
+    :alt: V/Hz control up to the 6-step mode: 2.2-kW induction motor
 
   :ref:`sphx_glr_auto_examples_im_plot_vhz_ctrl_6step_im_2kw.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">V/Hz control up to the six-step mode: 2.2-kW induction motor</div>
+      <div class="sphx-glr-thumbnail-title">V/Hz control up to the 6-step mode: 2.2-kW induction motor</div>
     </div>
 
 
