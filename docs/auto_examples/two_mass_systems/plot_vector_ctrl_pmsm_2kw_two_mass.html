@@ -133,7 +133,7 @@ torsional damping is set to a smaller value in this example.</p>
 <span class="n">ctrl</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">SynchronousMotorVHzObsCtrl</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
 
 <span class="c1"># Default sensorless vector control is unstable (uncomment to try)</span>
-<span class="c1"># pars = mt.SynchronousMotorVectorCtrlPars(sensorless=True)</span>
+<span class="c1"># pars = mt.SynchronousMotorVectorCtrlPars(sensorless=True, J=0.01)</span>
 <span class="c1"># ctrl = mt.SynchronousMotorVectorCtrl(pars)</span>
 </pre></div>
 </div>
@@ -207,7 +207,7 @@ rotor speed w_M.</p>
 <span class="n">plot_freq_resp</span><span class="p">(</span><span class="n">mech</span><span class="p">,</span> <span class="n">f_span</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_vector_ctrl_pmsm_2kw_two_mass_003.png" srcset="../../_images/sphx_glr_plot_vector_ctrl_pmsm_2kw_two_mass_003.png" alt="plot vector ctrl pmsm 2kw two mass" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  5.976 seconds)</p>
+<img src="../../_images/sphx_glr_plot_vector_ctrl_pmsm_2kw_two_mass_003.png" srcset="../../_images/sphx_glr_plot_vector_ctrl_pmsm_2kw_two_mass_003.png" alt="plot vector ctrl pmsm 2kw two mass" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.617 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-two-mass-systems-plot-vector-ctrl-pmsm-2kw-two-mass-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d546246324eb6f40e0551f427a372f4b/plot_vector_ctrl_pmsm_2kw_two_mass.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_vector_ctrl_pmsm_2kw_two_mass.py</span></code></a></p>
