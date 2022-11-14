@@ -18,10 +18,10 @@
 .. _sphx_glr_auto_examples_sm_with_flux_maps_plot_obs_vhz_ctrl_pmsyrm_thor.py:
 
 
-Observer-based V/Hz control: 7.5-kW PM-SyRM
+Observer-based V/Hz control: 5-kW PM-SyRM
 ===========================================
 
-This example simulates observer-based V/Hz control of a saturated 7.5-kW
+This example simulates observer-based V/Hz control of a saturated 5-kW
 permanent-magnet synchronous reluctance motor. The flux maps of this example
 motor, known as THOR, are from the SyR-e project:
 
@@ -64,7 +64,7 @@ Compute base values based on the nominal values (just for figures).
 
 
     base = mt.BaseValues(
-        U_nom=284, I_nom=18, f_nom=100, tau_nom=23.8, P_nom=7.5e3, p=2)
+        U_nom=220, I_nom=15.6, f_nom=85, tau_nom=19, P_nom=5.07e3, p=2)
 
 
 
@@ -121,11 +121,11 @@ Configure the system model.
 
     # Create the motor model
     motor = mt.SynchronousMotorSaturatedLUT(
-        p=2, R_s=.23, psi_s_data=data.psi_s.ravel(), i_s_data=data.i_s.ravel())
+        p=2, R_s=.2, psi_s_data=data.psi_s.ravel(), i_s_data=data.i_s.ravel())
     # Magnetically linear PM-SyRM model
-    # motor = mt.SynchronousMotor(p=2, R_s=.23, L_d=4.2e-3, L_q=17.3e-3, psi_f=.17)
-    mech = mt.Mechanics(J=.015)
-    conv = mt.Inverter(u_dc=400)
+    # motor = mt.SynchronousMotor(p=2, R_s=.2, L_d=4e-3, L_q=17e-3, psi_f=.134)
+    mech = mt.Mechanics(J=.0042)
+    conv = mt.Inverter(u_dc=310)
     mdl = mt.SynchronousMotorDrive(motor, mech, conv)
 
 
@@ -139,23 +139,22 @@ Configure the system model.
 
 Configure the control system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-71
+.. GENERATED FROM PYTHON SOURCE LINES 54-70
 
 .. code-block:: default
 
 
     pars = mt.SynchronousMotorVHzObsCtrlPars(
         p=2,
-        R_s=.23,
-        L_d=4.2e-3,
-        L_q=17.3e-3,
-        psi_f=.17,
+        R_s=.2,
+        L_d=4e-3,
+        L_q=17e-3,
+        psi_f=.134,
         alpha_psi=2*np.pi*50,
         zeta_inf=.1,
         T_s=250e-6,
-        rate_limit=2*np.pi*120*10,
         i_s_max=2*base.i,
-        psi_s_min=.5*base.psi,
+        psi_s_min=.3*base.psi,
         psi_s_max=1.5*base.psi,
     )
     ctrl = mt.SynchronousMotorVHzObsCtrl(pars)
@@ -167,11 +166,11 @@ Configure the control system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-73
+.. GENERATED FROM PYTHON SOURCE LINES 71-72
 
 Set the speed reference and the external load torque.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-86
+.. GENERATED FROM PYTHON SOURCE LINES 72-88
 
 .. code-block:: default
 
@@ -185,8 +184,10 @@ Set the speed reference and the external load torque.
     k = base.tau_nom/(base.w/base.p)**2
     mdl.mech.tau_L_w = lambda w_M: k*w_M**2*np.sign(w_M)
 
-    # Rated load torque step at t = 2.5 s (set k = 0 above)
-    # mdl.mech.tau_L_t = lambda t: (t > 2.5)*base.tau_nom
+    # Uncomment to try the rated load torque step at t = 1 s (set k = 0 above)
+    # times = np.array([0, .125, .125, .875, .875, 1])*8
+    # values = np.array([0, 0, 1, 1, 0, 0])*base.tau_nom
+    # mdl.mech.tau_L_t = mt.Sequence(times, values)
 
 
 
@@ -195,13 +196,14 @@ Set the speed reference and the external load torque.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-90
+
+.. GENERATED FROM PYTHON SOURCE LINES 89-92
 
 Create the simulation object and simulate it. You can also enable the PWM
 model (which makes simulation slower). One-sampling-period computational
 delay is modeled.
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-94
+.. GENERATED FROM PYTHON SOURCE LINES 92-96
 
 .. code-block:: default
 
@@ -216,12 +218,12 @@ delay is modeled.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-97
+.. GENERATED FROM PYTHON SOURCE LINES 97-99
 
 Plot results in per-unit values. By omitting the argument `base` you can plot
 the results in SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-99
+.. GENERATED FROM PYTHON SOURCE LINES 99-101
 
 .. code-block:: default
 
@@ -242,7 +244,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  31.637 seconds)
+   **Total running time of the script:** ( 0 minutes  59.970 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_with_flux_maps_plot_obs_vhz_ctrl_pmsyrm_thor.py:

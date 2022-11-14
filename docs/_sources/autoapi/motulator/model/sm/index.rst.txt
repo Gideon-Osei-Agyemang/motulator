@@ -304,7 +304,7 @@ Classes
           !! processed by numpydoc !!
 
 
-.. py:class:: SynchronousMotorSaturatedLUT(p=2, R_s=0.23, psi_s_data=None, i_s_data=None, mech=None)
+.. py:class:: SynchronousMotorSaturatedLUT(p=2, R_s=0.2, psi_s_data=None, i_s_data=None, mech=None)
 
    Bases: :py:obj:`SynchronousMotor`
 

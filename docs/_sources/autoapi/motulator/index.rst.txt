@@ -101,8 +101,6 @@ Functions
    motulator.import_syre_data
    motulator.plot_flux_map
    motulator.plot_flux_vs_current
-   motulator.invert_flux_map
-   motulator.downsample_flux_map
    motulator.abc2complex
    motulator.complex2abc
    motulator.plot
@@ -1245,7 +1243,7 @@ Functions
           !! processed by numpydoc !!
 
 
-.. py:class:: SynchronousMotorSaturatedLUT(p=2, R_s=0.23, psi_s_data=None, i_s_data=None, mech=None)
+.. py:class:: SynchronousMotorSaturatedLUT(p=2, R_s=0.2, psi_s_data=None, i_s_data=None, mech=None)
 
    Bases: :py:obj:`SynchronousMotor`
 
@@ -2152,74 +2150,6 @@ Functions
 
    :param data: Flux map data.
    :type data: Bunch
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   ..
-       !! processed by numpydoc !!
-
-.. py:function:: invert_flux_map(data, N_d=32, N_q=32)
-
-   
-   Compute the inverse flux map by means of linear interpolation.
-
-   :param data: Flux map data.
-   :type data: Bunch
-   :param N_d: Number of interpolated samples in the d axis. The default is 32.
-   :type N_d: int, optional
-   :param N_q: Number of interpolated samples in the q axis. The default is 32.
-   :type N_q: int, optional
-
-   :returns: * *Bunch object with the following fields defined*
-             * **psi_s** (*complex ndarray, shape (N_d, N_q)*) -- Stator flux linkage data.
-             * **i_s** (*complex ndarray, shape (N_d, N_q)*) -- Stator current data.
-             * **tau_M** (*ndarray, shape (N_d, N_q)*)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   ..
-       !! processed by numpydoc !!
-
-.. py:function:: downsample_flux_map(data, N_d=32, N_q=32)
-
-   
-   Downsample the flux map by means of linear interpolation.
-
-   :param data: Flux map data.
-   :type data: Bunch
-   :param N_d: Number of interpolated samples in the d axis. The default is 32.
-   :type N_d: int, optional
-   :param N_q: Number of interpolated samples in the q axis. The default is 32.
-   :type N_q: int, optional
-
-   :returns: * *Bunch object with the following fields defined*
-             * **i_s** (*complex ndarray, shape (N_d, N_q)*) -- Stator current data.
-             * **psi_s** (*complex ndarray, shape (N_d, N_q)*) -- Stator flux linkage data.
-             * **tau_M** (*ndarray, shape (N_d, N_q)*)
 
 
 
@@ -3898,13 +3828,13 @@ Functions
 
       
 
-   .. py:attribute:: alpha_f
+   .. py:attribute:: alpha_tau_max
       :annotation: :float
 
       
 
-   .. py:attribute:: k_tau
-      :annotation: :float = 3.0
+   .. py:attribute:: alpha_f
+      :annotation: :float
 
       
 

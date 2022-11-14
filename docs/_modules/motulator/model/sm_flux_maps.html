@@ -92,7 +92,6 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">cycler</span> <span class="kn">import</span> <span class="n">cycler</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
 <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
 <span class="kn">from</span> <span class="nn">motulator.helpers</span> <span class="kn">import</span> <span class="n">Bunch</span>
 
@@ -245,102 +244,6 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$i_\mathrm</span><span class="si">{d}</span><span class="s1">$, $i_\mathrm</span><span class="si">{q}</span><span class="s1">$ (A)&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\psi_\mathrm</span><span class="si">{d}</span><span class="s1">$, $\psi_\mathrm</span><span class="si">{q}</span><span class="s1">$ (Vs)&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span></div>
-
-
-<span class="c1"># %%</span>
-<div class="viewcode-block" id="downsample_flux_map"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_flux_maps/index.html#motulator.downsample_flux_map">[docs]</a><span class="k">def</span> <span class="nf">downsample_flux_map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">N_d</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">N_q</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Downsample the flux map by means of linear interpolation.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    data : Bunch</span>
-<span class="sd">        Flux map data.</span>
-<span class="sd">    N_d : int, optional</span>
-<span class="sd">        Number of interpolated samples in the d axis. The default is 32.</span>
-<span class="sd">    N_q : int, optional</span>
-<span class="sd">        Number of interpolated samples in the q axis. The default is 32.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Bunch object with the following fields defined:</span>
-<span class="sd">    i_s : complex ndarray, shape (N_d, N_q)</span>
-<span class="sd">        Stator current data.</span>
-<span class="sd">    psi_s : complex ndarray, shape (N_d, N_q)</span>
-<span class="sd">        Stator flux linkage data.</span>
-<span class="sd">    tau_M : ndarray, shape (N_d, N_q)</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Get the range</span>
-    <span class="n">i_d_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
-    <span class="n">i_d_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
-    <span class="n">i_q_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
-    <span class="n">i_q_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
-
-    <span class="c1"># Points at which to interpolate data</span>
-    <span class="n">i_d</span><span class="p">,</span> <span class="n">i_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="n">i_d_min</span><span class="p">:</span><span class="n">i_d_max</span><span class="p">:</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">N_d</span><span class="p">,</span> <span class="n">i_q_min</span><span class="p">:</span><span class="n">i_q_max</span><span class="p">:</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">N_q</span><span class="p">]</span>
-
-    <span class="c1"># Interpolate data</span>
-    <span class="n">points</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="o">.</span><span class="n">real</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-    <span class="n">psi_s</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">psi_s</span><span class="p">),</span> <span class="p">(</span><span class="n">i_d</span><span class="p">,</span> <span class="n">i_q</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
-    <span class="n">tau_M</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tau_M</span><span class="p">),</span> <span class="p">(</span><span class="n">i_d</span><span class="p">,</span> <span class="n">i_q</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
-    <span class="n">i_s</span> <span class="o">=</span> <span class="n">i_d</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">i_q</span>
-
-    <span class="n">downsampled_data</span> <span class="o">=</span> <span class="n">Bunch</span><span class="p">(</span>
-        <span class="n">i_s</span><span class="o">=</span><span class="n">i_s</span><span class="p">,</span>
-        <span class="n">psi_s</span><span class="o">=</span><span class="n">psi_s</span><span class="p">,</span>
-        <span class="n">tau_M</span><span class="o">=</span><span class="n">tau_M</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">downsampled_data</span></div>
-
-
-<span class="c1"># %%</span>
-<div class="viewcode-block" id="invert_flux_map"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_flux_maps/index.html#motulator.invert_flux_map">[docs]</a><span class="k">def</span> <span class="nf">invert_flux_map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">N_d</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">N_q</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the inverse flux map by means of linear interpolation.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    data : Bunch</span>
-<span class="sd">        Flux map data.</span>
-<span class="sd">    N_d : int, optional</span>
-<span class="sd">        Number of interpolated samples in the d axis. The default is 32.</span>
-<span class="sd">    N_q : int, optional</span>
-<span class="sd">        Number of interpolated samples in the q axis. The default is 32.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Bunch object with the following fields defined:</span>
-<span class="sd">    psi_s : complex ndarray, shape (N_d, N_q)</span>
-<span class="sd">        Stator flux linkage data.</span>
-<span class="sd">    i_s : complex ndarray, shape (N_d, N_q)</span>
-<span class="sd">        Stator current data.</span>
-<span class="sd">    tau_M : ndarray, shape (N_d, N_q)</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Get the range</span>
-    <span class="n">psi_d_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">psi_s</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-    <span class="n">psi_d_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">psi_s</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-    <span class="n">psi_q_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">psi_s</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">psi_q_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">psi_s</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-    <span class="c1"># Points at which to interpolate data</span>
-    <span class="n">psi_d</span><span class="p">,</span> <span class="n">psi_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="n">psi_d_min</span><span class="p">:</span><span class="n">psi_d_max</span><span class="p">:</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">N_d</span><span class="p">,</span>
-                            <span class="n">psi_q_min</span><span class="p">:</span><span class="n">psi_q_max</span><span class="p">:</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">N_q</span><span class="p">]</span>
-
-    <span class="c1"># Interpolate data</span>
-    <span class="n">points</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">psi_s</span><span class="o">.</span><span class="n">real</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">psi_s</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-    <span class="n">i_s</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="p">),</span> <span class="p">(</span><span class="n">psi_d</span><span class="p">,</span> <span class="n">psi_q</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
-    <span class="n">tau_M</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span>
-        <span class="n">points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tau_M</span><span class="p">),</span> <span class="p">(</span><span class="n">psi_d</span><span class="p">,</span> <span class="n">psi_q</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
-    <span class="n">psi_s</span> <span class="o">=</span> <span class="n">psi_d</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">psi_q</span>
-
-    <span class="n">inv_data</span> <span class="o">=</span> <span class="n">Bunch</span><span class="p">(</span>
-        <span class="n">psi_s</span><span class="o">=</span><span class="n">psi_s</span><span class="p">,</span>
-        <span class="n">i_s</span><span class="o">=</span><span class="n">i_s</span><span class="p">,</span>
-        <span class="n">tau_M</span><span class="o">=</span><span class="n">tau_M</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">inv_data</span></div>
 </pre></div>
 
            </div>

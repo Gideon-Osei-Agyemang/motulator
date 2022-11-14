@@ -282,12 +282,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.plot_flux_vs_current" title="motulator.plot_flux_vs_current"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_flux_vs_current</span></code></a>(data)</p></td>
 <td><p>Plot the flux vs. current characteristics.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.invert_flux_map" title="motulator.invert_flux_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert_flux_map</span></code></a>(data[, N_d, N_q])</p></td>
-<td><p>Compute the inverse flux map by means of linear interpolation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.downsample_flux_map" title="motulator.downsample_flux_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">downsample_flux_map</span></code></a>(data[, N_d, N_q])</p></td>
-<td><p>Downsample the flux map by means of linear interpolation.</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#motulator.abc2complex" title="motulator.abc2complex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc2complex</span></code></a>(u)</p></td>
 <td><p>Transform three-phase quantities to a complex space vector.</p></td>
 </tr>
@@ -971,7 +965,7 @@ Appl., 2009, <a class="reference external" href="https://doi.org/10.1109/TIA.200
 
 <dl class="py class">
 <dt class="sig sig-object py" id="motulator.SynchronousMotorSaturatedLUT">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorSaturatedLUT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.23</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_s_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_s_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mech</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm.html#SynchronousMotorSaturatedLUT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.SynchronousMotorSaturatedLUT" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">SynchronousMotorSaturatedLUT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R_s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_s_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_s_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mech</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm.html#SynchronousMotorSaturatedLUT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.SynchronousMotorSaturatedLUT" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#motulator.SynchronousMotor" title="motulator.SynchronousMotor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynchronousMotor</span></code></a></p>
 <p>Look-up-table-based model of a saturated synchronous motor.</p>
 <p>This extends the SynchronousMotor class with a saturation model, where the
@@ -1348,54 +1342,6 @@ repository, licensed under the Apache License, Version 2.0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch"><em>Bunch</em></a>) – Flux map data.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="motulator.invert_flux_map">
-<span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">invert_flux_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm_flux_maps.html#invert_flux_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.invert_flux_map" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the inverse flux map by means of linear interpolation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch"><em>Bunch</em></a>) – Flux map data.</p></li>
-<li><p><strong>N_d</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the d axis. The default is 32.</p></li>
-<li><p><strong>N_q</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the q axis. The default is 32.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>Bunch object with the following fields defined</em></p></li>
-<li><p><strong>psi_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator flux linkage data.</p></li>
-<li><p><strong>i_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator current data.</p></li>
-<li><p><strong>tau_M</strong> (<em>ndarray, shape (N_d, N_q)</em>)</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="motulator.downsample_flux_map">
-<span class="sig-prename descclassname"><span class="pre">motulator.</span></span><span class="sig-name descname"><span class="pre">downsample_flux_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/motulator/model/sm_flux_maps.html#downsample_flux_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.downsample_flux_map" title="Permalink to this definition"></a></dt>
-<dd><p>Downsample the flux map by means of linear interpolation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch"><em>Bunch</em></a>) – Flux map data.</p></li>
-<li><p><strong>N_d</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the d axis. The default is 32.</p></li>
-<li><p><strong>N_q</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of interpolated samples in the q axis. The default is 32.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>Bunch object with the following fields defined</em></p></li>
-<li><p><strong>i_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator current data.</p></li>
-<li><p><strong>psi_s</strong> (<em>complex ndarray, shape (N_d, N_q)</em>) – Stator flux linkage data.</p></li>
-<li><p><strong>tau_M</strong> (<em>ndarray, shape (N_d, N_q)</em>)</p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2488,13 +2434,13 @@ feedback signals.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.alpha_f">
-<span class="sig-name descname"><span class="pre">alpha_f</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.alpha_f" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.alpha_tau_max">
+<span class="sig-name descname"><span class="pre">alpha_tau_max</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.alpha_tau_max" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.k_tau">
-<span class="sig-name descname"><span class="pre">k_tau</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span> <span class="pre">=</span> <span class="pre">3.0</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.k_tau" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="motulator.SynchronousMotorVHzObsCtrlPars.alpha_f">
+<span class="sig-name descname"><span class="pre">alpha_f</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="headerlink" href="#motulator.SynchronousMotorVHzObsCtrlPars.alpha_f" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">

@@ -91,13 +91,13 @@ Classes
 
       
 
-   .. py:attribute:: alpha_f
+   .. py:attribute:: alpha_tau_max
       :annotation: :float
 
       
 
-   .. py:attribute:: k_tau
-      :annotation: :float = 3.0
+   .. py:attribute:: alpha_f
+      :annotation: :float
 
       
 

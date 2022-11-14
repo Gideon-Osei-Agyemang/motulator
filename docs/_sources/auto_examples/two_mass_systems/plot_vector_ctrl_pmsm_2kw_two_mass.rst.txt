@@ -22,22 +22,16 @@ Observer-based V/Hz control: 2.2-kW PMSM with two-mass mechanics
 ================================================================
 
 This example simulates observer-based V/Hz control of a 2.2-kW PMSM drive. The
-mechanical subsystem is modeled as a two-mass system. The mechanical parameters
-correspond approximately to [1]_, except that the torsional damping is set to
-a smaller value in this example. The resonance freuqency of the mechanics is
-around 85 Hz.
+mechanical subsystem is modeled as a two-mass system. The resonance frequency
+of the mechanics is around 85 Hz. The mechanical parameters correspond
+approximately to https://doi.org/10.1109/tia.2015.2416128, except that the
+torsional damping is set to a smaller value in this example.
 
-References
-----------
-.. [1] Saarakkala, Hinkkanen, "Identification of two-mass mechanical
-   systems using torque excitation: Design and experimental evaluation,"
-   IEEE Trans. Ind. Appl., 2015, https://doi.org/10.1109/tia.2015.2416128.
-
-.. GENERATED FROM PYTHON SOURCE LINES 20-21
+.. GENERATED FROM PYTHON SOURCE LINES 14-15
 
 Import the packages.
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-26
+.. GENERATED FROM PYTHON SOURCE LINES 15-20
 
 .. code-block:: default
 
@@ -53,11 +47,11 @@ Import the packages.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-28
+.. GENERATED FROM PYTHON SOURCE LINES 21-22
 
 Compute base values based on the nominal values (just for figures).
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-32
+.. GENERATED FROM PYTHON SOURCE LINES 22-26
 
 .. code-block:: default
 
@@ -72,11 +66,11 @@ Compute base values based on the nominal values (just for figures).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-34
+.. GENERATED FROM PYTHON SOURCE LINES 27-28
 
 Configure the system model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-40
+.. GENERATED FROM PYTHON SOURCE LINES 28-34
 
 .. code-block:: default
 
@@ -93,11 +87,11 @@ Configure the system model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-42
+.. GENERATED FROM PYTHON SOURCE LINES 35-36
 
 Configure the control system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-50
+.. GENERATED FROM PYTHON SOURCE LINES 36-44
 
 .. code-block:: default
 
@@ -116,11 +110,11 @@ Configure the control system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-52
+.. GENERATED FROM PYTHON SOURCE LINES 45-46
 
 Set the speed reference and the external load torque.
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-62
+.. GENERATED FROM PYTHON SOURCE LINES 46-56
 
 .. code-block:: default
 
@@ -141,11 +135,11 @@ Set the speed reference and the external load torque.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-64
+.. GENERATED FROM PYTHON SOURCE LINES 57-58
 
 Create the simulation object and simulate it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-70
+.. GENERATED FROM PYTHON SOURCE LINES 58-64
 
 .. code-block:: default
 
@@ -167,11 +161,11 @@ Create the simulation object and simulate it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-72
+.. GENERATED FROM PYTHON SOURCE LINES 65-66
 
 Plot the load speed and the twist angle.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-94
+.. GENERATED FROM PYTHON SOURCE LINES 66-88
 
 .. code-block:: default
 
@@ -209,12 +203,12 @@ Plot the load speed and the twist angle.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-97
+.. GENERATED FROM PYTHON SOURCE LINES 89-91
 
 Plot also the frequency response from the electromagnetic torque tau_M to the
 rotor speed w_M.
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-125
+.. GENERATED FROM PYTHON SOURCE LINES 91-119
 
 .. code-block:: default
 
@@ -261,7 +255,7 @@ rotor speed w_M.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.896 seconds)
+   **Total running time of the script:** ( 0 minutes  5.976 seconds)
 
 
 .. _sphx_glr_download_auto_examples_two_mass_systems_plot_vector_ctrl_pmsm_2kw_two_mass.py:
