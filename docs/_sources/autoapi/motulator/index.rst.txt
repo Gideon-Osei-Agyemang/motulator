@@ -58,6 +58,7 @@ Classes
 
    motulator.Simulation
    motulator.Mechanics
+   motulator.MechanicsTwoMass
    motulator.Inverter
    motulator.FrequencyConverter
    motulator.InductionMotor
@@ -68,7 +69,9 @@ Classes
    motulator.SynchronousMotorSaturatedLUT
    motulator.InductionMotorDrive
    motulator.InductionMotorDriveDiode
+   motulator.InductionMotorDriveTwoMass
    motulator.SynchronousMotorDrive
+   motulator.SynchronousMotorDriveTwoMass
    motulator.InductionMotorVHzCtrl
    motulator.InductionMotorVHzCtrlPars
    motulator.InductionMotorVectorCtrl
@@ -254,7 +257,7 @@ Functions
    .. py:method:: f(t, w_M, tau_M)
 
       
-      Compute the state derivative.
+      Compute the state derivatives.
 
       :param t: Time.
       :type t: float
@@ -263,7 +266,7 @@ Functions
       :param tau_M: Electromagnetic torque.
       :type tau_M: float
 
-      :returns: Time derivative of the state vector.
+      :returns: Time derivatives of the state vector.
       :rtype: list, length 2
 
 
@@ -318,6 +321,136 @@ Functions
       This returns the rotor angle at the end of the sampling period.
 
       :returns: **theta_M0** -- Rotor angle (in mechanical rad).
+      :rtype: float
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: MechanicsTwoMass(J_M=0.005, J_L=0.005, K_S=700.0, C_S=0.13, tau_L_w=lambda w_M: 0, tau_L_t=lambda t: 0)
+
+   Bases: :py:obj:`Mechanics`
+
+   
+   Two-mass mechanics subsystem.
+
+   This models an equation of motion for two-mass mechanics.
+
+   :param J_M: Moment of inertia of the motor.
+   :type J_M: float
+   :param J_L: Moment of inertia of the load.
+   :type J_L: float
+   :param K_S: Torsional stiffness of the shaft.
+   :type K_S: float
+   :param C_S: Torsional damping of the shaft.
+   :type C_S: float
+   :param tau_L_w: Load torque as function of the load speed, `tau_L_w(w_L)`. For example,
+                   tau_L_w = b*w_L, where b is the viscous friction coefficient.
+   :type tau_L_w: function
+   :param tau_L_t: Load torque as a function of time, `tau_L_t(t)`.
+   :type tau_L_t: function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: f(t, w_M, w_L, theta_ML, tau_M)
+
+      
+      Compute the state derivatives.
+
+      :param t: Time.
+      :type t: float
+      :param w_M: Rotor angular speed (in mechanical rad/s).
+      :type w_M: float
+      :param w_L: Load angular speed (in mechanical rad/s).
+      :type w_L: float
+      :param theta_ML: Twist angle, theta_M - theta_L (in mechanical rad).
+      :type theta_ML: float
+      :param tau_M: Electromagnetic torque.
+      :type tau_M: float
+
+      :returns: Time derivatives of the state vector.
+      :rtype: list, length 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: meas_load_speed()
+
+      
+      Measure the load speed.
+
+      This returns the load speed at the end of the sampling period.
+
+      :returns: **w_L0** -- Load angular speed (in mechanical rad/s).
+      :rtype: float
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: meas_load_position()
+
+      
+      Measure the load angle.
+
+      This returns the load angle at the end of the sampling period.
+
+      :returns: **theta_L0** -- Rotor angle (in mechanical rad).
       :rtype: float
 
 
@@ -1344,7 +1477,7 @@ Functions
    
    Induction motor drive equipped with a diode bridge.
 
-   This models extends the InductionMotorDrive class with a model for a
+   This model extends the InductionMotorDrive class with a model for a
    three-phase diode bridge fed from stiff supply voltages. The DC bus is
    modeled as an inductor and a capacitor.
 
@@ -1354,6 +1487,155 @@ Functions
    :type mech: Mechanics
    :param conv: Frequency converter model.
    :type conv: FrequencyConverter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: get_initial_values()
+
+      
+      Extend the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: set_initial_values(t0, x0)
+
+      
+      Extend the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: f(t, x)
+
+      
+      Override the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: save(sol)
+
+      
+      Extend the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: post_process()
+
+      
+      Extend the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: InductionMotorDriveTwoMass(motor=None, mech=None, conv=None)
+
+   Bases: :py:obj:`InductionMotorDrive`
+
+   
+   Induction motor drive with two-mass mechanics.
+
+   This interconnects the subsystems of an induction motor drive and provides
+   an interface to the solver.
+
+   :param motor: Induction motor model.
+   :type motor: InductionMotor | InductionMotorSaturated
+   :param mech: Mechanics model.
+   :type mech: MechanicsTwoMass
+   :param conv: Inverter model.
+   :type conv: Inverter
 
 
 
@@ -1628,6 +1910,155 @@ Functions
 
       
       Transform the lists to the ndarray format and post-process them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: SynchronousMotorDriveTwoMass(motor=None, mech=None, conv=None)
+
+   Bases: :py:obj:`SynchronousMotorDrive`
+
+   
+   Synchronous motor drive with two-mass mechanics.
+
+   This interconnects the subsystems of a synchronous motor drive and provides
+   an interface to the solver.
+
+   :param motor: Synchronous motor model.
+   :type motor: SynchronousMotor
+   :param mech: Mechanics model.
+   :type mech: MechanicsTwoMass
+   :param conv: Inverter model.
+   :type conv: Inverter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: get_initial_values()
+
+      
+      Extend the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: set_initial_values(t0, x0)
+
+      
+      Extend the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: f(t, x)
+
+      
+      Override the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: save(sol)
+
+      
+      Extend the base class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: post_process()
+
+      
+      Extend the base class.
 
 
 

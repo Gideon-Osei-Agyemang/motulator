@@ -192,7 +192,7 @@
         <span class="n">u_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">theta_m</span><span class="p">)</span><span class="o">*</span><span class="n">u_ss</span>  <span class="c1"># Stator voltage in rotor coordinates</span>
 
         <span class="c1"># State derivatives</span>
-        <span class="n">motor_f</span><span class="p">,</span> <span class="n">i_s</span><span class="p">,</span> <span class="n">tau_M</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">psi_s</span><span class="p">,</span> <span class="n">u_s</span><span class="p">,</span> <span class="n">w_M</span><span class="p">)</span>
+        <span class="n">motor_f</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">tau_M</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">psi_s</span><span class="p">,</span> <span class="n">u_s</span><span class="p">,</span> <span class="n">w_M</span><span class="p">)</span>
         <span class="n">mech_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mech</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">w_M</span><span class="p">,</span> <span class="n">tau_M</span><span class="p">)</span>
 
         <span class="c1"># List of state derivatives</span>
@@ -231,6 +231,69 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">theta_m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span>  <span class="c1"># Limit into [-pi, pi)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">p</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">theta_M</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">i_ss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">i_s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">theta_m</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="SynchronousMotorDriveTwoMass"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_drive/index.html#motulator.SynchronousMotorDriveTwoMass">[docs]</a><span class="k">class</span> <span class="nc">SynchronousMotorDriveTwoMass</span><span class="p">(</span><span class="n">SynchronousMotorDrive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Synchronous motor drive with two-mass mechanics.</span>
+
+<span class="sd">    This interconnects the subsystems of a synchronous motor drive and provides</span>
+<span class="sd">    an interface to the solver.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    motor : SynchronousMotor</span>
+<span class="sd">        Synchronous motor model.</span>
+<span class="sd">    mech : MechanicsTwoMass</span>
+<span class="sd">        Mechanics model.</span>
+<span class="sd">    conv : Inverter</span>
+<span class="sd">        Inverter model.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">motor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mech</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">motor</span><span class="o">=</span><span class="n">motor</span><span class="p">,</span> <span class="n">mech</span><span class="o">=</span><span class="n">mech</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="n">conv</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">w_L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">theta_ML</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="SynchronousMotorDriveTwoMass.get_initial_values"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_drive/index.html#motulator.SynchronousMotorDriveTwoMass.get_initial_values">[docs]</a>    <span class="k">def</span> <span class="nf">get_initial_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extend the base class.&quot;&quot;&quot;</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_initial_values</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mech</span><span class="o">.</span><span class="n">w_L0</span><span class="p">,</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">mech</span><span class="o">.</span><span class="n">theta_ML0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">x0</span></div>
+
+<div class="viewcode-block" id="SynchronousMotorDriveTwoMass.set_initial_values"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_drive/index.html#motulator.SynchronousMotorDriveTwoMass.set_initial_values">[docs]</a>    <span class="k">def</span> <span class="nf">set_initial_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">x0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extend the base class.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">set_initial_values</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">x0</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mech</span><span class="o">.</span><span class="n">w_L0</span> <span class="o">=</span> <span class="n">x0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mech</span><span class="o">.</span><span class="n">theta_ML0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span></div>
+
+<div class="viewcode-block" id="SynchronousMotorDriveTwoMass.f"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_drive/index.html#motulator.SynchronousMotorDriveTwoMass.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Override the base class.&quot;&quot;&quot;</span>
+        <span class="c1"># Unpack the states</span>
+        <span class="n">psi_s</span><span class="p">,</span> <span class="n">w_M</span><span class="p">,</span> <span class="n">theta_M</span><span class="p">,</span> <span class="n">w_L</span><span class="p">,</span> <span class="n">theta_ML</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">theta_m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">p</span><span class="o">*</span><span class="n">theta_M</span>
+        <span class="c1"># Interconnections: outputs for computing the state derivatives</span>
+        <span class="n">u_ss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="o">.</span><span class="n">ac_voltage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="o">.</span><span class="n">u_dc0</span><span class="p">)</span>
+        <span class="n">u_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">theta_m</span><span class="p">)</span><span class="o">*</span><span class="n">u_ss</span>  <span class="c1"># Stator voltage in rotor coordinates</span>
+        <span class="c1"># State derivatives plus the outputs for interconnections</span>
+        <span class="n">motor_f</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">tau_M</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">psi_s</span><span class="p">,</span> <span class="n">u_s</span><span class="p">,</span> <span class="n">w_M</span><span class="p">)</span>
+        <span class="n">mech_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mech</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">w_M</span><span class="p">,</span> <span class="n">w_L</span><span class="p">,</span> <span class="n">theta_ML</span><span class="p">,</span> <span class="n">tau_M</span><span class="p">)</span>
+        <span class="c1"># List of state derivatives</span>
+        <span class="k">return</span> <span class="n">motor_f</span> <span class="o">+</span> <span class="n">mech_f</span></div>
+
+<div class="viewcode-block" id="SynchronousMotorDriveTwoMass.save"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_drive/index.html#motulator.SynchronousMotorDriveTwoMass.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sol</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extend the base class.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">w_L</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">theta_ML</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SynchronousMotorDriveTwoMass.post_process"><a class="viewcode-back" href="../../../autoapi/motulator/model/sm_drive/index.html#motulator.SynchronousMotorDriveTwoMass.post_process">[docs]</a>    <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extend the base class.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">post_process</span><span class="p">()</span>
+        <span class="c1"># From lists to the ndarray</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">w_L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">w_L</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">theta_ML</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">theta_ML</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
