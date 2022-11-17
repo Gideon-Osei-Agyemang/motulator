@@ -1316,10 +1316,13 @@ the PM flux is along the d axis.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>data</strong> – Flux map data in rotor (dq) coordinates.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="helpers/index.html#motulator.helpers.Bunch" title="motulator.helpers.Bunch">Bunch</a></p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Bunch object with the following fields defined</em></p></li>
+<li><p><strong>i_s</strong> (<em>complex ndarray</em>) – Stator current data.</p></li>
+<li><p><strong>psi_s</strong> (<em>complex ndarray</em>) – Stator flux linkage data.</p></li>
+<li><p><strong>tau_M</strong> (<em>ndarray</em>)</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>

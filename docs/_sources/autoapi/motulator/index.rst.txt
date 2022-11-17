@@ -2095,8 +2095,10 @@ Functions
    :param add_negative_q_axis: Adds the negative q-axis data based on the symmetry.
    :type add_negative_q_axis: bool, optional
 
-   :returns: **data** -- Flux map data in rotor (dq) coordinates.
-   :rtype: Bunch
+   :returns: * *Bunch object with the following fields defined*
+             * **i_s** (*complex ndarray*) -- Stator current data.
+             * **psi_s** (*complex ndarray*) -- Stator flux linkage data.
+             * **tau_M** (*ndarray*)
 
    .. rubric:: Notes
 

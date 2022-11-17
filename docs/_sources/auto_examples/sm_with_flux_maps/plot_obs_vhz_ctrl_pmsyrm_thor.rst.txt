@@ -77,12 +77,18 @@ Compute base values based on the nominal values (just for figures).
 
 Load and plot the flux maps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-40
+.. GENERATED FROM PYTHON SOURCE LINES 35-46
 
 .. code-block:: default
 
 
+    # Load the data from the MATLAB file
     data = mt.import_syre_data(fname='THOR.mat')
+    # You may also downsample or invert the flux map by uncommenting the following
+    # lines. Not needed here, but these methods could be useful for other purposes.
+    # from motulator.model.sm_flux_maps import downsample_flux_map, invert_flux_map
+    # data = downsample_flux_map(data, N_d=32, N_q=32)
+    # data = invert_flux_map(data, N_d=128, N_q=128)
     mt.plot_flux_vs_current(data)
     mt.plot_flux_map(data)
 
@@ -110,11 +116,11 @@ Load and plot the flux maps.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-42
+.. GENERATED FROM PYTHON SOURCE LINES 47-48
 
 Configure the system model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-52
+.. GENERATED FROM PYTHON SOURCE LINES 48-58
 
 .. code-block:: default
 
@@ -135,11 +141,11 @@ Configure the system model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-54
+.. GENERATED FROM PYTHON SOURCE LINES 59-60
 
 Configure the control system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-70
+.. GENERATED FROM PYTHON SOURCE LINES 60-76
 
 .. code-block:: default
 
@@ -166,11 +172,11 @@ Configure the control system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-72
+.. GENERATED FROM PYTHON SOURCE LINES 77-78
 
 Set the speed reference and the external load torque.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-88
+.. GENERATED FROM PYTHON SOURCE LINES 78-94
 
 .. code-block:: default
 
@@ -197,13 +203,13 @@ Set the speed reference and the external load torque.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-92
+.. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 Create the simulation object and simulate it. You can also enable the PWM
 model (which makes simulation slower). One-sampling-period computational
 delay is modeled.
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-96
+.. GENERATED FROM PYTHON SOURCE LINES 98-102
 
 .. code-block:: default
 
@@ -218,12 +224,12 @@ delay is modeled.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-99
+.. GENERATED FROM PYTHON SOURCE LINES 103-105
 
 Plot results in per-unit values. By omitting the argument `base` you can plot
 the results in SI units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-101
+.. GENERATED FROM PYTHON SOURCE LINES 105-107
 
 .. code-block:: default
 
@@ -244,7 +250,7 @@ the results in SI units.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  0.977 seconds)
+   **Total running time of the script:** ( 0 minutes  31.059 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sm_with_flux_maps_plot_obs_vhz_ctrl_pmsyrm_thor.py:
