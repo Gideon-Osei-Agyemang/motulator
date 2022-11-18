@@ -89,22 +89,42 @@
              
   <div class="section" id="mechanics">
 <h1>Mechanics<a class="headerlink" href="#mechanics" title="Permalink to this heading"></a></h1>
+<div class="section" id="stiff-mechanics">
+<h2>Stiff Mechanics<a class="headerlink" href="#stiff-mechanics" title="Permalink to this heading"></a></h2>
 <p>Continuous-time mechanics models are given in the module <a class="reference internal" href="autoapi/motulator/model/mech/index.html#module-motulator.model.mech" title="motulator.model.mech"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.model.mech</span></code></a>. The stiff rotational mechanics are governed by</p>
 <div class="math notranslate nohighlight">
-\[J\frac{\mathrm{d}\omega_\mathrm{M}}{\mathrm{d} t} = \tau_\mathrm{M} - \tau_\mathrm{L}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\omega_\mathrm{M}\)</span> is the mechanical angular speed of the rotor, <span class="math notranslate nohighlight">\(\tau_\mathrm{M}\)</span> is the electromagnetic torque, and <span class="math notranslate nohighlight">\(J\)</span> is the total moment of inertia. The total load torque is</p>
+\[\begin{split}J\frac{\mathrm{d}\omega_\mathrm{M}}{\mathrm{d} t} &amp;= \tau_\mathrm{M} - \tau_\mathrm{L} \\
+\frac{\mathrm{d}\vartheta_\mathrm{M}}{\mathrm{d} t} &amp;= \omega_\mathrm{M}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_\mathrm{M}\)</span> is the mechanical angular speed of the rotor, <span class="math notranslate nohighlight">\(\vartheta_\mathrm{M}\)</span> is the mechanical angle of the rotor, <span class="math notranslate nohighlight">\(\tau_\mathrm{M}\)</span> is the electromagnetic torque, and <span class="math notranslate nohighlight">\(J\)</span> is the total moment of inertia. The total load torque is</p>
 <div class="math notranslate nohighlight">
 \[\tau_\mathrm{L} = \tau_{\mathrm{L},\omega} + \tau_{\mathrm{L},t}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},\omega}\)</span> is the speed-dependent load torque and <span class="math notranslate nohighlight">\(\tau_{\mathrm{L},t}\)</span> is the external load torque as a function of time. One typical speed-dependent load torque component is viscous friction</p>
 <div class="math notranslate nohighlight">
-\[\tau_{\mathrm{L},\omega} = b\omega_\mathrm{M}\]</div>
-<p>caused, e.g., due to laminar fluid flow in bearings. Another typical component is quadratic load torque</p>
+\[\tau_{\mathrm{L},\omega} = B\omega_\mathrm{M}\]</div>
+<p>where <span class="math notranslate nohighlight">\(B\)</span> is the viscous damping coefficient. Fiscous friction appears, e.g., due to laminar fluid flow in bearings. Another typical component is quadratic load torque</p>
 <div class="math notranslate nohighlight">
 \[\tau_{\mathrm{L},\omega} = k\omega_\mathrm{M}^2\mathrm{sign}(\omega_\mathrm{M})\]</div>
 <p>which appears, e.g., in pumps and fans as well as in vehicles moving at higher speeds due to air resistance.</p>
 <div class="figure align-center" id="id1">
-<a class="reference external image-reference" href="."><img alt="Block diagram of mechanics" src="_images/mech_block.svg" width="100%" /></a>
-<p class="caption"><span class="caption-text">Block diagram of mechanics.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<a class="reference external image-reference" href="."><img alt="Block diagram of the stiff mechanics." src="_images/mech_block.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">Block diagram of the stiff mechanics.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="two-mass-system">
+<h2>Two-Mass System<a class="headerlink" href="#two-mass-system" title="Permalink to this heading"></a></h2>
+<p>The two-mass mechanics are governed by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}J_\mathrm{M}\frac{\mathrm{d}\omega_\mathrm{M}}{\mathrm{d} t} &amp;= \tau_\mathrm{M} - \tau_\mathrm{S} \\
+J_\mathrm{L}\frac{\mathrm{d}\omega_\mathrm{L}}{\mathrm{d} t} &amp;= \tau_\mathrm{S} - \tau_\mathrm{L} \\
+\frac{\mathrm{d}\vartheta_\mathrm{ML}}{\mathrm{d} t} &amp;= \omega_\mathrm{M} - \omega_\mathrm{L}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_\mathrm{L}\)</span> is the angular speed of the load, <span class="math notranslate nohighlight">\(\vartheta_\mathrm{ML}=\vartheta_\mathrm{M}-\vartheta_\mathrm{L}\)</span> is the twist angle, <span class="math notranslate nohighlight">\(J_\mathrm{M}\)</span> is the moment of inertia of the motor, and <span class="math notranslate nohighlight">\(J_\mathrm{L}\)</span> is the moment of inertia of the load. The shaft torque is</p>
+<div class="math notranslate nohighlight">
+\[\tau_\mathrm{S} = K_\mathrm{S}\vartheta_\mathrm{ML} + C_\mathrm{S}(\omega_\mathrm{M} - \omega_\mathrm{L})\]</div>
+<p>where <span class="math notranslate nohighlight">\(K_\mathrm{S}\)</span> is the torsional stiffness of the shaft, and <span class="math notranslate nohighlight">\(C_\mathrm{S}\)</span> is the torsional damping of the shaft. The other quantities correspond to those defined for the stiff mechanics.</p>
+<div class="figure align-center" id="id2">
+<a class="reference external image-reference" href="."><img alt="Block diagram of the two-mass mechanical system." src="_images/two_mass_block.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">Block diagram of the two-mass mechanical system.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</div>
 </div>
 </div>
 
