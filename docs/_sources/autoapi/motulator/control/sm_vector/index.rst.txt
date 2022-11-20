@@ -51,7 +51,7 @@ Classes
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 
@@ -91,7 +91,7 @@ Classes
       
 
    .. py:attribute:: psi_s_min
-      :annotation: :float = 0
+      :annotation: :float
 
       
 
@@ -144,31 +144,6 @@ Classes
       :annotation: :float = 0.2
 
       
-
-   .. py:method:: plot_luts(base)
-
-      
-      Plot control look-up tables.
-
-      :param base: Base values for scaling the plots.
-      :type base: BaseValues
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
 
 
 .. py:class:: SynchronousMotorVectorCtrl(pars)

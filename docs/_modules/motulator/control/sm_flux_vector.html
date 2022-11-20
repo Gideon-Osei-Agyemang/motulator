@@ -107,15 +107,14 @@
 <span class="sd">   2019, https://doi.org/10.1109/TIA.2019.2927316</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">motulator.helpers</span> <span class="kn">import</span> <span class="n">abc2complex</span><span class="p">,</span> <span class="n">Bunch</span>
 <span class="kn">from</span> <span class="nn">motulator.control.common</span> <span class="kn">import</span> <span class="n">Ctrl</span><span class="p">,</span> <span class="n">SpeedCtrl</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">motulator.control.sm_torque</span> <span class="kn">import</span> <span class="n">TorqueCharacteristics</span>
 <span class="kn">from</span> <span class="nn">motulator.control.sm_vector</span> <span class="kn">import</span> <span class="n">SensorlessObserver</span>
+<span class="kn">from</span> <span class="nn">motulator.control.sm_obs_vhz</span> <span class="kn">import</span> <span class="n">FluxTorqueRef</span>
 
 
 <span class="c1"># %%</span>
@@ -131,17 +130,14 @@
 <div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.sensorless"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.sensorless">[docs]</a>    <span class="n">sensorless</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></div>
     <span class="c1"># Sampling period</span>
 <div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.T_s"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.T_s">[docs]</a>    <span class="n">T_s</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">250e-6</span></div>
-    <span class="c1"># Nominal flux</span>
-<div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.psi_s_nom"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_nom">[docs]</a>    <span class="n">psi_s_nom</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">370</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">75</span><span class="p">)</span></div>
-    <span class="c1"># Maximum flux</span>
-<div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.psi_s_max"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_max">[docs]</a>    <span class="n">psi_s_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">370</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">75</span><span class="p">)</span></div>
-    <span class="c1"># Minimum flux</span>
-<div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.psi_s_min"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_min">[docs]</a>    <span class="n">psi_s_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">370</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">75</span><span class="p">)</span></div>
+    <span class="c1"># Flux reference limits</span>
+<div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.psi_s_min"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_min">[docs]</a>    <span class="n">psi_s_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span></div>
+<div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.psi_s_max"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_max">[docs]</a>    <span class="n">psi_s_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span></div>
     <span class="c1"># Voltage marginal</span>
 <div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.k_u"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.k_u">[docs]</a>    <span class="n">k_u</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">.9</span></div>
     <span class="c1"># Bandwidths</span>
 <div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.alpha_psi"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_psi">[docs]</a>    <span class="n">alpha_psi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">100</span></div>
-<div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.alpha_tau_max"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_tau_max">[docs]</a>    <span class="n">alpha_tau_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">400</span></div>
+<div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.alpha_tau"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_tau">[docs]</a>    <span class="n">alpha_tau</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">400</span></div>
 <div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.alpha_s"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_s">[docs]</a>    <span class="n">alpha_s</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">4</span></div>
     <span class="c1"># Maximum values</span>
 <div class="viewcode-block" id="SynchronousMotorFluxVectorCtrlPars.tau_M_max"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.tau_M_max">[docs]</a>    <span class="n">tau_M_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="mi">14</span></div>
@@ -283,10 +279,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">R_s</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">R_s</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha_psi</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">alpha_psi</span>
+        <span class="c1"># Gain k_tau</span>
         <span class="n">G</span> <span class="o">=</span> <span class="p">(</span><span class="n">pars</span><span class="o">.</span><span class="n">L_d</span> <span class="o">-</span> <span class="n">pars</span><span class="o">.</span><span class="n">L_q</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">pars</span><span class="o">.</span><span class="n">L_d</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">L_q</span><span class="p">)</span>
-        <span class="n">c_delta_max</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">p</span><span class="o">*</span><span class="p">(</span>
-            <span class="n">pars</span><span class="o">.</span><span class="n">psi_f</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">psi_s_nom</span><span class="o">/</span><span class="n">pars</span><span class="o">.</span><span class="n">L_d</span> <span class="o">+</span> <span class="n">G</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">psi_s_nom</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">k_tau</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">alpha_tau_max</span><span class="o">/</span><span class="n">c_delta_max</span>
+        <span class="n">psi_s0</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">psi_f</span> <span class="k">if</span> <span class="n">pars</span><span class="o">.</span><span class="n">psi_f</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">pars</span><span class="o">.</span><span class="n">psi_s_min</span>
+        <span class="k">if</span> <span class="n">pars</span><span class="o">.</span><span class="n">psi_f</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># PMSM or PM-SyRM</span>
+            <span class="n">c_delta0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="n">pars</span><span class="o">.</span><span class="n">psi_f</span><span class="o">*</span><span class="n">psi_s0</span><span class="o">/</span><span class="n">pars</span><span class="o">.</span><span class="n">L_d</span> <span class="o">-</span> <span class="n">G</span><span class="o">*</span><span class="n">psi_s0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># SyRM</span>
+            <span class="n">c_delta0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">pars</span><span class="o">.</span><span class="n">p</span><span class="o">*</span><span class="n">G</span><span class="o">*</span><span class="n">psi_s0</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k_tau</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">alpha_tau</span><span class="o">/</span><span class="n">c_delta0</span>
 
 <div class="viewcode-block" id="FluxTorqueCtrl.__call__"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.FluxTorqueCtrl.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psi_s_ref</span><span class="p">,</span> <span class="n">tau_M_ref</span><span class="p">,</span> <span class="n">psi_s</span><span class="p">,</span> <span class="n">i_s</span><span class="p">,</span> <span class="n">w_m</span><span class="p">,</span> <span class="n">u_dc</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -327,79 +327,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">alpha_psi</span><span class="o">*</span><span class="n">e_psi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">delta</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">u_s_ref</span></div></div>
-
-
-<span class="c1"># %%</span>
-<div class="viewcode-block" id="FluxTorqueRef"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.FluxTorqueRef">[docs]</a><span class="k">class</span> <span class="nc">FluxTorqueRef</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Flux and torque references.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    pars : SynchronousMotoroFluxVectorCtrlPars</span>
-<span class="sd">        Control parameters.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># pylint: disable=too-few-public-methods</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pars</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">psi_s_min</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">psi_s_min</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">psi_s_max</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">psi_s_max</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">psi_s_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">k_u</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">k_u</span>
-        <span class="c1"># Merged MTPV and current limits</span>
-        <span class="n">tq</span> <span class="o">=</span> <span class="n">TorqueCharacteristics</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
-        <span class="n">lims</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">mtpv_and_current_limits</span><span class="p">(</span><span class="n">i_s_max</span><span class="o">=</span><span class="n">pars</span><span class="o">.</span><span class="n">i_s_max</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tau_M_lim</span> <span class="o">=</span> <span class="n">lims</span><span class="o">.</span><span class="n">tau_M_vs_abs_psi_s</span>
-        <span class="c1"># MTPA locus</span>
-        <span class="n">mtpa</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">mtpa_locus</span><span class="p">(</span><span class="n">i_s_max</span><span class="o">=</span><span class="n">pars</span><span class="o">.</span><span class="n">i_s_max</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">psi_s_mtpa</span> <span class="o">=</span> <span class="n">mtpa</span><span class="o">.</span><span class="n">abs_psi_s_vs_tau_M</span>
-
-<div class="viewcode-block" id="FluxTorqueRef.__call__"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_flux_vector/index.html#motulator.control.sm_flux_vector.FluxTorqueRef.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau_M_ref</span><span class="p">,</span> <span class="n">w_m</span><span class="p">,</span> <span class="n">u_dc</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate the stator flux reference and limit the torque reference.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        tau_M_ref : float</span>
-<span class="sd">            Unlimited torque reference.</span>
-<span class="sd">        w_m : float</span>
-<span class="sd">            Rotor speed (in electrical rad/s).</span>
-<span class="sd">        u_dc : float</span>
-<span class="sd">            DC-bus voltage.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        psi_s_ref : float</span>
-<span class="sd">            Stator flux reference.</span>
-<span class="sd">        tau_M_ref_lim : float</span>
-<span class="sd">            Limited torque reference.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Get the MTPA flux</span>
-        <span class="n">psi_s_mtpa</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">psi_s_mtpa</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tau_M_ref</span><span class="p">))</span>
-        <span class="c1"># Limit the MTPA flux for sensorless drives</span>
-        <span class="n">psi_s_mtpa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">psi_s_mtpa</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">psi_s_min</span><span class="p">])</span>
-        <span class="c1"># Limit the MTPA flux to avoid magnetic saturation</span>
-        <span class="n">psi_s_mtpa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">psi_s_mtpa</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">psi_s_max</span><span class="p">])</span>
-
-        <span class="c1"># Field weakening</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w_m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">psi_s_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_u</span><span class="o">*</span><span class="n">u_dc</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w_m</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">psi_s_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-
-        <span class="c1"># Flux reference</span>
-        <span class="n">psi_s_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">psi_s_max</span><span class="p">,</span> <span class="n">psi_s_mtpa</span><span class="p">])</span>
-
-        <span class="c1"># Limit the torque reference according to the MTPV and current limits</span>
-        <span class="n">tau_M_lim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau_M_lim</span><span class="p">(</span><span class="n">psi_s_ref</span><span class="p">)</span>
-        <span class="n">tau_M_ref_lim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">tau_M_lim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tau_M_ref</span><span class="p">)</span>
-                                <span class="p">])</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tau_M_ref</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">psi_s_ref</span><span class="p">,</span> <span class="n">tau_M_ref_lim</span></div></div>
 
 
 <span class="c1"># %%</span>

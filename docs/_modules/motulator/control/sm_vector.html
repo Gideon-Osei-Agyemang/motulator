@@ -88,8 +88,7 @@
 <span></span><span class="c1"># pylint: disable=invalid-name</span>
 <span class="sd">&quot;&quot;&quot;Current vector control for synchronous motor drives.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -118,7 +117,7 @@
     <span class="c1"># Maximum values</span>
 <div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.tau_M_max"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.tau_M_max">[docs]</a>    <span class="n">tau_M_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">14</span></div>
 <div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.i_s_max"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.i_s_max">[docs]</a>    <span class="n">i_s_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span></div>
-<div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.psi_s_min"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.psi_s_min">[docs]</a>    <span class="n">psi_s_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span></div>
+<div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.psi_s_min"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.psi_s_min">[docs]</a>    <span class="n">psi_s_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span></div>
     <span class="c1"># Voltage margin</span>
 <div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.k_u"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.k_u">[docs]</a>    <span class="n">k_u</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">.95</span></div>
     <span class="c1"># Nominal values</span>
@@ -132,23 +131,7 @@
 <div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.J"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.J">[docs]</a>    <span class="n">J</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">.015</span></div>
     <span class="c1"># Sensorless observer</span>
 <div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.w_o"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.w_o">[docs]</a>    <span class="n">w_o</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">40</span>  <span class="c1"># Used only in the sensorless mode</span></div>
-<div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.zeta_inf"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.zeta_inf">[docs]</a>    <span class="n">zeta_inf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">.2</span></div>
-
-<div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.plot_luts"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.plot_luts">[docs]</a>    <span class="k">def</span> <span class="nf">plot_luts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Plot control look-up tables.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        base : BaseValues</span>
-<span class="sd">            Base values for scaling the plots.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">tq</span> <span class="o">=</span> <span class="n">TorqueCharacteristics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">tq</span><span class="o">.</span><span class="n">plot_current_loci</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i_s_max</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
-        <span class="n">tq</span><span class="o">.</span><span class="n">plot_torque_flux</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i_s_max</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
-        <span class="n">tq</span><span class="o">.</span><span class="n">plot_torque_current</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i_s_max</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span></div></div>
-        <span class="c1"># tq.plot_flux_loci(self.i_s_max, base)</span>
+<div class="viewcode-block" id="SynchronousMotorVectorCtrlPars.zeta_inf"><a class="viewcode-back" href="../../../autoapi/motulator/control/sm_vector/index.html#motulator.control.sm_vector.SynchronousMotorVectorCtrlPars.zeta_inf">[docs]</a>    <span class="n">zeta_inf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">.2</span></div></div>
 
 
 <span class="c1"># %%</span>
@@ -416,7 +399,6 @@
 <span class="sd">            Limited torque reference.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="k">def</span> <span class="nf">limit_torque</span><span class="p">(</span><span class="n">tau_M_ref</span><span class="p">,</span> <span class="n">w_m</span><span class="p">,</span> <span class="n">u_dc</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w_m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">psi_s_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_u</span><span class="o">*</span><span class="n">u_dc</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w_m</span><span class="p">)</span>

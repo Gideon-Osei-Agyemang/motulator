@@ -29,6 +29,7 @@ Classes
 
    motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrlPars
    motulator.control.sm_obs_vhz.SynchronousMotorVHzObsCtrl
+   motulator.control.sm_obs_vhz.FluxTorqueRef
    motulator.control.sm_obs_vhz.SensorlessFluxObserver
 
 
@@ -91,7 +92,7 @@ Classes
 
       
 
-   .. py:attribute:: alpha_tau_max
+   .. py:attribute:: alpha_tau
       :annotation: :float
 
       
@@ -101,13 +102,18 @@ Classes
 
       
 
+   .. py:attribute:: k_u
+      :annotation: :float = 1
+
+      
+
    .. py:attribute:: alpha_o
       :annotation: :float
 
       
 
    .. py:attribute:: zeta_inf
-      :annotation: :float = 0.7
+      :annotation: :float = 0.2
 
       
 
@@ -174,6 +180,63 @@ Classes
 
       :returns: * **T_s** (*float*) -- Sampling period.
                 * **d_abc_ref** (*ndarray, shape (3,)*) -- Duty ratio references.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: FluxTorqueRef(pars)
+
+   
+   Flux and torque references.
+
+   :param pars: Control parameters.
+   :type pars: SynchronousMotorVHzObsCtrlPars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: __call__(tau_M_ref, w_m, u_dc)
+
+      
+      Calculate the stator flux reference and limit the torque reference.
+
+      :param tau_M_ref: Unlimited torque reference.
+      :type tau_M_ref: float
+      :param w_m: Rotor speed or its reference (in electrical rad/s).
+      :type w_m: float
+      :param u_dc: DC-bus voltage.
+      :type u_dc: float
+
+      :returns: * **psi_s_ref** (*float*) -- Stator flux reference.
+                * **tau_M_ref_lim** (*float*) -- Limited torque reference.
 
 
 

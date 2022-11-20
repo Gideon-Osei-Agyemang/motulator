@@ -14,7 +14,7 @@
    .. rubric:: References
 
    .. [Rdad62c5377b6-1] Tiitinen, Hinkkanen, Harnefors, "Stable and passive observer-based V/Hz
-       control for induction motors," in Proc. IEEE ECCE, Detroit, MI, Oct. 2022.
+       control for induction motors," Proc. IEEE ECCE, Detroit, MI, Oct. 2022.
 
    ..
        !! processed by numpydoc !!
@@ -58,7 +58,7 @@ Classes
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 

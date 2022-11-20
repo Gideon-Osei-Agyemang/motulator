@@ -105,9 +105,18 @@
 <span id="motulator-control-sm-torque"></span><h1><a class="reference internal" href="#module-motulator.control.sm_torque" title="motulator.control.sm_torque"><code class="xref py py-mod docutils literal notranslate"><span class="pre">motulator.control.sm_torque</span></code></a><a class="headerlink" href="#module-motulator.control.sm_torque" title="Permalink to this heading"></a></h1>
 <p>Torque characteristics for synchronous machines.</p>
 <p>This contains computation and plotting of torque characteristics for
-synchronous machines, including the MTPA and MTPV loci. The methods can be used
-to define look-up tables for control as well as to analyze the characteristics.
+synchronous machines, including the MTPA and MTPV loci <a class="reference internal" href="#r29bcf19ff89a-1" id="id1">[1]</a>. The methods can be
+used to define look-up tables for control and to analyze the characteristics.
 In this version, the magnetic saturation is omitted.</p>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r29bcf19ff89a-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Morimoto, Takeda, Hirasa, Taniguchi, “Expansion of operating limits for
+permanent magnet motor by current vector control considering inverter
+capacity,” IEEE Trans. Ind. Appl., 1990,
+<a class="reference external" href="https://doi.org/10.1109/28.60058">https://doi.org/10.1109/28.60058</a></p>
+</dd>
+</dl>
 <div class="section" id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <div class="section" id="classes">
@@ -343,25 +352,6 @@ The default is None.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="motulator.control.sm_torque.TorqueCharacteristics.delta_at_zero_torque">
-<span class="sig-name descname"><span class="pre">delta_at_zero_torque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_psi_s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_torque.html#TorqueCharacteristics.delta_at_zero_torque"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_torque.TorqueCharacteristics.delta_at_zero_torque" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the load angle value at the zero torque.</p>
-<p>This computes the “nontrivial” load angle value corresponding to the
-zero electromagnetic torque.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>abs_psi_s</strong> (<em>float</em>) – Stator flux magnitude.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>delta</strong> – Load angle at the zero torque.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="motulator.control.sm_torque.TorqueCharacteristics.plot_flux_loci">
 <span class="sig-name descname"><span class="pre">plot_flux_loci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_s_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_torque.html#TorqueCharacteristics.plot_flux_loci"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_torque.TorqueCharacteristics.plot_flux_loci" title="Permalink to this definition"></a></dt>
 <dd><p>Plot the stator flux linkage loci.</p>
@@ -420,22 +410,6 @@ zero electromagnetic torque.</p>
 <li><p><strong>i_s_max</strong> (<em>float</em>) – Maximum current at which the loci are evaluated.</p></li>
 <li><p><strong>base</strong> (<em>object</em>) – Base values.</p></li>
 <li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points to be evaluated. The default is 20.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="motulator.control.sm_torque.TorqueCharacteristics.plot_angle_torque">
-<span class="sig-name descname"><span class="pre">plot_angle_torque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_psi_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_torque.html#TorqueCharacteristics.plot_angle_torque"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_torque.TorqueCharacteristics.plot_angle_torque" title="Permalink to this definition"></a></dt>
-<dd><p>Plot the electromagnetic torque as a function of the load angle.</p>
-<p>Per-unit quantities are used.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>abs_psi_s</strong> (<em>float</em>) – Stator flux magnitude.</p></li>
-<li><p><strong>base</strong> (<em>object</em>) – Base values.</p></li>
-<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of points to be evaluated. The default is 100.</p></li>
 </ul>
 </dd>
 </dl>

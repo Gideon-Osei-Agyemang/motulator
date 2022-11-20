@@ -2299,7 +2299,7 @@ Functions
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 
@@ -2436,7 +2436,7 @@ Functions
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 
@@ -2603,7 +2603,7 @@ Functions
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 
@@ -2643,7 +2643,7 @@ Functions
       
 
    .. py:attribute:: psi_s_min
-      :annotation: :float = 0
+      :annotation: :float
 
       
 
@@ -2696,31 +2696,6 @@ Functions
       :annotation: :float = 0.2
 
       
-
-   .. py:method:: plot_luts(base)
-
-      
-      Plot control look-up tables.
-
-      :param base: Base values for scaling the plots.
-      :type base: BaseValues
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
 
 
 .. py:class:: TorqueCharacteristics(pars)
@@ -3064,37 +3039,6 @@ Functions
       ..
           !! processed by numpydoc !!
 
-   .. py:method:: delta_at_zero_torque(abs_psi_s)
-
-      
-      Compute the load angle value at the zero torque.
-
-      This computes the "nontrivial" load angle value corresponding to the
-      zero electromagnetic torque.
-
-      :param abs_psi_s: Stator flux magnitude.
-      :type abs_psi_s: float
-
-      :returns: **delta** -- Load angle at the zero torque.
-      :rtype: float
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
-
    .. py:method:: plot_flux_loci(i_s_max, base, N=20)
 
       
@@ -3219,37 +3163,6 @@ Functions
       ..
           !! processed by numpydoc !!
 
-   .. py:method:: plot_angle_torque(abs_psi_s, base, N=100)
-
-      
-      Plot the electromagnetic torque as a function of the load angle.
-
-      Per-unit quantities are used.
-
-      :param abs_psi_s: Stator flux magnitude.
-      :type abs_psi_s: float
-      :param base: Base values.
-      :type base: object
-      :param N: Amount of points to be evaluated. The default is 100.
-      :type N: int, optional
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
-
 
 .. py:class:: SynchronousMotorFluxVectorCtrl(pars)
 
@@ -3333,7 +3246,7 @@ Functions
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 
@@ -3347,17 +3260,12 @@ Functions
 
       
 
-   .. py:attribute:: psi_s_nom
+   .. py:attribute:: psi_s_min
       :annotation: :float
 
       
 
    .. py:attribute:: psi_s_max
-      :annotation: :float
-
-      
-
-   .. py:attribute:: psi_s_min
       :annotation: :float
 
       
@@ -3372,7 +3280,7 @@ Functions
 
       
 
-   .. py:attribute:: alpha_tau_max
+   .. py:attribute:: alpha_tau
       :annotation: :float
 
       
@@ -3629,7 +3537,7 @@ Functions
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 
@@ -3832,7 +3740,7 @@ Functions
 
       
 
-   .. py:attribute:: alpha_tau_max
+   .. py:attribute:: alpha_tau
       :annotation: :float
 
       
@@ -3842,13 +3750,18 @@ Functions
 
       
 
+   .. py:attribute:: k_u
+      :annotation: :float = 1
+
+      
+
    .. py:attribute:: alpha_o
       :annotation: :float
 
       
 
    .. py:attribute:: zeta_inf
-      :annotation: :float = 0.7
+      :annotation: :float = 0.2
 
       
 

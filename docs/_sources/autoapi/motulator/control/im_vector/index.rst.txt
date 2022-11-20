@@ -54,7 +54,7 @@ Classes
    ..
        !! processed by numpydoc !!
    .. py:attribute:: w_m_ref
-      :annotation: :collections.abc.Callable[[float], float]
+      :annotation: :Callable[[float], float]
 
       
 

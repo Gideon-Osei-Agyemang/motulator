@@ -142,10 +142,7 @@ synchronous motors: A systematic design procedure,” IEEE Trans. Ind. Appl.,
 <tr class="row-odd"><td><p><a class="reference internal" href="#motulator.control.sm_flux_vector.FluxTorqueCtrl" title="motulator.control.sm_flux_vector.FluxTorqueCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxTorqueCtrl</span></code></a></p></td>
 <td><p>Stator flux and torque controller.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#motulator.control.sm_flux_vector.FluxTorqueRef" title="motulator.control.sm_flux_vector.FluxTorqueRef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxTorqueRef</span></code></a></p></td>
-<td><p>Flux and torque references.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#motulator.control.sm_flux_vector.Observer" title="motulator.control.sm_flux_vector.Observer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Observer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#motulator.control.sm_flux_vector.Observer" title="motulator.control.sm_flux_vector.Observer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Observer</span></code></a></p></td>
 <td><p>Sensored observer.</p></td>
 </tr>
 </tbody>
@@ -156,7 +153,7 @@ synchronous motors: A systematic design procedure,” IEEE Trans. Ind. Appl.,
 <dd><p>Control parameters: flux-vector control for synchronous motor drives.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.w_m_ref">
-<span class="sig-name descname"><span class="pre">w_m_ref</span></span><em class="property"><span class="w"> </span><span class="pre">:collections.abc.Callable[[float],</span> <span class="pre">float]</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.w_m_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.w_m_ref" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">w_m_ref</span></span><em class="property"><span class="w"> </span><span class="pre">:Callable[[float],</span> <span class="pre">float]</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.w_m_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.w_m_ref" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -170,18 +167,13 @@ synchronous motors: A systematic design procedure,” IEEE Trans. Ind. Appl.,
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_nom">
-<span class="sig-name descname"><span class="pre">psi_s_nom</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.psi_s_nom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_nom" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_min">
+<span class="sig-name descname"><span class="pre">psi_s_min</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.psi_s_min"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_min" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_max">
 <span class="sig-name descname"><span class="pre">psi_s_max</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.psi_s_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_max" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_min">
-<span class="sig-name descname"><span class="pre">psi_s_min</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.psi_s_min"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.psi_s_min" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -195,8 +187,8 @@ synchronous motors: A systematic design procedure,” IEEE Trans. Ind. Appl.,
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_tau_max">
-<span class="sig-name descname"><span class="pre">alpha_tau_max</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.alpha_tau_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_tau_max" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_tau">
+<span class="sig-name descname"><span class="pre">alpha_tau</span></span><em class="property"><span class="w"> </span><span class="pre">:float</span></em><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#SynchronousMotorFluxVectorCtrlPars.alpha_tau"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.SynchronousMotorFluxVectorCtrlPars.alpha_tau" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -323,39 +315,6 @@ feedback signals.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>complex</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="motulator.control.sm_flux_vector.FluxTorqueRef">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motulator.control.sm_flux_vector.</span></span><span class="sig-name descname"><span class="pre">FluxTorqueRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#FluxTorqueRef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.FluxTorqueRef" title="Permalink to this definition"></a></dt>
-<dd><p>Flux and torque references.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pars</strong> (<em>SynchronousMotoroFluxVectorCtrlPars</em>) – Control parameters.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="motulator.control.sm_flux_vector.FluxTorqueRef.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tau_M_ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_dc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/motulator/control/sm_flux_vector.html#FluxTorqueRef.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#motulator.control.sm_flux_vector.FluxTorqueRef.__call__" title="Permalink to this definition"></a></dt>
-<dd><p>Calculate the stator flux reference and limit the torque reference.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tau_M_ref</strong> (<em>float</em>) – Unlimited torque reference.</p></li>
-<li><p><strong>w_m</strong> (<em>float</em>) – Rotor speed (in electrical rad/s).</p></li>
-<li><p><strong>u_dc</strong> (<em>float</em>) – DC-bus voltage.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>psi_s_ref</strong> (<em>float</em>) – Stator flux reference.</p></li>
-<li><p><strong>tau_M_ref_lim</strong> (<em>float</em>) – Limited torque reference.</p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
