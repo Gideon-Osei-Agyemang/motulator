@@ -173,3 +173,48 @@ class FrequencyConverter(Inverter):
         if i_L < 0 and di_L < 0:
             di_L = 0
         return [du_dc, di_L]
+
+ # %%
+
+
+class DC_Converter:
+    """
+    A DC-DC Converter is modelled to control the terminal voltage being supplied to
+    the motor model. A PWM generates  switching states/duty ratios that controls the
+    output voltage from the converter entering the DC Motor.
+
+    """
+    def __init__(self,u_dc=140):
+        self.u_dc0=u_dc
+        self.q=0
+
+
+    @staticmethod
+    def dc_voltage(q,u_dc):
+
+        """
+        Parameters
+        q: float
+            Switching state
+        u_dc: float
+            DC-bus Voltage
+
+        Returns:
+        u_a: Float
+            Armature Voltage
+        """
+        u_a=q*u_dc
+        return u_a
+
+    def meas_dc_voltage(self):
+        """
+        Measure the DC-bus voltage.
+
+        Returns
+        -------
+        float
+            DC-bus voltage.
+
+        """
+        return self.u_dc0
+
