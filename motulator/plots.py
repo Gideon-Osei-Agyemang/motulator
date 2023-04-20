@@ -248,6 +248,110 @@ def plot_extra(sim, t_span=(1.1, 1.125), base=None):
     plt.tight_layout()
     plt.show()
 
+# %%
+def plot_dc(sim, t_span=None, base=None):
+    """
+    Plot example figures.
+
+    Plots figures in per-unit values, if the base values are given. Otherwise
+    SI units are used.
+
+    Parameters
+    ----------
+    sim : Simulation object
+        Should contain the simulated data.
+    t_span : 2-tuple, optional
+        Time span. The default is (0, sim.ctrl.t[-1]).
+    base : BaseValues, optional
+        Base values for scaling the waveforms.
+
+    """
+    # pylint: disable=too-many-statements
+    mdl = sim.mdl.data  # Continuous-time data
+    ctrl = sim.ctrl.data  # Discrete-time data
+
+    # Check if the time span was given
+    if t_span is None:
+        t_span = (0, ctrl.t[-1])
+
+    # Check if the base values were given
+    if base is None:
+        pu_vals = False
+        base = Bunch(w_a_nom=1, u_a_nom=1, i_a_nom=1, tau_a_nom=1)  # Unity base values
+    else:
+        pu_vals = True
+
+    # Recognize the motor type by checking if the rotor flux data exist
+
+
+    fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, figsize=(8, 10))
+
+    # Subplot 1: angular speeds
+    ax1.step(ctrl.t, ctrl.w_M_ref/base.w_a_nom, '--', where='post')
+    ax1.plot(mdl.t, mdl.w_M/base.w_a_nom)
+    ax1.legend([
+        r'$\omega_\mathrm{M,ref}$',
+        r'$\omega_\mathrm{m}$',
+
+    ])
+    ax1.set_xlim(t_span)
+    ax1.set_xticklabels([])
+
+    # Subplot 2: torques
+    ax2.plot(mdl.t, mdl.tau_L/base.tau_a_nom, '--')
+    ax2.plot(mdl.t, mdl.tau_M/base.tau_a_nom)
+    try:
+        ax2.step(ctrl.t, ctrl.tau_M_ref/base.tau_a_nom, '--')  # Limited torque ref
+    except AttributeError:
+        pass
+    ax2.legend([
+        r'$\tau_\mathrm{L}$',
+        r'$\tau_\mathrm{M}$',
+        r'$\tau_\mathrm{M,ref}$',
+    ])
+    ax2.set_xlim(t_span)
+    ax2.set_xticklabels([])
+
+    # Subplot 3: currents
+    ax3.step(ctrl.t, ctrl.i_a/base.i_a_nom where='post')
+    try:
+        ax3.step(ctrl.t, ctrl.i_a_ref/base.i_a_nom, '--', where='post')
+    except AttributeError:
+        pass
+    ax3.legend([
+        r'$i_\mathrm{a}$',
+        r'$i_\mathrm{a,ref}$',
+
+    ])
+    ax3.set_xlim(t_span)
+    ax3.set_xticklabels([])
+
+    # Subplot 4: voltages
+    ax4.step(ctrl.t, ctrl.u_a/base.u_a_nom, where='post')
+    ax4.step(ctrl.t, ctrl.u_dc/base.u_a_nom, '--', where='post')
+    ax4.legend([r'$u_\mathrm{a}$', r'$u_\mathrm{dc}$'])
+    ax4.set_xlim(t_span)
+
+
+    # Add axis labels
+    if pu_vals:
+        ax1.set_ylabel('Speed (p.u.)')
+        ax2.set_ylabel('Torque (p.u.)')
+        ax3.set_ylabel('Current (p.u.)')
+        ax4.set_ylabel('Voltage (p.u.)')
+
+    else:
+        ax1.set_ylabel('Speed (rad/s)')
+        ax2.set_ylabel('Torque (Nm)')
+        ax3.set_ylabel('Current (A)')
+        ax4.set_ylabel('Voltage (V)')
+
+    ax4.set_xlabel('Time (s)')
+    fig.align_ylabels()
+
+    plt.tight_layout()
+    plt.show()
+
 
 # %%
 def save_plot(name):

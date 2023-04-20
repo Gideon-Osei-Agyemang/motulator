@@ -78,6 +78,7 @@ class BaseValues:
     f_nom: float  # Frequency
     P_nom: float  # Power
     tau_nom: float  # Torque
+    w_nom: float   # Speed
     n_p: int  # Number of pole pairs
 
     def __post_init__(self):
@@ -90,6 +91,11 @@ class BaseValues:
         self.Z = self.u/self.i
         self.L = self.Z/self.w
         self.tau = self.n_p*self.p/self.w
+        self.u_a_nom= self.U_nom
+        self.i_a_nom= self.I_nom
+        self.w_a_nom= self.w_nom
+        self.tau_a_nom= self.tau_nom
+
 
 
 # %%

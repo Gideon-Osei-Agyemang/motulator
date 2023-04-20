@@ -79,7 +79,7 @@ class DcMotorDrive:
         t : float
             Time.
         x : ndarray
-            State vector.
+            State vector
 
         Returns
         -------

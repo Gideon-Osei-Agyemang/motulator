@@ -5,12 +5,12 @@ The supply voltage to the motor is varied to control the
 speed of the dc motor using PWM.
 
 """
-
-import numpy as np
-from motulator.helpers import  Bunch
 from typing import Callable
 from dataclasses import dataclass, field
-from common import PWM, Ctrl
+import numpy as np
+from common import  Ctrl
+from motulator.helpers import  Bunch, complex2abc
+
 
 # %%
 @dataclass
@@ -30,7 +30,6 @@ class DcMotorCtrlPars:
     # Maximum values
     u_a_max: float = 140
     tau_M_max: float =14
-    u_a_min: float = -140
 
     # Motor parameter estimates
     R: float = 0.5
@@ -76,7 +75,7 @@ class DcMotorCtrl(Ctrl):
         -------
         T_s : float
             Sampling period.
-        d_ab_ref : ndarray, shape (2,)
+        d_abc_ref : ndarray, shape (3,)
             Duty ratio references.
 
         """
@@ -97,11 +96,11 @@ class DcMotorCtrl(Ctrl):
         i_a_ref = tau_M_ref/self.k_f
         tau_M_ref_lim=self.SpeedCtrl.realized_lim_torque(w_M_ref,w_M)
         u_a_ref=self.CurrentCtrl.output(i_a_ref,i_a)
-        d_ab_ref, u_a_ref_lim=self.pwm.output(u_a_ref,u_dc)
+        d_abc_ref, u_a_ref_lim=self.pwm.output(u_a_ref,u_dc)
 
         # Data logging
         data = Bunch(
-            d_ab_ref=d_ab_ref,
+            d_ab_ref=d_abc_ref,
             u_a_ref=u_a_ref,
             u_dc=u_dc,
             u_a=u_a,
@@ -122,7 +121,7 @@ class DcMotorCtrl(Ctrl):
         self.pwm.update(u_a_ref_lim)
         self.update_clock(self.T_s)
 
-        return self.T_s, d_ab_ref
+        return self.T_s, d_abc_ref
 
 class CurrentCtrl:
     """
@@ -304,7 +303,7 @@ class SpeedCtrl:
 
 class PWM:
     """
-    Duty ratio references and realized voltage for single-phase PWM.
+    Duty ratio references and realized voltage for three-phase PWM.
 
     This contains the computation of the duty ratio references and the realized
     voltage. The digital delay effects are taken into account in the realized
@@ -314,17 +313,19 @@ class PWM:
     ----------
     pars : data object
         Control parameters.
+
     """
 
     def __init__(self, pars):
         self.T_s = pars.T_s
         self.realized_voltage=0
         self.u_a_ref_lim_old=0
+        self.u_a_max=pars.u_a_max
 
     @staticmethod
     def duty_ratios(u_a_ref, u_dc):
         """
-        Compute the duty ratios for single-phase PWM.
+        Compute the duty ratios for a single phase PWM.
 
         This computes the duty ratios using a symmetrical suboscillation
         method. This method is identical to the standard space-vector PWM.
@@ -332,20 +333,21 @@ class PWM:
         Parameters
         ----------
         u_a_ref : float
-            Armature Voltage reference .
+            Armature Voltage reference.
         u_dc : float
             DC-bus voltage.
 
         Returns
         -------
-        d_ab_ref : ndarray, shape (2,)
+        d_abc_ref : ndarray, shape (3,)
             Duty ratio references.
-
         """
-        # Duty ratios
-        d_ab_ref = 0.5*(1+u_a_ref/u_dc) - 0.5*(1-u_a_ref/u_dc)
 
-        return d_ab_ref
+        # Duty ratios
+        d_ab= (0.5*(1+u_a_ref/u_dc)) - (0.5*(1-u_a_ref/u_dc))
+        d_abc_ref=complex2abc(complex(d_ab))
+
+        return d_abc_ref
 
 
     def __call__(self, u_a_ref, u_dc):
@@ -354,49 +356,33 @@ class PWM:
 
         Parameters
         ----------
-        u_a_ref : float
-            Armature Voltage reference.
+        u_ref : complex
+            Voltage reference in synchronous coordinates.
         u_dc : float
             DC-bus voltage.
 
         Returns
         -------
-        d_ab_ref : ndarray, shape (2,)
+        d_abc_ref : ndarray, shape (3,)
             Duty ratio references.
 
         """
-        d_ab_ref, u_a_ref_lim = self.output(u_a_ref, u_dc)
+        d_abc_ref, u_a_ref_lim = self.output(u_a_ref, u_dc)
         self.update(self, u_a_ref_lim)
 
-        return d_ab_ref
+        return d_abc_ref
 
     def output(self, u_a_ref, u_dc):
-        """
-        Compute the limited armature voltage and returns the duty ratio references.
-
-        Parameters
-        ----------
-        u_a_ref : float
-            Armature Voltage reference.
-        u_dc : float
-            DC-bus voltage.
-
-        Returns
-        -------
-        d_ab_ref : ndarray, shape (2,)
-            Duty ratio references.
-        u_a_ref_lim: float
-            Limited Armature Voltage Reference
+        """Compute the duty ratio .
         """
 
         # Duty ratios
-        d_ab_ref = self.duty_ratios(u_a_ref, u_dc)
-        u_max=140
-        u_a_ref_lim= u_a_ref
-        if u_a_ref> u_max:
-            u_a_ref_lim= d_ab_ref*u_dc
+        d_abc_ref = self.duty_ratios(u_a_ref, u_dc)
+        u_a_ref_lim = u_a_ref
+        if u_a_ref > self.u_a_max:
+            u_a_ref_lim = d_abc_ref*u_dc
 
-        return d_ab_ref, u_a_ref_lim
+        return d_abc_ref, u_a_ref_lim
 
     def update(self, u_a_ref_lim):
         """
@@ -404,10 +390,9 @@ class PWM:
 
         Parameters
         ----------
-        u_a_ref_lim : float
-            Limited Armature Voltage Reference.
+        u_ref_lim : complex
+            Limited voltage reference in synchronous coordinates.
 
         """
         self.realized_voltage = 0.5*(self.u_a_ref_lim_old + u_a_ref_lim)
         self.u_a_ref_lim_old = u_a_ref_lim
-

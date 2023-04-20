@@ -177,7 +177,7 @@ class FrequencyConverter(Inverter):
  # %%
 
 
-class DC_Converter:
+class DC_DC_Converter:
     """
     A DC-DC Converter is modelled to control the terminal voltage being supplied to
     the motor model. A PWM generates  switching states/duty ratios that controls the
