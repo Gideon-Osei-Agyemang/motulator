@@ -70,7 +70,7 @@ class DcMotorDrive:
         self.motor.i_a0 = x0[0]
         self.mech.w_M0 = x0[1]
 
-    def f(self,t, x):
+    def f(self,t,x):
         """
         Compute the complete state derivative list for the solver.
 
