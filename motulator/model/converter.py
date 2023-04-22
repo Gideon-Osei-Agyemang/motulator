@@ -173,7 +173,6 @@ class FrequencyConverter(Inverter):
         if i_L < 0 and di_L < 0:
             di_L = 0
         return [du_dc, di_L]
-
  # %%
 
 
@@ -217,4 +216,3 @@ class DC_DC_Converter:
 
         """
         return self.u_dc0
-
