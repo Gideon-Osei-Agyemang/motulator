@@ -281,8 +281,6 @@ def plot_dc(sim, t_span=None, base=None):
     else:
         pu_vals = True
 
-    # Recognize the motor type by checking if the rotor flux data exist
-
 
     fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, figsize=(8, 10))
 
@@ -301,7 +299,7 @@ def plot_dc(sim, t_span=None, base=None):
     ax2.plot(mdl.t, mdl.tau_L/base.tau_a_nom, '--')
     ax2.plot(mdl.t, mdl.tau_M/base.tau_a_nom)
     try:
-        ax2.step(ctrl.t, ctrl.tau_M_ref/base.tau_a_nom, '--')  # Limited torque ref
+        ax2.step(ctrl.t, ctrl.tau_M_ref/base.tau_a_nom, '--')  
     except AttributeError:
         pass
     ax2.legend([
