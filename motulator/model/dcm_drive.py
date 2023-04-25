@@ -24,7 +24,7 @@ class DcMotorDrive:
     mech  : Mechanics
         Mechanics model.
     conv  : Converter
-        Converter Model
+        DC-DC Converter Model
     """
 
     def __init__(self, motor=None, mech=None,conv=None):
